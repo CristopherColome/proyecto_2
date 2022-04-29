@@ -5,6 +5,7 @@
  */
 package com.grupo.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,22 +28,39 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "tb_producto")
-public class Producto {
+public class Producto implements Serializable{
 
+        
+//--- PROPIEDADES  -----------------------------------------------------------
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+    //--------------------------------------------------------------
+    @Column(name = "codigo_fabrica")
+    private String codigoFabrica;   
+    
+    @Column(name = "nombre")
+    private String nombre;
+    
+    @Column(name = "marca")
+    private String marca;
+    
+    @Column(name = "linea")
+    private String linea;
+    
+    @Column(name = "oservaciones")
+    private String observaciones;
+    //----------------------------------------------------------------
+    @Column(name = "precio_unitario")
+    private Double precioUnitario;
 
-    @Column(name = "descripcion")
-    private String descripcion;
-
-    @Column(name = "precio")
-    private Double precio;
-
-    @Column(name = "cantidad")
-    private Double cantidad;
-
+    @Column(name = "precio_costo")
+    private Double precioCosto;       
+          
+    @Column(name = "stock")
+    private Double stock;    
+    //---------------------------------------------------------------
     @Column(name = "creador")
     private String creador;
 
@@ -56,12 +74,20 @@ public class Producto {
     @Column(name = "fecha_modificacion", insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
-
-    //RELACIONES
+//============================================================================
+   
+    
+    
+//--- RELACIONES -------------------------------------------------------------
     @OneToMany(targetEntity = ProductoHistorial.class, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_producto")
     private List<ProductoHistorial> productoHistorial;
-
+//============================================================================
+    
+    
+    
+//--- GETTERS Y SETTERS  -----------------------------------------------------
+    
     public Integer getId() {
         return id;
     }
@@ -69,30 +95,72 @@ public class Producto {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public String getDescripcion() {
-        return descripcion;
+    //----------------------------------------------------------
+     public String getCodigoFabrica() {
+        return codigoFabrica;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setCodigoFabrica(String codigoFabrica) {
+        this.codigoFabrica = codigoFabrica;
+    }   
+    
+    public String getNombre() {
+        return nombre;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+     public String getMarca() {
+        return marca;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public Double getCantidad() {
-        return cantidad;
+    public String getLinea() {
+        return linea;
     }
 
-    public void setCantidad(Double cantidad) {
-        this.cantidad = cantidad;
+    public void setLinea(String linea) {
+        this.linea = linea;
+        
+    } public String getObservaciones() {
+        return observaciones;
     }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+    
+    //-----------------------------------------------------------
+    
+    public Double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(Double precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+
+     public Double getPrecioCosto() {
+        return precioCosto;
+    }
+
+    public void setPrecioCosto(Double precioCosto) {
+        this.precioCosto = precioCosto;
+    }
+
+    public Double getStock() {
+        return stock;
+    }
+
+    public void setStock(Double stock) {
+        this.stock = stock;
+    }
+    
+    //-----------------------------------------------------------
 
     public String getCreador() {
         return creador;
@@ -133,10 +201,27 @@ public class Producto {
     public void setProductoHistorial(List<ProductoHistorial> productoHistorial) {
         this.productoHistorial = productoHistorial;
     }
-
-    @Override
+    
+//============================================================================
+    
+    
+    
+//-- TO STRING ---------------------------------------------------------------
+     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", descripcion=" + descripcion + ", precio=" + precio + ", cantidad=" + cantidad + ", creador=" + creador + ", modificador=" + modificador + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + ", productoHistorial=" + productoHistorial + '}';
-    }
+        return "Producto{" + "id=" + id + ", codigoFabrica=" + codigoFabrica + ", nombre=" + nombre + ", marca=" + marca + 
+                ", linea=" + linea + ", observaciones=" + observaciones + ", precioUnitario=" + precioUnitario + ", precioCosto=" 
+                + precioCosto + ", stock=" + stock + ", creador=" + creador + ", modificador=" + modificador + ", fechaCreacion=" 
+                + fechaCreacion + ", fechaModificacion=" + fechaModificacion + ", productoHistorial=" + productoHistorial + '}';
+    } 
+    
+//============================================================================
 
+   
+
+    
+   
+  
+    
+    
 }
