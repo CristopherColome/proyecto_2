@@ -77,9 +77,9 @@ public class Producto implements Serializable{
     
     
 //--- RELACIONES -------------------------------------------------------------
-    @OneToMany(targetEntity = Venta_Item.class, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Venta_item.class, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_producto")
-    private List<Venta_Item> productoHistorial;
+    private List<Venta_item> productoHistorial;
 //============================================================================
     
     
@@ -192,11 +192,11 @@ public class Producto implements Serializable{
         this.fechaModificacion = fechaModificacion;
     }
 
-    public List<Venta_Item> getProductoHistorial() {
+    public List<Venta_item> getProductoHistorial() {
         return productoHistorial;
     }
 
-    public void setProductoHistorial(List<Venta_Item> productoHistorial) {
+    public void setProductoHistorial(List<Venta_item> productoHistorial) {
         this.productoHistorial = productoHistorial;
     }
     

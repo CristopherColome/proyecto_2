@@ -5,12 +5,12 @@
  */
 package com.grupo.controller;
 
-import com.grupo.entity.Venta_Item;
+import com.grupo.entity.Venta_item;
 
 /**
  *
  * @author ccolome
  */
-public interface IProductoHistorialController extends BaseController<Venta_Item, Integer> {
+public interface IProductoHistorialController extends BaseController<Venta_item, Integer> {
 
 }

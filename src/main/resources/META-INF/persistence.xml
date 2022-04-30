@@ -6,7 +6,7 @@
     <class>com.grupo.entity.Cliente</class>
     <class>com.grupo.entity.Usuario</class>
     <class>com.grupo.entity.Venta</class>
-    <class>com.grupo.entity.Venta_Item</class>
+    <class>com.grupo.entity.Venta_item</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.16.100.140:3306/bodega?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

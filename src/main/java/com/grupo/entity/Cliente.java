@@ -24,37 +24,35 @@ import javax.persistence.TemporalType;
 @Table(name = "tb_cliente")
 public class Cliente implements Serializable {
 
+//--- PROPIEDADES  -----------------------------------------------------------    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nombres")
-    private String nombres;
-
-    @Column(name = "numero_documento")
-    private String numeroDocumento;
-
-    @Column(name = "correo")
-    private String correo;
-
-    @Column(name = "telefono")
-    private String telefono;
-
-    @Column(name = "creador")
-    private String creador;
-
-    @Column(name = "modificador")
-    private String modificador;
+    @Column(name = "tipo")
+    private byte tipo; //1-persona, 2-Empresa
+    
+    @Column(name = "id_persona")
+    private int idPersona;
+    
+    @Column(name = "id_empresa")
+    private int idEmpresa;
+    //--------------------------------------------------------------
+    @Column(name = "id_usuario")
+    private int IdUsuario;
 
     @Column(name = "fecha_creacion", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
+    
+    @Column(name = "anulado")
+    private boolean anulado; 
+//============================================================================ 
 
-    @Column(name = "fecha_modificacion", insertable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-
+    
+    
+//--- GETTERS Y SETTERS  -----------------------------------------------------     
     public Integer getId() {
         return id;
     }
@@ -63,52 +61,36 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public String getNombres() {
-        return nombres;
+    public byte getTipo() {
+        return tipo;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setTipo(byte tipo) {
+        this.tipo = tipo;
     }
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
+    public int getIdPersona() {
+        return idPersona;
     }
 
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
     }
 
-    public String getCorreo() {
-        return correo;
+    public int getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public int getIdUsuario() {
+        return IdUsuario;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getCreador() {
-        return creador;
-    }
-
-    public void setCreador(String creador) {
-        this.creador = creador;
-    }
-
-    public String getModificador() {
-        return modificador;
-    }
-
-    public void setModificador(String modificador) {
-        this.modificador = modificador;
+    public void setIdUsuario(int IdUsuario) {
+        this.IdUsuario = IdUsuario;
     }
 
     public Date getFechaCreacion() {
@@ -119,17 +101,32 @@ public class Cliente implements Serializable {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Date getFechaModificacion() {
-        return fechaModificacion;
+    public boolean isAnulado() {
+        return anulado;
     }
 
-    public void setFechaModificacion(Date fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
+    public void setAnulado(boolean anulado) {
+        this.anulado = anulado;
     }
+ //============================================================================
+    
+    
+    
+    
+//--- TO STRING  -------------------------------------------------------------     
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nombres=" + nombres + ", numeroDocumento=" + numeroDocumento + ", correo=" + correo + ", telefono=" + telefono + ", creador=" + creador + ", modificador=" + modificador + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + '}';
-    }
+        return "Cliente{" + "id=" + id + ", tipo=" + tipo + ", idPersona=" + 
+                idPersona + ", idEmpresa=" + idEmpresa + ", IdUsuario=" + 
+                IdUsuario + ", fechaCreacion=" + fechaCreacion + ", anulado=" + 
+                anulado + '}';
+    }    
+//============================================================================
+    
+      
+        
+    
+
 
 }

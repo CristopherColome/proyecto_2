@@ -5,6 +5,7 @@
  */
 package com.grupo.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -25,39 +26,65 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "tb_venta")
-public class Venta {
+public class Venta implements Serializable{
 
+//--- PROPIEDADES  -----------------------------------------------------------    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
-
-    @Column(name = "creador")
-    private String creador;
+    private int id;
+    //--------------------------------------------------------------
+    @Column(name = "serie")
+    private String serie;
+    
+    @Column(name = "correlativo")
+    private String correlativo;
+    
+    @Column(name = "id_cliente")
+    private String idCliente;
+    
+    @Column(name = "importe_total")
+    private double importeTotal;
+    //--------------------------------------------------------------
+    @Column(name = "id_usuario")
+    private int IdUsuario;
 
     @Column(name = "fecha_creacion", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
-
-    //RELACIONES
-    @OneToMany(targetEntity = Venta_Item.class, orphanRemoval = true, fetch = FetchType.EAGER)
+    
+    @Column(name = "anulado")
+    private boolean anulado;    
+//============================================================================
+    
+    
+    
+    
+//--- RELACIONES -------------------------------------------------------------
+    @OneToMany(targetEntity = Venta_item.class, orphanRemoval = true, 
+            fetch = FetchType.EAGER)
     @JoinColumn(name = "id_venta")
-    private List<Venta_Item> productoHistorial;
+    private List<Venta_item> ventaItems;
+//============================================================================
+    
+    
+    
+    
+//--- GETTERS Y SETTERS  -----------------------------------------------------   
+    public List<Venta_item> getVentaItems() {
+        return ventaItems;
+    }
 
+    public void setVentaItems(List<Venta_item> ventaItems) {
+        this.ventaItems = ventaItems;
+    }
+    //----------------------------------------------------------------
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getCreador() {
-        return creador;
-    }
-
-    public void setCreador(String creador) {
-        this.creador = creador;
     }
 
     public Date getFechaCreacion() {
@@ -67,18 +94,72 @@ public class Venta {
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-
-    public List<Venta_Item> getProductoHistorial() {
-        return productoHistorial;
+ 
+    public String getSerie() {
+        return serie;
     }
 
-    public void setProductoHistorial(List<Venta_Item> productoHistorial) {
-        this.productoHistorial = productoHistorial;
+    public void setSerie(String serie) {
+        this.serie = serie;
     }
 
-    @Override
+    public String getCorrelativo() {
+        return correlativo;
+    }
+
+    public void setCorrelativo(String correlativo) {
+        this.correlativo = correlativo;
+    }
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public double getImporteTotal() {
+        return importeTotal;
+    }
+
+    public void setImporteTotal(double importeTotal) {
+        this.importeTotal = importeTotal;
+    }
+
+    public int getIdUsuario() {
+        return IdUsuario;
+    }
+
+    public void setIdUsuario(int IdUsuario) {
+        this.IdUsuario = IdUsuario;
+    }
+   
+    public boolean isAnulado() {
+        return anulado;
+    }
+   
+    public void setAnulado(boolean anulado) {
+        this.anulado = anulado;
+    }
+//============================================================================
+    
+    
+    
+//--- TO STRING  -------------------------------------------------------------  
+@Override
     public String toString() {
-        return "Venta{" + "id=" + id + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + ", productoHistorial=" + productoHistorial + '}';
-    }
+        return "Venta{" + "id=" + id + ", serie=" + serie + ", correlativo=" + 
+                correlativo + ", idCliente=" + idCliente + ", impTotal=" + importeTotal +
+                ", IdUsuario=" + IdUsuario + ", fechaCreacion=" + fechaCreacion +
+                ", anulado=" + anulado + ", ventaItems=" + ventaItems + '}';
+    }        
+//============================================================================
+
+    
+   
+    
+    
+    
 
 }
