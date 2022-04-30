@@ -40,9 +40,9 @@ public class Venta {
     private Date fechaCreacion;
 
     //RELACIONES
-    @OneToMany(targetEntity = ProductoHistorial.class, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Venta_Item.class, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_venta")
-    private List<ProductoHistorial> productoHistorial;
+    private List<Venta_Item> productoHistorial;
 
     public Integer getId() {
         return id;
@@ -68,11 +68,11 @@ public class Venta {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public List<ProductoHistorial> getProductoHistorial() {
+    public List<Venta_Item> getProductoHistorial() {
         return productoHistorial;
     }
 
-    public void setProductoHistorial(List<ProductoHistorial> productoHistorial) {
+    public void setProductoHistorial(List<Venta_Item> productoHistorial) {
         this.productoHistorial = productoHistorial;
     }
 

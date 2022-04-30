@@ -6,10 +6,8 @@
 package com.grupo.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -79,9 +77,9 @@ public class Producto implements Serializable{
     
     
 //--- RELACIONES -------------------------------------------------------------
-    @OneToMany(targetEntity = ProductoHistorial.class, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Venta_Item.class, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_producto")
-    private List<ProductoHistorial> productoHistorial;
+    private List<Venta_Item> productoHistorial;
 //============================================================================
     
     
@@ -194,11 +192,11 @@ public class Producto implements Serializable{
         this.fechaModificacion = fechaModificacion;
     }
 
-    public List<ProductoHistorial> getProductoHistorial() {
+    public List<Venta_Item> getProductoHistorial() {
         return productoHistorial;
     }
 
-    public void setProductoHistorial(List<ProductoHistorial> productoHistorial) {
+    public void setProductoHistorial(List<Venta_Item> productoHistorial) {
         this.productoHistorial = productoHistorial;
     }
     

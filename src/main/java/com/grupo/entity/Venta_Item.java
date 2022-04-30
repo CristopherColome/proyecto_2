@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "tb_producto_historial")
-public class ProductoHistorial implements Serializable {
+public class Venta_Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
