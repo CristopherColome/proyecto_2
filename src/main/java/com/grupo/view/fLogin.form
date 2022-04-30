@@ -150,6 +150,9 @@
           <Image iconType="3" name="/imagenes/iniciar-sesion.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAccederActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRol">
       <Properties>

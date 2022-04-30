@@ -75,6 +75,11 @@ public class fLogin extends javax.swing.JFrame {
         });
 
         btnAcceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iniciar-sesion.png"))); // NOI18N
+        btnAcceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccederActionPerformed(evt);
+            }
+        });
 
         lblRol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/administrador.png"))); // NOI18N
@@ -143,6 +148,11 @@ public class fLogin extends javax.swing.JFrame {
             lblRol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vendedora.png")));
         }
     }//GEN-LAST:event_cbxRolActionPerformed
+
+    private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
+        fPrincipal f = new fPrincipal();
+        f.setVisible(true);
+    }//GEN-LAST:event_btnAccederActionPerformed
 
     /**
      * @param args the command line arguments
