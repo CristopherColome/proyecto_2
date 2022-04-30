@@ -60,10 +60,10 @@ public class Producto implements Serializable{
     private Double stock;    
     //---------------------------------------------------------------
     @Column(name = "creador")
-    private String creador;
+    private int creador;
 
     @Column(name = "modificador")
-    private String modificador;
+    private int modificador;
 
     @Column(name = "fecha_creacion", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -160,19 +160,19 @@ public class Producto implements Serializable{
     
     //-----------------------------------------------------------
 
-    public String getCreador() {
+    public int getCreador() {
         return creador;
     }
 
-    public void setCreador(String creador) {
+    public void setCreador(int creador) {
         this.creador = creador;
     }
 
-    public String getModificador() {
+    public int getModificador() {
         return modificador;
     }
 
-    public void setModificador(String modificador) {
+    public void setModificador(int modificador) {
         this.modificador = modificador;
     }
 
