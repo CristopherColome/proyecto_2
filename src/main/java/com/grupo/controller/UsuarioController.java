@@ -5,6 +5,7 @@
  */
 package com.grupo.controller;
 
+import com.grupo.entity.Persona;
 import com.grupo.entity.Producto;
 import com.grupo.entity.Usuario;
 import java.util.ArrayList;

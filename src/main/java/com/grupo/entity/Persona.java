@@ -1,72 +1,71 @@
-
 package com.grupo.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-
-
 
 /**
  *
  * @author Samuel
  */
-
 @Entity
 @Table(name = "tb_persona")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(
+        name = "tipo"
+)
 public class Persona implements Serializable {
-
-
 
 //--- PROPIEDADES  -----------------------------------------------------------    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    //--------------------------------------------------------------
+
+    @Column(name = "tipo")
+    private String tipo;
+
     @Column(name = "nombre")
     private String nombre;
-      
+
     @Column(name = "apellidos")
     private String apellidos;
-    
-    @Column(name = "nombre_alias")
-    private String alias;
-    
-    @Column(name = "dni")
-    private String dni;
-    //-------------------------------------------------------------      
+
+    @Column(name = "numero_documento")
+    private String numeroDocumento;
+
     @Column(name = "direccion")
     private String direccion;
-    
+
     @Column(name = "telefono")
     private String telefono;
-    
+
     @Column(name = "email")
     private String email;
-    //-------------------------------------------------------------      
-    @Column(name = "fecha_nacimiento")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaNacimiento;    
-    
-    @Column(name = "fecha_creacion", updatable = false)
+
+    @Column(name = "creador")
+    private String creador;
+
+    @Column(name = "modificador")
+    private String modificador;
+
+    @Column(name = "fecha_creacion", insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
-    
-    @Column(name = "creador")
-    private int creador;
-//============================================================================
-    
 
-    
+    @Column(name = "fecha_modificacion", insertable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaModificacion;
 
 //--- GETTERS Y SETTERS  -----------------------------------------------------
     public Integer getId() {
@@ -75,6 +74,14 @@ public class Persona implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -93,22 +100,14 @@ public class Persona implements Serializable {
         this.apellidos = apellidos;
     }
 
-    public String getAlias() {
-        return alias;
+    public String getNumeroDocumento() {
+        return numeroDocumento;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
     }
 
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-    
     public String getDireccion() {
         return direccion;
     }
@@ -132,13 +131,21 @@ public class Persona implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+
+    public String getCreador() {
+        return creador;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setCreador(String creador) {
+        this.creador = creador;
+    }
+
+    public String getModificador() {
+        return modificador;
+    }
+
+    public void setModificador(String modificador) {
+        this.modificador = modificador;
     }
 
     public Date getFechaCreacion() {
@@ -146,36 +153,20 @@ public class Persona implements Serializable {
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;        
-    }
-    
-      public int getCreador() {
-        return creador;
+        this.fechaCreacion = fechaCreacion;
     }
 
-    public void setCreador(int creador) {
-        this.creador = creador;
+    public Date getFechaModificacion() {
+        return fechaModificacion;
     }
-//============================================================================
 
-    
-    
-//-- TO STRING ---------------------------------------------------------------
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+
     @Override
     public String toString() {
-        return "Persona{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" +
-                apellidos + ", alias=" + alias + ", dni=" + dni + 
-                ", fechaNacimiento=" + fechaNacimiento + ", fechaCreacion=" 
-                + fechaCreacion + '}';
+        return "Persona{" + "id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", apellidos=" + apellidos + ", numeroDocumento=" + numeroDocumento + ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", creador=" + creador + ", modificador=" + modificador + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + '}';
     }
-//============================================================================  
 
-   
-    
-
-    
-  
-   
-    
-    
 }

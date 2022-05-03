@@ -5,16 +5,15 @@
  */
 package com.grupo.entity;
 
-import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,111 +21,46 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "tb_cliente")
-public class Cliente implements Serializable {
-
+@PrimaryKeyJoinColumn(name = "id_persona", referencedColumnName = "id")
+@DiscriminatorValue(
+    value = "C"
+)
+public class Cliente extends Persona {
+    
 //--- PROPIEDADES  -----------------------------------------------------------    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
-    @Column(name = "tipo")
-    private byte tipo; //1-persona, 2-Empresa
-    
     @Column(name = "id_persona")
-    private int idPersona;
-    
-    @Column(name = "id_empresa")
-    private int idEmpresa;
-    //--------------------------------------------------------------
-    @Column(name = "id_usuario")
-    private int IdUsuario;
+    private Integer idPersona;
 
-    @Column(name = "fecha_creacion", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCreacion;
-    
-    @Column(name = "anulado")
-    private boolean anulado; 
-//============================================================================ 
+    @OneToMany(targetEntity = Venta.class, orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cliente")
+    private List<Venta> ventas;
 
-    
+    public Cliente() {
+        super();
+    }
     
 //--- GETTERS Y SETTERS  -----------------------------------------------------     
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public byte getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(byte tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getIdPersona() {
+    public Integer getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(int idPersona) {
+    public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
     }
 
-    public int getIdEmpresa() {
-        return idEmpresa;
+    public List<Venta> getVentas() {
+        return ventas;
     }
 
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setVentas(List<Venta> ventas) {
+        this.ventas = ventas;
     }
-
-    public int getIdUsuario() {
-        return IdUsuario;
-    }
-
-    public void setIdUsuario(int IdUsuario) {
-        this.IdUsuario = IdUsuario;
-    }
-
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public boolean isAnulado() {
-        return anulado;
-    }
-
-    public void setAnulado(boolean anulado) {
-        this.anulado = anulado;
-    }
- //============================================================================
-    
-    
-    
-    
-//--- TO STRING  -------------------------------------------------------------     
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", tipo=" + tipo + ", idPersona=" + 
-                idPersona + ", idEmpresa=" + idEmpresa + ", IdUsuario=" + 
-                IdUsuario + ", fechaCreacion=" + fechaCreacion + ", anulado=" + 
-                anulado + '}';
-    }    
-//============================================================================
-    
-      
-        
-    
-
+        return super.toString() + " Cliente{" + " idPersona=" + idPersona + ", ventas=" + ventas + '}';
+    }
 
 }

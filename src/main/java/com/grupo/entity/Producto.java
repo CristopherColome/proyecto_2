@@ -26,66 +26,52 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "tb_producto")
-public class Producto implements Serializable{
+public class Producto implements Serializable {
 
-        
 //--- PROPIEDADES  -----------------------------------------------------------
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    //--------------------------------------------------------------
-    @Column(name = "codigo_fabrica")
-    private String codigoFabrica;   
-    
+
     @Column(name = "nombre")
     private String nombre;
-    
+
     @Column(name = "marca")
     private String marca;
-    
+
     @Column(name = "linea")
     private String linea;
-    
-    @Column(name = "oservaciones")
-    private String observaciones;
-    //----------------------------------------------------------------
+
     @Column(name = "precio_unitario")
     private Double precioUnitario;
 
-    @Column(name = "precio_costo")
-    private Double precioCosto;       
-          
     @Column(name = "stock")
-    private Double stock;    
-    //---------------------------------------------------------------
+    private Double stock;
+
+    @Column(name = "oservaciones")
+    private String observaciones;
+
     @Column(name = "creador")
-    private int creador;
+    private String creador;
 
     @Column(name = "modificador")
-    private int modificador;
+    private String modificador;
 
-    @Column(name = "fecha_creacion", updatable = false)
+    @Column(name = "fecha_creacion", insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
 
     @Column(name = "fecha_modificacion", insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
-//============================================================================
-   
-    
-    
-//--- RELACIONES -------------------------------------------------------------
-    @OneToMany(targetEntity = Venta_item.class, orphanRemoval = true, fetch = FetchType.EAGER)
+
+    //RELACIONES
+    @OneToMany(targetEntity = ProductoHistorial.class, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_producto")
-    private List<Venta_item> productoHistorial;
-//============================================================================
-    
-    
-    
+    private List<ProductoHistorial> productoHistorial;
+
 //--- GETTERS Y SETTERS  -----------------------------------------------------
-    
     public Integer getId() {
         return id;
     }
@@ -93,15 +79,7 @@ public class Producto implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
-    //----------------------------------------------------------
-     public String getCodigoFabrica() {
-        return codigoFabrica;
-    }
 
-    public void setCodigoFabrica(String codigoFabrica) {
-        this.codigoFabrica = codigoFabrica;
-    }   
-    
     public String getNombre() {
         return nombre;
     }
@@ -109,7 +87,8 @@ public class Producto implements Serializable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-     public String getMarca() {
+
+    public String getMarca() {
         return marca;
     }
 
@@ -123,31 +102,23 @@ public class Producto implements Serializable{
 
     public void setLinea(String linea) {
         this.linea = linea;
-        
-    } public String getObservaciones() {
+
+    }
+
+    public String getObservaciones() {
         return observaciones;
     }
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    
-    //-----------------------------------------------------------
-    
+
     public Double getPrecioUnitario() {
         return precioUnitario;
     }
 
     public void setPrecioUnitario(Double precioUnitario) {
         this.precioUnitario = precioUnitario;
-    }
-
-     public Double getPrecioCosto() {
-        return precioCosto;
-    }
-
-    public void setPrecioCosto(Double precioCosto) {
-        this.precioCosto = precioCosto;
     }
 
     public Double getStock() {
@@ -157,22 +128,20 @@ public class Producto implements Serializable{
     public void setStock(Double stock) {
         this.stock = stock;
     }
-    
-    //-----------------------------------------------------------
 
-    public int getCreador() {
+    public String getCreador() {
         return creador;
     }
 
-    public void setCreador(int creador) {
+    public void setCreador(String creador) {
         this.creador = creador;
     }
 
-    public int getModificador() {
+    public String getModificador() {
         return modificador;
     }
 
-    public void setModificador(int modificador) {
+    public void setModificador(String modificador) {
         this.modificador = modificador;
     }
 
@@ -192,34 +161,19 @@ public class Producto implements Serializable{
         this.fechaModificacion = fechaModificacion;
     }
 
-    public List<Venta_item> getProductoHistorial() {
+    public List<ProductoHistorial> getProductoHistorial() {
         return productoHistorial;
     }
 
-    public void setProductoHistorial(List<Venta_item> productoHistorial) {
+    public void setProductoHistorial(List<ProductoHistorial> productoHistorial) {
         this.productoHistorial = productoHistorial;
     }
-    
-//============================================================================
-    
-    
-    
+
 //-- TO STRING ---------------------------------------------------------------
-     @Override
+    @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", codigoFabrica=" + codigoFabrica + ", nombre=" + nombre + ", marca=" + marca + 
-                ", linea=" + linea + ", observaciones=" + observaciones + ", precioUnitario=" + precioUnitario + ", precioCosto=" 
-                + precioCosto + ", stock=" + stock + ", creador=" + creador + ", modificador=" + modificador + ", fechaCreacion=" 
-                + fechaCreacion + ", fechaModificacion=" + fechaModificacion + ", productoHistorial=" + productoHistorial + '}';
-    } 
-    
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", marca=" + marca + ", linea=" + linea + ", observaciones=" + observaciones + ", precioUnitario=" + precioUnitario + ", stock=" + stock + ", creador=" + creador + ", modificador=" + modificador + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + ", productoHistorial=" + productoHistorial + '}';
+    }
+
 //============================================================================
-
-   
-
-    
-   
-  
-    
-    
 }

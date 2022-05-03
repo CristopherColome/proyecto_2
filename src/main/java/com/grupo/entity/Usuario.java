@@ -5,11 +5,11 @@
  */
 package com.grupo.entity;
 
-import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
 
 /**
  *
@@ -17,26 +17,40 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario extends Persona implements Serializable {
+@PrimaryKeyJoinColumn(name = "id_persona", referencedColumnName = "id")
+@DiscriminatorValue(
+        value = "U"
+)
+public class Usuario extends Persona {
 
-     
 //--- PROPIEDADES  -----------------------------------------------------------
+    @Column(name = "id_persona")
+    private Integer idPersona;
+
     @Column(name = "username")
     private String username;
-    
+
     @Column(name = "password")
     private String password;
-    
-    @Column(name = "rol")
-    private String rol;   
-    
-    @Column(name = "activo")
-    private boolean activo;
-//============================================================================
-   
 
-    
-//--- GETTERS Y SETTERS  -----------------------------------------------------
+    @Column(name = "rol")
+    private String rol;
+
+    @Column(name = "activo", columnDefinition = "TINYINT(1)")
+    private Boolean activo;
+
+    public Usuario() {
+        super();
+    }
+
+    public Integer getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Integer idPersona) {
+        this.idPersona = idPersona;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -59,31 +73,19 @@ public class Usuario extends Persona implements Serializable {
 
     public void setRol(String rol) {
         this.rol = rol;
-    }   
-    
-    public boolean isActivo() {
+    }
+
+    public Boolean getActivo() {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setActivo(Boolean activo) {
         this.activo = activo;
     }
-//============================================================================
 
-    
-    
-    
-//-- TO STRING ---------------------------------------------------------------
     @Override
     public String toString() {
-        return "Usuario{" + "username=" + username + ", password=" + 
-                password + ", rol=" + rol + ", activo=" + activo + '}';
-    }    
-//============================================================================
-    
-    
-   
+        return super.toString() + " Usuario{" + " idPersona=" + idPersona + ", username=" + username + ", password=" + password + ", rol=" + rol + ", activo=" + activo + '}';
+    }
 
-   
-    
 }

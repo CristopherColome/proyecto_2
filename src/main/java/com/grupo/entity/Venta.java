@@ -26,7 +26,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "tb_venta")
-public class Venta implements Serializable{
+public class Venta implements Serializable {
 
 //--- PROPIEDADES  -----------------------------------------------------------    
     @Id
@@ -34,81 +34,43 @@ public class Venta implements Serializable{
     @Column(name = "id")
     private int id;
     //--------------------------------------------------------------
-    @Column(name = "serie")
-    private String serie;
-    
-    @Column(name = "correlativo")
-    private String correlativo;
-    
     @Column(name = "id_cliente")
     private String idCliente;
-    
-    @Column(name = "importe_total")
-    private double importeTotal;
-    //--------------------------------------------------------------
-    @Column(name = "id_usuario")
-    private int IdUsuario;
 
-    @Column(name = "fecha_creacion", updatable = false)
+    @Column(name = "serie")
+    private String serie;
+
+    @Column(name = "importe_total")
+    private Double importeTotal;
+
+    @Column(name = "creador")
+    private String creador;
+
+    @Column(name = "fecha_creacion", insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
-    
-    @Column(name = "anulado")
-    private boolean anulado;    
-//============================================================================
-    
-    
-    
-    
+
 //--- RELACIONES -------------------------------------------------------------
-    @OneToMany(targetEntity = Venta_item.class, orphanRemoval = true, 
+    @OneToMany(targetEntity = ProductoHistorial.class, orphanRemoval = true,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "id_venta")
-    private List<Venta_item> ventaItems;
-//============================================================================
-    
-    
-    
-    
-//--- GETTERS Y SETTERS  -----------------------------------------------------   
-    public List<Venta_item> getVentaItems() {
-        return ventaItems;
-    }
+    private List<ProductoHistorial> ventaItems;
 
-    public void setVentaItems(List<Venta_item> ventaItems) {
-        this.ventaItems = ventaItems;
-    }
-    //----------------------------------------------------------------
-    public Integer getId() {
+//--- GETTERS Y SETTERS  -----------------------------------------------------   
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
- 
     public String getSerie() {
         return serie;
     }
 
     public void setSerie(String serie) {
         this.serie = serie;
-    }
-
-    public String getCorrelativo() {
-        return correlativo;
-    }
-
-    public void setCorrelativo(String correlativo) {
-        this.correlativo = correlativo;
     }
 
     public String getIdCliente() {
@@ -119,47 +81,41 @@ public class Venta implements Serializable{
         this.idCliente = idCliente;
     }
 
-    public double getImporteTotal() {
+    public Double getImporteTotal() {
         return importeTotal;
     }
 
-    public void setImporteTotal(double importeTotal) {
+    public void setImporteTotal(Double importeTotal) {
         this.importeTotal = importeTotal;
     }
 
-    public int getIdUsuario() {
-        return IdUsuario;
+    public String getCreador() {
+        return creador;
     }
 
-    public void setIdUsuario(int IdUsuario) {
-        this.IdUsuario = IdUsuario;
+    public void setCreador(String creador) {
+        this.creador = creador;
     }
-   
-    public boolean isAnulado() {
-        return anulado;
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
     }
-   
-    public void setAnulado(boolean anulado) {
-        this.anulado = anulado;
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
-//============================================================================
-    
-    
-    
-//--- TO STRING  -------------------------------------------------------------  
-@Override
+
+    public List<ProductoHistorial> getVentaItems() {
+        return ventaItems;
+    }
+
+    public void setVentaItems(List<ProductoHistorial> ventaItems) {
+        this.ventaItems = ventaItems;
+    }
+
+    @Override
     public String toString() {
-        return "Venta{" + "id=" + id + ", serie=" + serie + ", correlativo=" + 
-                correlativo + ", idCliente=" + idCliente + ", impTotal=" + importeTotal +
-                ", IdUsuario=" + IdUsuario + ", fechaCreacion=" + fechaCreacion +
-                ", anulado=" + anulado + ", ventaItems=" + ventaItems + '}';
-    }        
-//============================================================================
-
-    
-   
-    
-    
-    
+        return "Venta{" + "id=" + id + ", idCliente=" + idCliente + ", serie=" + serie + ", importeTotal=" + importeTotal + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + ", ventaItems=" + ventaItems + '}';
+    }
 
 }
