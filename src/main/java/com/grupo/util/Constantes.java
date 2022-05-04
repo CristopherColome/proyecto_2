@@ -11,6 +11,14 @@ package com.grupo.util;
  */
 public class Constantes {
 
+    public enum Menu {
+        PRODUCTO,
+        VENTA,
+        CLIENTE,
+        USUARIO,
+        SALIR
+    }
+
     public enum Evento {
         USUARIO_LOGUEADO
     }
