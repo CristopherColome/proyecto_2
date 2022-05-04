@@ -5,8 +5,9 @@
  */
 package com.grupo.controller;
 
-import com.grupo.entity.Producto;
+import static com.grupo.app.ApplicationConfig.getEntityManager;
 import com.grupo.entity.Venta;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -21,37 +22,76 @@ public class VentaController implements IVentaController {
 
     private static final Logger LOG = LogManager.getLogger(VentaController.class);
 
-    private final EntityManager entityManager;
-
-    public VentaController(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    private EntityManager entityManager;
 
     @Override
     public Boolean registrar(Venta objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LOG.info("INICIO DE REGISTRO VENTA");
+
+        entityManager = getEntityManager();
+        Boolean resultado = false;
+
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(objeto);
+            entityManager.getTransaction().commit();
+            resultado = true;
+            LOG.info("Se registró correctamente la venta.");
+        } catch (Exception e) {
+            LOG.error("Ocurrió un error al insertar la venta: " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+
+        LOG.info("FIN DE REGISTRO VENTA");
+        return resultado;
     }
 
     @Override
     public List<Venta> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LOG.info("INICIO DE LISTAR VENTAS");
+
+        entityManager = getEntityManager();
+        List<Venta> ventas = new ArrayList<Venta>();
+
+        try {
+            ventas = entityManager.createQuery("SELECT V FROM Venta V", Venta.class).getResultList();
+            LOG.info("Se obtuvo correctamente las ventas.");
+        } catch (Exception e) {
+            LOG.error("Ocurrió un error al listar ventas : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+        LOG.info("FIN DE LISTAR VENTAS");
+        return ventas;
     }
 
     @Override
     public Venta obtener(Integer id) {
         LOG.info("INICIO OBTENER VENTA");
-        Venta venta = new Venta();
-        try {
 
+        entityManager = getEntityManager();
+        Venta venta = new Venta();
+
+        try {
             Query query = entityManager.createQuery(
-                    "SELECT V FROM Venta V LEFT JOIN V.productoHistorial PH ON PH.idVenta = V.id WHERE V.id = :id",
+                    "SELECT V FROM Venta V LEFT JOIN V.ventaItems VI ON VI.idVenta = V.id WHERE V.id = :id",
                     Venta.class
             );
             query.setParameter("id", id);
             venta = (Venta) query.getSingleResult();
+
             LOG.info("Se obtuvo correctamente la venta.");
         } catch (Exception e) {
-            LOG.error("Ocurrió un error al obtener la venta : " + e);
+            LOG.error("Ocurrió un error al obtener venta : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
         LOG.info("FIN OBTENER VENTA");
         return venta;

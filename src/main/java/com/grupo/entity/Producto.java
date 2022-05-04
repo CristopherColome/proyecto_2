@@ -49,7 +49,7 @@ public class Producto implements Serializable {
     @Column(name = "stock")
     private Double stock;
 
-    @Column(name = "oservaciones")
+    @Column(name = "observaciones")
     private String observaciones;
 
     @Column(name = "creador")

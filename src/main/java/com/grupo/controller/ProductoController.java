@@ -5,7 +5,7 @@
  */
 package com.grupo.controller;
 
-import com.google.gson.Gson;
+import static com.grupo.app.ApplicationConfig.getEntityManager;
 import com.grupo.entity.Producto;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,23 +24,29 @@ public class ProductoController implements IProductoController {
 
     private static final Logger LOG = LogManager.getLogger(ProductoController.class);
 
-    private final EntityManager entityManager;
-
-    public ProductoController(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    private EntityManager entityManager;
 
     @Override
     public Boolean registrar(Producto objeto) {
         LOG.info("INICIO DE REGISTRO PRODUCTO");
+
+        entityManager = getEntityManager();
         Boolean resultado = false;
+
         try {
+            entityManager.getTransaction().begin();
             entityManager.persist(objeto);
+            entityManager.getTransaction().commit();
             resultado = true;
             LOG.info("Se registró correctamente el producto.");
-        }  catch (Exception e) {
-            LOG.error("Ocurrió un error al insertar producto : " + e);
+        } catch (Exception e) {
+            LOG.error("Ocurrió un error al insertar el producto: " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
+
         LOG.info("FIN DE REGISTRO PRODUCTO");
         return resultado;
     }
@@ -48,12 +54,19 @@ public class ProductoController implements IProductoController {
     @Override
     public List<Producto> listar() {
         LOG.info("INICIO DE LISTAR PRODUCTOS");
+
+        entityManager = getEntityManager();
         List<Producto> productos = new ArrayList<Producto>();
+
         try {
             productos = entityManager.createQuery("SELECT P FROM Producto P", Producto.class).getResultList();
             LOG.info("Se obtuvo correctamente los productos.");
         } catch (Exception e) {
             LOG.error("Ocurrió un error al listar productos : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
         LOG.info("FIN DE LISTAR PRODUCTOS");
         return productos;
@@ -62,7 +75,10 @@ public class ProductoController implements IProductoController {
     @Override
     public Producto obtener(Integer id) {
         LOG.info("INICIO OBTENER PRODUCTO");
+
+        entityManager = getEntityManager();
         Producto producto = new Producto();
+
         try {
 
             Query query = entityManager.createQuery(
@@ -74,6 +90,10 @@ public class ProductoController implements IProductoController {
             LOG.info("Se obtuvo correctamente el producto.");
         } catch (Exception e) {
             LOG.error("Ocurrió un error al obtener producto : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
         LOG.info("FIN OBTENER PRODUCTO");
         return producto;
@@ -82,17 +102,26 @@ public class ProductoController implements IProductoController {
     @Override
     public Boolean actualizar(Producto objeto) {
         LOG.info("INICIO ACTUALIZACION DE PRODUCTO");
+
+        entityManager = getEntityManager();
         Boolean resultado = false;
+
         try {
-            if (!objeto.getModificador().isEmpty()) {
+            if (objeto.getModificador() != null && objeto.getFechaModificacion() != null) {
+                entityManager.getTransaction().begin();
                 entityManager.merge(objeto);
+                entityManager.getTransaction().commit();
                 resultado = true;
             } else {
-                throw new Exception("No se encontró usuario modificador al actualizar");
+                throw new Exception("No se encontró fecha de modificación o usuario modificador al actualizar");
             }
             LOG.info("Se actualizó correctamente el producto.");
-        }  catch (Exception e) {
+        } catch (Exception e) {
             LOG.error("Ocurrió un error al actualizar producto : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
         LOG.info("FIN DE ACTUALIZACION DE PRODUCTO");
         return resultado;
@@ -101,14 +130,22 @@ public class ProductoController implements IProductoController {
     @Override
     public Boolean eliminar(Integer id) {
         LOG.info("INICIO ELIMINAR PRODUCTO");
+
+        entityManager = getEntityManager();
         Boolean resultado = false;
         try {
             Producto producto = obtener(id);
+            entityManager.getTransaction().begin();
             entityManager.remove(producto);
+            entityManager.getTransaction().commit();
             resultado = true;
             LOG.info("Se eliminó correctamente el producto.");
         } catch (Exception e) {
             LOG.error("Ocurrió un error al eliminar producto : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
         LOG.info("FIN ELIMINAR PRODUCTO");
         return resultado;

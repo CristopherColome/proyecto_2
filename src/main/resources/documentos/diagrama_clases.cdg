@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.grupo.entity">
+  <ClassDiagramComponents>
+    <Class name="ProductoHistorial" package="com.grupo.entity" visibility="public" xPosition="1483.0" yPosition="864.0">
+      <Fields>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="idVenta" type="Integer" visibility="private"/>
+        <Field name="idProducto" type="Integer" visibility="private"/>
+        <Field name="operacion" type="String" visibility="private"/>
+        <Field name="cantidad" type="Double" visibility="private"/>
+        <Field name="precioUnitario" type="Double" visibility="private"/>
+        <Field name="creador" type="String" visibility="private"/>
+        <Field name="fechaCreacion" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getIdVenta" returnType="Integer" visibility="public"/>
+        <Method name="setIdVenta" returnType="void" visibility="public">
+          <Argument type="Integer" name="idVenta"/>
+        </Method>
+        <Method name="getIdProducto" returnType="Integer" visibility="public"/>
+        <Method name="setIdProducto" returnType="void" visibility="public">
+          <Argument type="Integer" name="idProducto"/>
+        </Method>
+        <Method name="getCantidad" returnType="Double" visibility="public"/>
+        <Method name="setCantidad" returnType="void" visibility="public">
+          <Argument type="Double" name="cantidad"/>
+        </Method>
+        <Method name="getPrecioUnitario" returnType="Double" visibility="public"/>
+        <Method name="setPrecioUnitario" returnType="void" visibility="public">
+          <Argument type="Double" name="precioUnitario"/>
+        </Method>
+        <Method name="getOperacion" returnType="String" visibility="public"/>
+        <Method name="setOperacion" returnType="void" visibility="public">
+          <Argument type="String" name="operacion"/>
+        </Method>
+        <Method name="getCreador" returnType="String" visibility="public"/>
+        <Method name="setCreador" returnType="void" visibility="public">
+          <Argument type="String" name="creador"/>
+        </Method>
+        <Method name="getFechaCreacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaCreacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaCreacion"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="com.grupo.entity" visibility="public" xPosition="298.0" yPosition="119.0">
+      <Fields>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="tipo" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellidos" type="String" visibility="private"/>
+        <Field name="numeroDocumento" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="telefono" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="creador" type="String" visibility="private"/>
+        <Field name="modificador" type="String" visibility="private"/>
+        <Field name="fechaCreacion" type="Date" visibility="private"/>
+        <Field name="fechaModificacion" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getTipo" returnType="String" visibility="public"/>
+        <Method name="setTipo" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellidos" returnType="String" visibility="public"/>
+        <Method name="setApellidos" returnType="void" visibility="public">
+          <Argument type="String" name="apellidos"/>
+        </Method>
+        <Method name="getNumeroDocumento" returnType="String" visibility="public"/>
+        <Method name="setNumeroDocumento" returnType="void" visibility="public">
+          <Argument type="String" name="numeroDocumento"/>
+        </Method>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="getTelefono" returnType="String" visibility="public"/>
+        <Method name="setTelefono" returnType="void" visibility="public">
+          <Argument type="String" name="telefono"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getCreador" returnType="String" visibility="public"/>
+        <Method name="setCreador" returnType="void" visibility="public">
+          <Argument type="String" name="creador"/>
+        </Method>
+        <Method name="getModificador" returnType="String" visibility="public"/>
+        <Method name="setModificador" returnType="void" visibility="public">
+          <Argument type="String" name="modificador"/>
+        </Method>
+        <Method name="getFechaCreacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaCreacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaCreacion"/>
+        </Method>
+        <Method name="getFechaModificacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaModificacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaModificacion"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cliente" package="com.grupo.entity" visibility="public" xPosition="524.0" yPosition="1009.0">
+      <Fields>
+        <Field name="idPersona" type="Integer" visibility="private"/>
+        <Field name="ventas" type="List&lt;Venta&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getIdPersona" returnType="Integer" visibility="public"/>
+        <Method name="setIdPersona" returnType="void" visibility="public">
+          <Argument type="Integer" name="idPersona"/>
+        </Method>
+        <Method name="getVentas" returnType="List&lt;Venta&gt;" visibility="public"/>
+        <Method name="setVentas" returnType="void" visibility="public">
+          <Argument type="List&lt;Venta&gt;" name="ventas"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Venta" package="com.grupo.entity" visibility="public" xPosition="955.0" yPosition="890.0">
+      <Fields>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="idCliente" type="Integer" visibility="private"/>
+        <Field name="serie" type="String" visibility="private"/>
+        <Field name="importeTotal" type="Double" visibility="private"/>
+        <Field name="creador" type="String" visibility="private"/>
+        <Field name="fechaCreacion" type="Date" visibility="private"/>
+        <Field name="ventaItems" type="List&lt;ProductoHistorial&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getSerie" returnType="String" visibility="public"/>
+        <Method name="setSerie" returnType="void" visibility="public">
+          <Argument type="String" name="serie"/>
+        </Method>
+        <Method name="getIdCliente" returnType="Integer" visibility="public"/>
+        <Method name="setIdCliente" returnType="void" visibility="public">
+          <Argument type="Integer" name="idCliente"/>
+        </Method>
+        <Method name="getImporteTotal" returnType="Double" visibility="public"/>
+        <Method name="setImporteTotal" returnType="void" visibility="public">
+          <Argument type="Double" name="importeTotal"/>
+        </Method>
+        <Method name="getCreador" returnType="String" visibility="public"/>
+        <Method name="setCreador" returnType="void" visibility="public">
+          <Argument type="String" name="creador"/>
+        </Method>
+        <Method name="getFechaCreacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaCreacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaCreacion"/>
+        </Method>
+        <Method name="getVentaItems" returnType="List&lt;ProductoHistorial&gt;" visibility="public"/>
+        <Method name="setVentaItems" returnType="void" visibility="public">
+          <Argument type="List&lt;ProductoHistorial&gt;" name="ventaItems"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Usuario" package="com.grupo.entity" visibility="public" xPosition="171.0" yPosition="932.0">
+      <Fields>
+        <Field name="idPersona" type="Integer" visibility="private"/>
+        <Field name="username" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="rol" type="String" visibility="private"/>
+        <Field name="activo" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getIdPersona" returnType="Integer" visibility="public"/>
+        <Method name="setIdPersona" returnType="void" visibility="public">
+          <Argument type="Integer" name="idPersona"/>
+        </Method>
+        <Method name="getUsername" returnType="String" visibility="public"/>
+        <Method name="setUsername" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getRol" returnType="String" visibility="public"/>
+        <Method name="setRol" returnType="void" visibility="public">
+          <Argument type="String" name="rol"/>
+        </Method>
+        <Method name="getActivo" returnType="Boolean" visibility="public"/>
+        <Method name="setActivo" returnType="void" visibility="public">
+          <Argument type="Boolean" name="activo"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Producto" package="com.grupo.entity" visibility="public" xPosition="1410.0" yPosition="75.0">
+      <Fields>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="linea" type="String" visibility="private"/>
+        <Field name="precioUnitario" type="Double" visibility="private"/>
+        <Field name="stock" type="Double" visibility="private"/>
+        <Field name="observaciones" type="String" visibility="private"/>
+        <Field name="creador" type="String" visibility="private"/>
+        <Field name="modificador" type="String" visibility="private"/>
+        <Field name="fechaCreacion" type="Date" visibility="private"/>
+        <Field name="fechaModificacion" type="Date" visibility="private"/>
+        <Field name="productoHistorial" type="List&lt;ProductoHistorial&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getMarca" returnType="String" visibility="public"/>
+        <Method name="setMarca" returnType="void" visibility="public">
+          <Argument type="String" name="marca"/>
+        </Method>
+        <Method name="getLinea" returnType="String" visibility="public"/>
+        <Method name="setLinea" returnType="void" visibility="public">
+          <Argument type="String" name="linea"/>
+        </Method>
+        <Method name="getObservaciones" returnType="String" visibility="public"/>
+        <Method name="setObservaciones" returnType="void" visibility="public">
+          <Argument type="String" name="observaciones"/>
+        </Method>
+        <Method name="getPrecioUnitario" returnType="Double" visibility="public"/>
+        <Method name="setPrecioUnitario" returnType="void" visibility="public">
+          <Argument type="Double" name="precioUnitario"/>
+        </Method>
+        <Method name="getStock" returnType="Double" visibility="public"/>
+        <Method name="setStock" returnType="void" visibility="public">
+          <Argument type="Double" name="stock"/>
+        </Method>
+        <Method name="getCreador" returnType="String" visibility="public"/>
+        <Method name="setCreador" returnType="void" visibility="public">
+          <Argument type="String" name="creador"/>
+        </Method>
+        <Method name="getModificador" returnType="String" visibility="public"/>
+        <Method name="setModificador" returnType="void" visibility="public">
+          <Argument type="String" name="modificador"/>
+        </Method>
+        <Method name="getFechaCreacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaCreacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaCreacion"/>
+        </Method>
+        <Method name="getFechaModificacion" returnType="Date" visibility="public"/>
+        <Method name="setFechaModificacion" returnType="void" visibility="public">
+          <Argument type="Date" name="fechaModificacion"/>
+        </Method>
+        <Method name="getProductoHistorial" returnType="List&lt;ProductoHistorial&gt;" visibility="public"/>
+        <Method name="setProductoHistorial" returnType="void" visibility="public">
+          <Argument type="List&lt;ProductoHistorial&gt;" name="productoHistorial"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="com.grupo.entity.Cliente" target="com.grupo.entity.Venta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="productoHistorial" source="com.grupo.entity.Producto" target="com.grupo.entity.ProductoHistorial" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProductoHistorial&gt;"/>
+    <IsRelation name="is" source="com.grupo.entity.Cliente" target="com.grupo.entity.Persona"/>
+    <IsRelation name="is" source="com.grupo.entity.Usuario" target="com.grupo.entity.Persona"/>
+    <HasRelation name="" source="com.grupo.entity.Cliente" target="com.grupo.entity.Venta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Venta&gt;"/>
+    <UseRelation source="com.grupo.entity.Venta" target="com.grupo.entity.Producto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="" source="com.grupo.entity.Venta" target="com.grupo.entity.ProductoHistorial" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProductoHistorial&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

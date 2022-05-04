@@ -7,9 +7,6 @@ package com.grupo.app;
 
 import com.grupo.view.MainView;
 import java.awt.EventQueue;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import org.apache.log4j.BasicConfigurator;
 
 /**
@@ -22,14 +19,8 @@ public class Application {
         BasicConfigurator.configure();
     }
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> new MainView(getEntityManager()).setVisible(true));
-    }
-
-    public static EntityManager getEntityManager() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CONNECTION_PU");
-        EntityManager manager = factory.createEntityManager();
-        return manager;
+    public static void main(String[] args) throws InterruptedException {
+        EventQueue.invokeLater(() -> new MainView().setVisible(true));
     }
 
 }

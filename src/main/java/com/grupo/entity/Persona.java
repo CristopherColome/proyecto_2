@@ -1,6 +1,7 @@
 package com.grupo.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -13,6 +14,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 /**
  *
@@ -62,7 +64,7 @@ public class Persona implements Serializable {
     @Column(name = "fecha_creacion", insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
-
+    
     @Column(name = "fecha_modificacion", insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;

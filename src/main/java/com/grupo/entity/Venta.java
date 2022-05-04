@@ -32,10 +32,10 @@ public class Venta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
     //--------------------------------------------------------------
     @Column(name = "id_cliente")
-    private String idCliente;
+    private Integer idCliente;
 
     @Column(name = "serie")
     private String serie;
@@ -57,11 +57,11 @@ public class Venta implements Serializable {
     private List<ProductoHistorial> ventaItems;
 
 //--- GETTERS Y SETTERS  -----------------------------------------------------   
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -73,11 +73,11 @@ public class Venta implements Serializable {
         this.serie = serie;
     }
 
-    public String getIdCliente() {
+    public Integer getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(String idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 

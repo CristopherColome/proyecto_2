@@ -5,6 +5,8 @@
  */
 package com.grupo.controller;
 
+import static com.grupo.app.ApplicationConfig.getEntityManager;
+import com.grupo.entity.Producto;
 import com.grupo.entity.ProductoHistorial;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,22 +22,28 @@ public class ProductoHistorialController implements IProductoHistorialController
 
     private static final Logger LOG = LogManager.getLogger(ProductoHistorialController.class);
 
-    private final EntityManager entityManager;
-
-    public ProductoHistorialController(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    private EntityManager entityManager;
 
     public Boolean registrar(ProductoHistorial objeto) {
         LOG.info("INICIO DE REGISTRO PRODUCTO HISTORIAL");
+
+        entityManager = getEntityManager();
         Boolean resultado = false;
+
         try {
+            entityManager.getTransaction().begin();
             entityManager.persist(objeto);
+            entityManager.getTransaction().commit();
             resultado = true;
             LOG.info("Se registró correctamente el producto historial.");
         } catch (Exception e) {
-            LOG.error("Ocurrió un error al insertar producto historial : " + e);
+            LOG.error("Ocurrió un error al insertar el producto historial: " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
+
         LOG.info("FIN DE REGISTRO PRODUCTO HISTORIAL");
         return resultado;
     }
@@ -43,28 +51,45 @@ public class ProductoHistorialController implements IProductoHistorialController
     @Override
     public List<ProductoHistorial> listar() {
         LOG.info("INICIO DE LISTAR PRODUCTOS HISTORIAL");
+
+        entityManager = getEntityManager();
         List<ProductoHistorial> productohistorial = new ArrayList<ProductoHistorial>();
+
         try {
             productohistorial = entityManager.createQuery("SELECT PH FROM ProductoHistorial PH", ProductoHistorial.class).getResultList();
             LOG.info("Se obtuvo correctamente los productos historial.");
         } catch (Exception e) {
             LOG.error("Ocurrió un error al listar productos historial : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
+
         LOG.info("FIN DE LISTAR PRODUCTOS HISTORIAL");
         return productohistorial;
     }
 
     @Override
     public ProductoHistorial obtener(Integer id) {
-        LOG.info("INICIO DE OBTENER PRODUCTO HISTORIAL: " + id);
+        LOG.info("INICIO OBTENER PRODUCTO HISTORIAL");
+
+        entityManager = getEntityManager();
         ProductoHistorial productoHistorial = new ProductoHistorial();
+
         try {
+
             productoHistorial = entityManager.find(ProductoHistorial.class, id);
             LOG.info("Se obtuvo correctamente el producto historial.");
         } catch (Exception e) {
-            LOG.error("Ocurrió un error al obtener producto historial : " + e);
+            LOG.error("Ocurrió un error al obtener producto historial: " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
         }
-        LOG.info("FIN DE OBTENER PRODUCTO HISTORIAL");
+        
+        LOG.info("FIN OBTENER PRODUCTO HISTORIAL");
         return productoHistorial;
     }
 
