@@ -2,7 +2,7 @@
 
 <ClassDiagram name="main.java.com.grupo.entity">
   <ClassDiagramComponents>
-    <Class name="ProductoHistorial" package="com.grupo.entity" visibility="public" xPosition="1483.0" yPosition="864.0">
+    <Class name="ProductoHistorial" package="com.grupo.entity" visibility="public" xPosition="1459.0" yPosition="874.0">
       <Fields>
         <Field name="id" type="Integer" visibility="private"/>
         <Field name="idVenta" type="Integer" visibility="private"/>
@@ -10,6 +10,7 @@
         <Field name="operacion" type="String" visibility="private"/>
         <Field name="cantidad" type="Double" visibility="private"/>
         <Field name="precioUnitario" type="Double" visibility="private"/>
+        <Field name="importeTotal" type="Double" visibility="private"/>
         <Field name="creador" type="String" visibility="private"/>
         <Field name="fechaCreacion" type="Date" visibility="private"/>
       </Fields>
@@ -39,6 +40,10 @@
         <Method name="setOperacion" returnType="void" visibility="public">
           <Argument type="String" name="operacion"/>
         </Method>
+        <Method name="getImporteTotal" returnType="Double" visibility="public"/>
+        <Method name="setImporteTotal" returnType="void" visibility="public">
+          <Argument type="Double" name="importeTotal"/>
+        </Method>
         <Method name="getCreador" returnType="String" visibility="public"/>
         <Method name="setCreador" returnType="void" visibility="public">
           <Argument type="String" name="creador"/>
@@ -50,12 +55,14 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Persona" package="com.grupo.entity" visibility="public" xPosition="298.0" yPosition="119.0">
+    <Class name="Persona" package="com.grupo.entity" visibility="public" xPosition="270.0" yPosition="73.0">
       <Fields>
         <Field name="id" type="Integer" visibility="private"/>
         <Field name="tipo" type="String" visibility="private"/>
+        <Field name="tipoPersona" type="String" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="apellidos" type="String" visibility="private"/>
+        <Field name="tipoDocumento" type="String" visibility="private"/>
         <Field name="numeroDocumento" type="String" visibility="private"/>
         <Field name="direccion" type="String" visibility="private"/>
         <Field name="telefono" type="String" visibility="private"/>
@@ -75,6 +82,10 @@
         <Method name="setTipo" returnType="void" visibility="public">
           <Argument type="String" name="tipo"/>
         </Method>
+        <Method name="getTipoPersona" returnType="String" visibility="public"/>
+        <Method name="setTipoPersona" returnType="void" visibility="public">
+          <Argument type="String" name="tipoPersona"/>
+        </Method>
         <Method name="getNombre" returnType="String" visibility="public"/>
         <Method name="setNombre" returnType="void" visibility="public">
           <Argument type="String" name="nombre"/>
@@ -82,6 +93,10 @@
         <Method name="getApellidos" returnType="String" visibility="public"/>
         <Method name="setApellidos" returnType="void" visibility="public">
           <Argument type="String" name="apellidos"/>
+        </Method>
+        <Method name="getTipoDocumento" returnType="String" visibility="public"/>
+        <Method name="setTipoDocumento" returnType="void" visibility="public">
+          <Argument type="String" name="tipoDocumento"/>
         </Method>
         <Method name="getNumeroDocumento" returnType="String" visibility="public"/>
         <Method name="setNumeroDocumento" returnType="void" visibility="public">
@@ -118,7 +133,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Cliente" package="com.grupo.entity" visibility="public" xPosition="524.0" yPosition="1009.0">
+    <Class name="Cliente" package="com.grupo.entity" visibility="public" xPosition="522.0" yPosition="967.0">
       <Fields>
         <Field name="idPersona" type="Integer" visibility="private"/>
         <Field name="ventas" type="List&lt;Venta&gt;" visibility="private"/>
@@ -138,11 +153,12 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Venta" package="com.grupo.entity" visibility="public" xPosition="955.0" yPosition="890.0">
+    <Class name="Venta" package="com.grupo.entity" visibility="public" xPosition="891.0" yPosition="822.0">
       <Fields>
         <Field name="id" type="Integer" visibility="private"/>
         <Field name="idCliente" type="Integer" visibility="private"/>
         <Field name="serie" type="String" visibility="private"/>
+        <Field name="correlativo" type="String" visibility="private"/>
         <Field name="importeTotal" type="Double" visibility="private"/>
         <Field name="creador" type="String" visibility="private"/>
         <Field name="fechaCreacion" type="Date" visibility="private"/>
@@ -154,13 +170,17 @@
         <Method name="setId" returnType="void" visibility="public">
           <Argument type="Integer" name="id"/>
         </Method>
+        <Method name="getIdCliente" returnType="Integer" visibility="public"/>
+        <Method name="setIdCliente" returnType="void" visibility="public">
+          <Argument type="Integer" name="idCliente"/>
+        </Method>
         <Method name="getSerie" returnType="String" visibility="public"/>
         <Method name="setSerie" returnType="void" visibility="public">
           <Argument type="String" name="serie"/>
         </Method>
-        <Method name="getIdCliente" returnType="Integer" visibility="public"/>
-        <Method name="setIdCliente" returnType="void" visibility="public">
-          <Argument type="Integer" name="idCliente"/>
+        <Method name="getCorrelativo" returnType="String" visibility="public"/>
+        <Method name="setCorrelativo" returnType="void" visibility="public">
+          <Argument type="String" name="correlativo"/>
         </Method>
         <Method name="getImporteTotal" returnType="Double" visibility="public"/>
         <Method name="setImporteTotal" returnType="void" visibility="public">
@@ -181,7 +201,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Usuario" package="com.grupo.entity" visibility="public" xPosition="171.0" yPosition="932.0">
+    <Class name="Usuario" package="com.grupo.entity" visibility="public" xPosition="133.0" yPosition="967.0">
       <Fields>
         <Field name="idPersona" type="Integer" visibility="private"/>
         <Field name="username" type="String" visibility="private"/>
@@ -216,7 +236,7 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Producto" package="com.grupo.entity" visibility="public" xPosition="1410.0" yPosition="75.0">
+    <Class name="Producto" package="com.grupo.entity" visibility="public" xPosition="1314.0" yPosition="25.0">
       <Fields>
         <Field name="id" type="Integer" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -287,11 +307,11 @@
   </ClassDiagramComponents>
   <ClassDiagramRelations>
     <UseRelation source="com.grupo.entity.Cliente" target="com.grupo.entity.Venta" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="productoHistorial" source="com.grupo.entity.Producto" target="com.grupo.entity.ProductoHistorial" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProductoHistorial&gt;"/>
-    <IsRelation name="is" source="com.grupo.entity.Cliente" target="com.grupo.entity.Persona"/>
     <IsRelation name="is" source="com.grupo.entity.Usuario" target="com.grupo.entity.Persona"/>
-    <HasRelation name="" source="com.grupo.entity.Cliente" target="com.grupo.entity.Venta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Venta&gt;"/>
+    <HasRelation name="ventas" source="com.grupo.entity.Cliente" target="com.grupo.entity.Venta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Venta&gt;"/>
+    <HasRelation name="ventaItems" source="com.grupo.entity.Venta" target="com.grupo.entity.ProductoHistorial" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProductoHistorial&gt;"/>
+    <HasRelation name="productoHistorial" source="com.grupo.entity.Producto" target="com.grupo.entity.ProductoHistorial" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProductoHistorial&gt;"/>
     <UseRelation source="com.grupo.entity.Venta" target="com.grupo.entity.Producto" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="" source="com.grupo.entity.Venta" target="com.grupo.entity.ProductoHistorial" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;ProductoHistorial&gt;"/>
+    <IsRelation name="is" source="com.grupo.entity.Cliente" target="com.grupo.entity.Persona"/>
   </ClassDiagramRelations>
 </ClassDiagram>

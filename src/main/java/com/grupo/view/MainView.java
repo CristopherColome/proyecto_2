@@ -5,7 +5,6 @@
  */
 package com.grupo.view;
 
-import com.grupo.controller.UsuarioController;
 import com.grupo.entity.Usuario;
 import com.grupo.util.Constantes.Evento;
 import com.grupo.util.Constantes.Menu;
@@ -56,10 +55,12 @@ public class MainView extends JFrame {
 //        }
 //        ClienteController cc = new ClienteController();
 //        Cliente c = new Cliente();
-//        c.setTipo("C");
-//        c.setNombre("d");
-//        c.setApellidos("d1");
-//        c.setNumeroDocumento("55555555");
+//        c.setTipo("f");
+//        c.setTipoPersona("NATURAL");
+//        c.setNombre("f");
+//        c.setApellidos("f1");
+//        c.setTipoDocumento("DNI");
+//        c.setNumeroDocumento("99999999");
 //        c.setCreador("admin");
 //        System.out.println(c.toString());
 //        System.out.println("CLIENTE");
@@ -139,6 +140,7 @@ public class MainView extends JFrame {
 //        v.setSerie("2022");
 //        v.setImporteTotal(10.00 * 3.60);
 //        v.setCreador("admin");
+//        v.setCorrelativo("2022-000111");
 //        vc.registrar(v);
 //        Venta vo = vc.obtener(1);
 //        System.out.println(vo);
@@ -146,8 +148,8 @@ public class MainView extends JFrame {
 //            System.out.println(object.toString());
 //        }
 //</editor-fold>
-        initController();
-        initComponents();
+//        initController();
+//        initComponents();
 
     }
 

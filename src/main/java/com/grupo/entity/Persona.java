@@ -1,7 +1,6 @@
 package com.grupo.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -14,7 +13,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
 
 /**
  *
@@ -36,9 +34,9 @@ public class Persona implements Serializable {
 
     @Column(name = "tipo")
     private String tipo;
-    
-    @Column(name = "tipo_persona_nj") //1-natura, 2-juridica
-    private String tipoPersonaNJ;
+
+    @Column(name = "tipo_persona") //1-natura, 2-juridica
+    private String tipoPersona;
 
     @Column(name = "nombre") //cuando es jurídica va la razon social
     private String nombre;
@@ -48,7 +46,7 @@ public class Persona implements Serializable {
 
     @Column(name = "tipo_documento") //cuando es pn, va DNI, y si es PJ va RUC
     private String tipoDocumento;
-    
+
     @Column(name = "numero_documento") //cuando es pn, va DNI, y si es PJ va RUC
     private String numeroDocumento;
 
@@ -70,7 +68,7 @@ public class Persona implements Serializable {
     @Column(name = "fecha_creacion", insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
-    
+
     @Column(name = "fecha_modificacion", insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
@@ -92,6 +90,14 @@ public class Persona implements Serializable {
         this.tipo = tipo;
     }
 
+    public String getTipoPersona() {
+        return tipoPersona;
+    }
+
+    public void setTipoPersona(String tipoPersona) {
+        this.tipoPersona = tipoPersona;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -106,6 +112,14 @@ public class Persona implements Serializable {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     public String getNumeroDocumento() {
@@ -174,7 +188,7 @@ public class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "Persona{" + "id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", apellidos=" + apellidos + ", numeroDocumento=" + numeroDocumento + ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", creador=" + creador + ", modificador=" + modificador + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + '}';
+        return "Persona{" + "id=" + id + ", tipo=" + tipo + ", tipoPersona=" + tipoPersona + ", nombre=" + nombre + ", apellidos=" + apellidos + ", tipoDocumento=" + tipoDocumento + ", numeroDocumento=" + numeroDocumento + ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", creador=" + creador + ", modificador=" + modificador + ", fechaCreacion=" + fechaCreacion + ", fechaModificacion=" + fechaModificacion + '}';
     }
 
 }

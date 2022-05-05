@@ -39,7 +39,7 @@ public class Venta implements Serializable {
 
     @Column(name = "serie")
     private String serie;
-    
+
     @Column(name = "correlativo")
     private String correlativo;
 
@@ -68,6 +68,14 @@ public class Venta implements Serializable {
         this.id = id;
     }
 
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
     public String getSerie() {
         return serie;
     }
@@ -76,12 +84,12 @@ public class Venta implements Serializable {
         this.serie = serie;
     }
 
-    public Integer getIdCliente() {
-        return idCliente;
+    public String getCorrelativo() {
+        return correlativo;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setCorrelativo(String correlativo) {
+        this.correlativo = correlativo;
     }
 
     public Double getImporteTotal() {
@@ -118,7 +126,7 @@ public class Venta implements Serializable {
 
     @Override
     public String toString() {
-        return "Venta{" + "id=" + id + ", idCliente=" + idCliente + ", serie=" + serie + ", importeTotal=" + importeTotal + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + ", ventaItems=" + ventaItems + '}';
+        return "Venta{" + "id=" + id + ", idCliente=" + idCliente + ", serie=" + serie + ", correlativo=" + correlativo + ", importeTotal=" + importeTotal + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + ", ventaItems=" + ventaItems + '}';
     }
 
 }

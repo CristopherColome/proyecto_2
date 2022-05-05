@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -44,8 +45,9 @@ public class ProductoHistorial implements Serializable {
 
     @Column(name = "precio_unitario")
     private Double precioUnitario;
-    
-    @Column(name = "importe_Total")
+
+    // SE CALCULA ENTRE LA CANTIDAD POR EL PRECIO
+    @Transient // PROPIEDAD NO PERSISTENTE
     private Double importeTotal;
 
     @Column(name = "creador")
@@ -105,6 +107,14 @@ public class ProductoHistorial implements Serializable {
         this.operacion = operacion;
     }
 
+    public Double getImporteTotal() {
+        return importeTotal;
+    }
+
+    public void setImporteTotal(Double importeTotal) {
+        this.importeTotal = importeTotal;
+    }
+
     public String getCreador() {
         return creador;
     }
@@ -123,7 +133,7 @@ public class ProductoHistorial implements Serializable {
 
     @Override
     public String toString() {
-        return "ProductoHistorial{" + "id=" + id + ", idVenta=" + idVenta + ", idProducto=" + idProducto + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + ", operacion=" + operacion + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + '}';
+        return "ProductoHistorial{" + "id=" + id + ", idVenta=" + idVenta + ", idProducto=" + idProducto + ", operacion=" + operacion + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + ", importeTotal=" + importeTotal + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + '}';
     }
 
 }
