@@ -44,6 +44,9 @@ public class ProductoHistorial implements Serializable {
 
     @Column(name = "precio_unitario")
     private Double precioUnitario;
+    
+    @Column(name = "importe_Total")
+    private Double importeTotal;
 
     @Column(name = "creador")
     private String creador;

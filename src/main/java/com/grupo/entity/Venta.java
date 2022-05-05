@@ -39,6 +39,9 @@ public class Venta implements Serializable {
 
     @Column(name = "serie")
     private String serie;
+    
+    @Column(name = "correlativo")
+    private String correlativo;
 
     @Column(name = "importe_total")
     private Double importeTotal;

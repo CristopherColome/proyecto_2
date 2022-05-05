@@ -36,14 +36,20 @@ public class Persona implements Serializable {
 
     @Column(name = "tipo")
     private String tipo;
+    
+    @Column(name = "tipo_persona_nj") //1-natura, 2-juridica
+    private String tipoPersonaNJ;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre") //cuando es jurídica va la razon social
     private String nombre;
 
     @Column(name = "apellidos")
     private String apellidos;
 
-    @Column(name = "numero_documento")
+    @Column(name = "tipo_documento") //cuando es pn, va DNI, y si es PJ va RUC
+    private String tipoDocumento;
+    
+    @Column(name = "numero_documento") //cuando es pn, va DNI, y si es PJ va RUC
     private String numeroDocumento;
 
     @Column(name = "direccion")
