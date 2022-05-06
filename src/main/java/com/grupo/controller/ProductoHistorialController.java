@@ -102,4 +102,9 @@ public class ProductoHistorialController implements IProductoHistorialController
     public Boolean eliminar(Integer id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public List<ProductoHistorial> consultar(String parametro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

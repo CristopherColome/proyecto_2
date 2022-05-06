@@ -73,6 +73,37 @@ public class ProductoController implements IProductoController {
     }
 
     @Override
+    public List<Producto> consultar(String parametro) {
+        LOG.info("INICIO DE CONSULTA PRODUCTOS");
+
+        entityManager = getEntityManager();
+        List<Producto> productos = new ArrayList<Producto>();
+
+        try {
+            String sentencia = new StringBuilder()
+                    .append("SELECT P FROM Producto P ")
+                    .append("WHERE  P.nombre  LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR P.marca  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR P.linea  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR P.creador  LIKE CONCAT('%', :parametro ,'%')")
+                    .toString();
+            Query query = entityManager.createQuery(sentencia, Producto.class);
+            query.setParameter("parametro", parametro);
+
+            productos = query.getResultList();
+            LOG.info("Se obtuvo correctamente los productos.");
+        } catch (Exception e) {
+            LOG.error("Ocurrió un error al consultar productos : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+        LOG.info("FIN DE CONSULTA PRODUCTOS");
+        return productos;
+    }
+
+    @Override
     public Producto obtener(Integer id) {
         LOG.info("INICIO OBTENER PRODUCTO");
 

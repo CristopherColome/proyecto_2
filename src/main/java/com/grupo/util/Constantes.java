@@ -29,8 +29,24 @@ public class Constantes {
         VENDEDOR
     }
 
-    public enum PRODUCTO_OPERACION {
+    public enum ProductoOperacion {
         INGRESO,
         SALIDA
+    }
+
+    public enum ComponentesTab {
+        PRODUCTO_CONSULTA("Consulta de productos"),
+        PRODUCTO_REGISTRO("Registro de producto"),
+        PRODUCTO_DETALLE("Detalle de producto");
+
+        private final String titulo;
+
+        ComponentesTab(String titulo) {
+            this.titulo = titulo;
+        }
+
+        public String getTitulo() {
+            return titulo;
+        }
     }
 }

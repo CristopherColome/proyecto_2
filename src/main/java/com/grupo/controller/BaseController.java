@@ -18,6 +18,8 @@ public interface BaseController<T, ID> {
     
     List<T> listar();
     
+    List<T> consultar(String parametro);
+            
     T obtener(ID id);
     
     Boolean actualizar(T objeto);

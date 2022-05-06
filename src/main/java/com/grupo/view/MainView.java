@@ -34,6 +34,7 @@ import javax.swing.SwingConstants;
 public class MainView extends JFrame {
 
     private LoginView loginView;
+    private ProductoView productoView;
 
     private Usuario usuario;
 
@@ -148,9 +149,8 @@ public class MainView extends JFrame {
 //            System.out.println(object.toString());
 //        }
 //</editor-fold>
-//        initController();
-//        initComponents();
-
+        initController();
+        initComponents();
     }
 
     private void initController() {
@@ -160,6 +160,7 @@ public class MainView extends JFrame {
     private void initComponents() {
 
         loginView = new LoginView();
+        productoView = new ProductoView();
         principalPanel = new JPanel();
         principalToolBar = new JToolBar();
         productoButton = new JButton();
@@ -186,7 +187,7 @@ public class MainView extends JFrame {
         productoButton.setMinimumSize(new java.awt.Dimension(90, 95));
         productoButton.setPreferredSize(new java.awt.Dimension(90, 95));
         productoButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ventaButton.addActionListener((ActionEvent evt) -> {
+        productoButton.addActionListener((ActionEvent evt) -> {
             menuButtonActionPerformed(evt, PRODUCTO);
         });
 
@@ -237,17 +238,33 @@ public class MainView extends JFrame {
             menuButtonActionPerformed(evt, SALIR);
         });
 
+        productoView.setVisible(false);
+
         javax.swing.GroupLayout componentePanelLayout = new javax.swing.GroupLayout(componentePanel);
         componentePanel.setLayout(componentePanelLayout);
         componentePanelLayout.setHorizontalGroup(
                 componentePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 632, Short.MAX_VALUE)
+                        .addComponent(productoView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         componentePanelLayout.setVerticalGroup(
                 componentePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(productoView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+//        javax.swing.GroupLayout principalPanelLayout = new javax.swing.GroupLayout(principalPanel);
+//        principalPanel.setLayout(principalPanelLayout);
+//        principalPanelLayout.setHorizontalGroup(
+//                principalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                        .addGroup(principalPanelLayout.createSequentialGroup()
+//                                .addComponent(principalToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+//                                .addComponent(componentePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//        );
+//        principalPanelLayout.setVerticalGroup(
+//                principalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                        .addComponent(principalToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                        .addComponent(componentePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//        );
         javax.swing.GroupLayout principalPanelLayout = new javax.swing.GroupLayout(principalPanel);
         principalPanel.setLayout(principalPanelLayout);
         principalPanelLayout.setHorizontalGroup(
@@ -259,16 +276,15 @@ public class MainView extends JFrame {
         );
         principalPanelLayout.setVerticalGroup(
                 principalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(principalToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
-                        .addGroup(principalPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(componentePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(principalToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(componentePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         principalPanel.setVisible(false);
         loginView.addPropertyChangeListener((PropertyChangeEvent event) -> {
             loginPropertyChangeEvent(event);
         });
+
         add(loginView);
         pack();
     }
@@ -279,15 +295,25 @@ public class MainView extends JFrame {
 
         principalPanel.setVisible(true);
 
+//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+//        getContentPane().setLayout(layout);
+//        layout.setHorizontalGroup(
+//                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                        .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//        );
+//        layout.setVerticalGroup(
+//                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+//                        .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//        );
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
         );
 
     }
@@ -356,6 +382,8 @@ public class MainView extends JFrame {
         try {
             switch (vista) {
                 case PRODUCTO:
+                    System.out.println("entro");
+                    productoView.setVisible(true);
                     break;
                 case VENTA:
                     break;

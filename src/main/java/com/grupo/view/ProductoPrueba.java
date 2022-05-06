@@ -43,8 +43,8 @@ public class ProductoPrueba extends javax.swing.JFrame {
         componentePanel = new javax.swing.JPanel();
         productoTabbedPane = new javax.swing.JTabbedPane();
         consultaPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        consultaBuscarLabel = new javax.swing.JLabel();
+        consultaBuscarTextField = new javax.swing.JTextField();
         nuevoProductoButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         productosTable = new javax.swing.JTable();
@@ -64,6 +64,7 @@ public class ProductoPrueba extends javax.swing.JFrame {
         nuevoObservacionTextArea = new javax.swing.JTextArea();
         nuevoObservacionLabel = new javax.swing.JLabel();
         nuevoRegistrarButton = new javax.swing.JButton();
+        nuevoCancelarButton = new javax.swing.JButton();
         detallePanel = new javax.swing.JPanel();
         detalleProductoLabel = new javax.swing.JLabel();
         detalleNombreLabel = new javax.swing.JLabel();
@@ -75,8 +76,8 @@ public class ProductoPrueba extends javax.swing.JFrame {
         detallePrecioULabel = new javax.swing.JLabel();
         detallePrecioUSpinner = new javax.swing.JSpinner();
         detalleObservacionLabel = new javax.swing.JLabel();
-        nuevoLineaLabel1 = new javax.swing.JLabel();
-        nuevoStockLabel1 = new javax.swing.JLabel();
+        detalleLineaLabel = new javax.swing.JLabel();
+        detalleStockLabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         productoHTable = new javax.swing.JTable();
         detalleProductoHLabel = new javax.swing.JLabel();
@@ -84,7 +85,7 @@ public class ProductoPrueba extends javax.swing.JFrame {
         detalleObservacionTextArea = new javax.swing.JTextArea();
         detalleAgregarPButton = new javax.swing.JButton();
         detalleEditarButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        detalleSalirButton = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -165,11 +166,13 @@ public class ProductoPrueba extends javax.swing.JFrame {
         });
         principalToolBar.add(salirButton);
 
-        jLabel1.setText("Buscar :");
+        productoTabbedPane.setPreferredSize(new java.awt.Dimension(649, 480));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        consultaBuscarLabel.setText("Buscar :");
+
+        consultaBuscarTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                consultaBuscarTextFieldActionPerformed(evt);
             }
         });
 
@@ -215,12 +218,12 @@ public class ProductoPrueba extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultaPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(consultaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
                     .addGroup(consultaPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(consultaBuscarLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(consultaBuscarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(nuevoProductoButton)))
                 .addContainerGap())
         );
@@ -231,8 +234,8 @@ public class ProductoPrueba extends javax.swing.JFrame {
                     .addGroup(consultaPanelLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(consultaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
+                            .addComponent(consultaBuscarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(consultaBuscarLabel)))
                     .addGroup(consultaPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(nuevoProductoButton)))
@@ -262,10 +265,19 @@ public class ProductoPrueba extends javax.swing.JFrame {
 
         nuevoObservacionLabel.setText("Observaciones:");
 
+        nuevoRegistrarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrar.png"))); // NOI18N
         nuevoRegistrarButton.setText("Registrar");
         nuevoRegistrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoRegistrarButtonActionPerformed(evt);
+            }
+        });
+
+        nuevoCancelarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
+        nuevoCancelarButton.setText("Cancelar");
+        nuevoCancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoCancelarButtonActionPerformed(evt);
             }
         });
 
@@ -282,9 +294,12 @@ public class ProductoPrueba extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(nuevoLineaLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(nuevoLineaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nuevoProductoLabel)
-                    .addComponent(nuevoObservacionLabel)
+                        .addComponent(nuevoLineaTextField))
+                    .addGroup(registroPanelLayout.createSequentialGroup()
+                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nuevoProductoLabel)
+                            .addComponent(nuevoObservacionLabel))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(registroPanelLayout.createSequentialGroup()
                         .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registroPanelLayout.createSequentialGroup()
@@ -299,15 +314,15 @@ public class ProductoPrueba extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(nuevoMarcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
+                        .addComponent(nuevoStockLabel)
+                        .addGap(18, 18, 18)
                         .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nuevoStockSpinner)
                             .addGroup(registroPanelLayout.createSequentialGroup()
-                                .addComponent(nuevoStockLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(nuevoStockSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroPanelLayout.createSequentialGroup()
-                                .addComponent(nuevoRegistrarButton)
-                                .addGap(69, 69, 69)))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                                .addComponent(nuevoCancelarButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nuevoRegistrarButton)))))
+                .addContainerGap())
         );
         registroPanelLayout.setVerticalGroup(
             registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,15 +347,13 @@ public class ProductoPrueba extends javax.swing.JFrame {
                     .addComponent(nuevoPrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nuevoObservacionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(registroPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                        .addComponent(nuevoRegistrarButton)
-                        .addGap(110, 110, 110))
-                    .addGroup(registroPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nuevoCancelarButton)
+                        .addComponent(nuevoRegistrarButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         productoTabbedPane.addTab("Registro de producto", registroPanel);
@@ -356,9 +369,9 @@ public class ProductoPrueba extends javax.swing.JFrame {
 
         detalleObservacionLabel.setText("Observaciones:");
 
-        nuevoLineaLabel1.setText("Linea:");
+        detalleLineaLabel.setText("Linea:");
 
-        nuevoStockLabel1.setText("Stock:");
+        detalleStockLabel.setText("Stock:");
 
         productoHTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -391,17 +404,21 @@ public class ProductoPrueba extends javax.swing.JFrame {
             }
         });
 
-        detalleEditarButton.setText("Editar");
+        detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
+        detalleEditarButton.setToolTipText("Editar");
+        detalleEditarButton.setMaximumSize(new java.awt.Dimension(55, 40));
+        detalleEditarButton.setMinimumSize(new java.awt.Dimension(55, 40));
         detalleEditarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 detalleEditarButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Editar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        detalleSalirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        detalleSalirButton.setToolTipText("Salir");
+        detalleSalirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                detalleSalirButtonActionPerformed(evt);
             }
         });
 
@@ -413,18 +430,16 @@ public class ProductoPrueba extends javax.swing.JFrame {
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
                         .addComponent(detalleProductoLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(detalleEditarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
                         .addComponent(detalleNombreLabel)
                         .addGap(18, 18, 18)
                         .addComponent(detalleNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(nuevoLineaLabel1)
+                        .addComponent(detalleLineaLabel)
                         .addGap(18, 18, 18)
                         .addComponent(detalleLineaTextField))
                     .addGroup(detallePanelLayout.createSequentialGroup()
@@ -438,43 +453,45 @@ public class ProductoPrueba extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(detalleMarcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(nuevoStockLabel1)
+                        .addComponent(detalleStockLabel)
                         .addGap(18, 18, 18)
                         .addComponent(detalleStockSpinner))
-                    .addGroup(detallePanelLayout.createSequentialGroup()
-                        .addComponent(detalleObservacionLabel)
-                        .addGap(150, 150, 150)
-                        .addComponent(detalleProductoHLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(detalleAgregarPButton)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                            .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addComponent(detalleObservacionLabel)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addComponent(detalleProductoHLabel)
+                                .addGap(88, 88, 88)
+                                .addComponent(detalleAgregarPButton))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
-            .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                    .addContainerGap(541, Short.MAX_VALUE)
-                    .addComponent(detalleEditarButton)
-                    .addGap(7, 7, 7)))
-            .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                    .addContainerGap(541, Short.MAX_VALUE)
-                    .addComponent(jButton3)
-                    .addGap(7, 7, 7)))
         );
         detallePanelLayout.setVerticalGroup(
             detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detallePanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(detalleProductoLabel)
-                .addGap(32, 32, 32)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(detalleProductoLabel)
+                    .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleEditarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(detalleNombreLabel)
                     .addComponent(detalleNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nuevoLineaLabel1)
+                    .addComponent(detalleLineaLabel)
                     .addComponent(detalleLineaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(detalleMarcaLabel)
                     .addComponent(detalleMarcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nuevoStockLabel1)
+                    .addComponent(detalleStockLabel)
                     .addComponent(detalleStockSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -482,24 +499,14 @@ public class ProductoPrueba extends javax.swing.JFrame {
                     .addComponent(detallePrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(detalleProductoHLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(detalleObservacionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleProductoHLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(detalleAgregarPButton))
-                .addGap(18, 18, 18)
-                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(detallePanelLayout.createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addComponent(detalleEditarButton)
-                    .addContainerGap(412, Short.MAX_VALUE)))
-            .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(detallePanelLayout.createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addComponent(jButton3)
-                    .addContainerGap(412, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         productoTabbedPane.addTab("Detalle de producto", detallePanel);
@@ -508,11 +515,11 @@ public class ProductoPrueba extends javax.swing.JFrame {
         componentePanel.setLayout(componentePanelLayout);
         componentePanelLayout.setHorizontalGroup(
             componentePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(productoTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(productoTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         componentePanelLayout.setVerticalGroup(
             componentePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(productoTabbedPane)
+            .addComponent(productoTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout principalPanelLayout = new javax.swing.GroupLayout(principalPanel);
@@ -534,7 +541,7 @@ public class ProductoPrueba extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,9 +571,9 @@ public class ProductoPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nuevoProductoButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void consultaBuscarTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaBuscarTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_consultaBuscarTextFieldActionPerformed
 
     private void detalleAgregarPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleAgregarPButtonActionPerformed
         // TODO add your handling code here:
@@ -576,9 +583,13 @@ public class ProductoPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_detalleEditarButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void detalleSalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleSalirButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_detalleSalirButtonActionPerformed
+
+    private void nuevoCancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoCancelarButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevoCancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -619,9 +630,12 @@ public class ProductoPrueba extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clienteButton;
     private javax.swing.JPanel componentePanel;
+    private javax.swing.JLabel consultaBuscarLabel;
+    private javax.swing.JTextField consultaBuscarTextField;
     private javax.swing.JPanel consultaPanel;
     private javax.swing.JButton detalleAgregarPButton;
     private javax.swing.JButton detalleEditarButton;
+    private javax.swing.JLabel detalleLineaLabel;
     private javax.swing.JTextField detalleLineaTextField;
     private javax.swing.JLabel detalleMarcaLabel;
     private javax.swing.JTextField detalleMarcaTextField;
@@ -634,12 +648,12 @@ public class ProductoPrueba extends javax.swing.JFrame {
     private javax.swing.JSpinner detallePrecioUSpinner;
     private javax.swing.JLabel detalleProductoHLabel;
     private javax.swing.JLabel detalleProductoLabel;
+    private javax.swing.JButton detalleSalirButton;
+    private javax.swing.JLabel detalleStockLabel;
     private javax.swing.JSpinner detalleStockSpinner;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -647,9 +661,8 @@ public class ProductoPrueba extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton nuevoCancelarButton;
     private javax.swing.JLabel nuevoLineaLabel;
-    private javax.swing.JLabel nuevoLineaLabel1;
     private javax.swing.JTextField nuevoLineaTextField;
     private javax.swing.JLabel nuevoMarcaLabel;
     private javax.swing.JTextField nuevoMarcaTextField;
@@ -663,7 +676,6 @@ public class ProductoPrueba extends javax.swing.JFrame {
     private javax.swing.JLabel nuevoProductoLabel;
     private javax.swing.JButton nuevoRegistrarButton;
     private javax.swing.JLabel nuevoStockLabel;
-    private javax.swing.JLabel nuevoStockLabel1;
     private javax.swing.JSpinner nuevoStockSpinner;
     private javax.swing.JPanel principalPanel;
     private javax.swing.JToolBar principalToolBar;

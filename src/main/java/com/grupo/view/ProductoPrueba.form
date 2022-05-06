@@ -40,7 +40,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="principalPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="principalPanel" alignment="0" pref="747" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -228,6 +228,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JTabbedPane" name="productoTabbedPane">
+              <Properties>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[649, 480]"/>
+                </Property>
+              </Properties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -246,12 +251,12 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jScrollPane3" pref="608" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane3" pref="635" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="consultaBuscarLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jTextField1" min="-2" pref="197" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="consultaBuscarTextField" min="-2" pref="197" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                                       <Component id="nuevoProductoButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -266,8 +271,8 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="consultaBuscarTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="consultaBuscarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -283,14 +288,14 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel1">
+                    <Component class="javax.swing.JLabel" name="consultaBuscarLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Buscar :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField1">
+                    <Component class="javax.swing.JTextField" name="consultaBuscarTextField">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaBuscarTextFieldActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="nuevoProductoButton">
@@ -399,10 +404,15 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="nuevoLineaLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="nuevoLineaTextField" min="-2" pref="217" max="-2" attributes="0"/>
+                                      <Component id="nuevoLineaTextField" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="nuevoProductoLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nuevoObservacionLabel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nuevoProductoLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nuevoObservacionLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
@@ -421,20 +431,19 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="nuevoStockLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nuevoStockSpinner" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Component id="nuevoStockLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="nuevoStockSpinner" min="-2" pref="217" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="nuevoCancelarButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
                                               <Component id="nuevoRegistrarButton" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="28" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -464,18 +473,15 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="nuevoObservacionLabel" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace pref="95" max="32767" attributes="0"/>
-                                      <Component id="nuevoRegistrarButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="nuevoCancelarButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nuevoRegistrarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="196" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jScrollPane1" min="-2" pref="196" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -544,10 +550,24 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="nuevoRegistrarButton">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/imagenes/registrar.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Registrar"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoRegistrarButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="nuevoCancelarButton">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/imagenes/boton-x.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Cancelar"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoCancelarButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -568,20 +588,17 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="detalleProductoLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="detalleEditarButton" min="-2" pref="49" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane5" pref="236" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane4" min="-2" pref="354" max="-2" attributes="0"/>
+                                      <Component id="detalleSalirButton" min="-2" pref="46" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="detalleNombreLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="detalleNombreTextField" min="-2" pref="217" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="nuevoLineaLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="detalleLineaLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="detalleLineaTextField" max="32767" attributes="0"/>
                                   </Group>
@@ -599,33 +616,33 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="nuevoStockLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="detalleStockLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="detalleStockSpinner" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="detalleObservacionLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="detalleProductoHLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="detalleAgregarPButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jScrollPane5" pref="263" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="detalleObservacionLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="detalleProductoHLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                              <Component id="detalleAgregarPButton" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jScrollPane4" min="-2" pref="354" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="541" max="32767" attributes="0"/>
-                                  <Component id="detalleEditarButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="541" max="32767" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -633,19 +650,23 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="detalleProductoLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="detalleProductoLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalleSalirButton" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="detalleEditarButton" alignment="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="detalleNombreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="detalleNombreTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nuevoLineaLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalleLineaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="detalleLineaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="detalleMarcaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="detalleMarcaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nuevoStockLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalleStockLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="detalleStockSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -655,30 +676,16 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="detalleProductoHLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="detalleObservacionLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="detalleProductoHLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="detalleAgregarPButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane4" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane5" pref="205" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane5" pref="200" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="detalleEditarButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="412" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="412" max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -720,12 +727,12 @@
                         <Property name="text" type="java.lang.String" value="Observaciones:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="nuevoLineaLabel1">
+                    <Component class="javax.swing.JLabel" name="detalleLineaLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Linea:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="nuevoStockLabel1">
+                    <Component class="javax.swing.JLabel" name="detalleStockLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Stock:"/>
                       </Properties>
@@ -814,18 +821,30 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="detalleEditarButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Editar"/>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/imagenes/editar.png"/>
+                        </Property>
+                        <Property name="toolTipText" type="java.lang.String" value="Editar"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[55, 40]"/>
+                        </Property>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[55, 40]"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detalleEditarButtonActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton3">
+                    <Component class="javax.swing.JButton" name="detalleSalirButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Editar"/>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/imagenes/salir.png"/>
+                        </Property>
+                        <Property name="toolTipText" type="java.lang.String" value="Salir"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detalleSalirButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
