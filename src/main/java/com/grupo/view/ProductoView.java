@@ -12,6 +12,7 @@ import com.grupo.entity.ProductoHistorial;
 import com.grupo.entity.Usuario;
 import com.grupo.util.Constantes;
 import com.grupo.util.Constantes.ComponentesTab;
+import com.grupo.util.Constantes.ProductoOperacion;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -105,6 +107,19 @@ public class ProductoView extends JTabbedPane {
     private javax.swing.JTable productoHTable;
     private javax.swing.JScrollPane jScrollPane5;
 
+    // DETALLE DIALOG PRODUCTO HISTORIAL
+    private JDialog detalleProductoHDialog;
+    private javax.swing.JPanel detalleProductoHPanel;
+    private javax.swing.JLabel detallePHTituloLabel;
+    private javax.swing.JLabel detallePHOperacionLabel;
+    private javax.swing.JTextField detallePHoperacionTextField;
+    private javax.swing.JSpinner detallePHCantidadSpinner;
+    private javax.swing.JLabel detallePHCantidadJLabel;
+    private javax.swing.JSpinner detallePHPrecioUSpinner;
+    private javax.swing.JLabel detallePHPrecioULabel;
+    private javax.swing.JButton detalleRegistrarPHButton;
+    private javax.swing.JLabel detalleProductoHValidacionLabel;
+
     public ProductoView() {
         initController();
         initComponents();
@@ -169,6 +184,17 @@ public class ProductoView extends JTabbedPane {
         detalleEditarButton = new javax.swing.JButton();
         detalleSalirButton = new javax.swing.JButton();
         detalleValidacionLabel = new javax.swing.JLabel();
+
+        detalleProductoHPanel = new javax.swing.JPanel();
+        detallePHTituloLabel = new javax.swing.JLabel();
+        detallePHOperacionLabel = new javax.swing.JLabel();
+        detallePHoperacionTextField = new javax.swing.JTextField();
+        detallePHCantidadSpinner = new javax.swing.JSpinner();
+        detallePHCantidadJLabel = new javax.swing.JLabel();
+        detallePHPrecioUSpinner = new javax.swing.JSpinner();
+        detallePHPrecioULabel = new javax.swing.JLabel();
+        detalleRegistrarPHButton = new javax.swing.JButton();
+        detalleProductoHValidacionLabel = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(620, 480));
         setPreferredSize(new java.awt.Dimension(620, 480));
@@ -418,11 +444,9 @@ public class ProductoView extends JTabbedPane {
 
         detalleAgregarPButton.setText("Agregar");
         detalleAgregarPButton.setVisible(false);
-//        detalleAgregarPButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                detalleAgregarPButtonActionPerformed(evt);
-//            }
-//        });
+        detalleAgregarPButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleAgregarPButtonActionPerformed(evt);
+        });
 
         detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
         detalleEditarButton.setToolTipText("Editar");
@@ -835,6 +859,162 @@ public class ProductoView extends JTabbedPane {
         setSelectedComponent(consultaPanel);
     }
 
+    private void detalleAgregarPButtonActionPerformed(ActionEvent ev) {
+
+        detallePHTituloLabel.setText("Nuevo ingreso de stock");
+
+        detallePHOperacionLabel.setText("Operación:");
+        detallePHoperacionTextField.setText(ProductoOperacion.INGRESO.name());
+        detallePHoperacionTextField.setEnabled(false);
+
+        detallePHCantidadSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
+        detallePHCantidadJLabel.setText("Cantidad:");
+
+        detallePHPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
+        detallePHPrecioULabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detallePHPrecioULabel.setText("<html><body>Precio<br>unitario:</body></html>");
+
+        detalleProductoHValidacionLabel.setBackground(new java.awt.Color(255, 0, 0));
+        detalleProductoHValidacionLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        detalleProductoHValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
+        detalleProductoHValidacionLabel.setVisible(false);
+
+        detalleRegistrarPHButton.setText("Registrar");
+        detalleRegistrarPHButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleRegistrarPHButtonActionPerformed(evt);
+        });
+        javax.swing.GroupLayout productoHPanelLayout = new javax.swing.GroupLayout(detalleProductoHPanel);
+        detalleProductoHPanel.setLayout(productoHPanelLayout);
+        productoHPanelLayout.setHorizontalGroup(
+                productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(detallePHTituloLabel)
+                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                                        .addComponent(detallePHPrecioULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(detallePHPrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(detallePHOperacionLabel)
+                                                                                .addComponent(detallePHCantidadJLabel))
+                                                                        .addGap(18, 18, 18)
+                                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(detallePHCantidadSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(detallePHoperacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                .addGap(113, 113, 113)
+                                                .addComponent(detalleRegistrarPHButton))
+                                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(detalleProductoHValidacionLabel)))
+                                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        productoHPanelLayout.setVerticalGroup(
+                productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(detallePHTituloLabel)
+                                .addGap(37, 37, 37)
+                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detallePHOperacionLabel)
+                                        .addComponent(detallePHoperacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detallePHCantidadSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detallePHCantidadJLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detallePHPrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detallePHPrecioULabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                .addComponent(detalleProductoHValidacionLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(detalleRegistrarPHButton)
+                                .addContainerGap())
+        );
+
+        JOptionPane detalleProductoHOP = new JOptionPane();
+        detalleProductoHDialog = detalleProductoHOP.createDialog(ComponentesTab.PRODUCTO_DETALLE.getTitulo());
+        detalleProductoHDialog.setSize(333, 266);
+        detalleProductoHDialog.setContentPane(detalleProductoHPanel);
+        detalleProductoHDialog.setVisible(true);
+
+    }
+
+    private void detalleRegistrarPHButtonActionPerformed(ActionEvent ev) {
+        boolean registroValido = true;
+
+        if (detallePHPrecioUSpinner.getValue().equals(0)) {
+            detalleProductoHValidacionLabel.setText("EL campo precio unitario es obligatorio.");
+            detalleProductoHValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+        if (detallePHCantidadSpinner.getValue().equals(0)) {
+            detalleProductoHValidacionLabel.setText("EL campo cantidad es obligatorio.");
+            detalleProductoHValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+
+        if (registroValido) {
+            String[] opciones = {"Sí", "No"};
+
+            int registrar = JOptionPane.showOptionDialog(
+                    this,
+                    "Se registrará un ingreso de productos.",
+                    ComponentesTab.PRODUCTO_DETALLE.getTitulo(),
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    opciones,
+                    opciones[1]);
+
+            if (registrar == JOptionPane.YES_OPTION) {
+
+                try {
+                    ProductoHistorial nuevoProductoHistorial = new ProductoHistorial();
+
+                    nuevoProductoHistorial.setIdProducto(detalleProducto.getId());
+                    nuevoProductoHistorial.setOperacion(Constantes.ProductoOperacion.INGRESO.name());
+                    nuevoProductoHistorial.setCantidad((Double) detallePHCantidadSpinner.getValue());
+                    nuevoProductoHistorial.setPrecioUnitario((Double) detallePHPrecioUSpinner.getValue());
+
+                    nuevoProductoHistorial.setCreador(usuario.getUsername());
+                    nuevoProductoHistorial.setFechaCreacion(new Date());
+
+                    productoHistorialController.registrar(nuevoProductoHistorial);
+                    
+                    //FALTA TERMIAR
+                    Producto productoDetalle = productoController.obtener(
+                            detalleProducto.getId()
+                    );
+                    System.out.println(productoDetalle.toString());
+                    detalleProducto = productoDetalle;
+                    detalleProducto.setObservaciones("");
+
+                    fillDetalleProducto();
+                    nuevoProductoHRegistroFinalizar();
+                } catch (Exception e) {
+                    detalleProductoHValidacionLabel.setText(e.getMessage());
+                    detalleProductoHValidacionLabel.setVisible(true);
+                }
+            }
+        }
+    }
+
+    private void nuevoProductoHRegistroFinalizar() {
+        detallePHCantidadSpinner.setValue(0.0);
+        detallePHPrecioUSpinner.setValue(0.0);
+
+        detalleProductoHDialog.setVisible(false);
+    }
+
     private class ProductoTableModel extends AbstractTableModel {
 
         private String[] columnNames
@@ -983,8 +1163,6 @@ public class ProductoView extends JTabbedPane {
                 case 3:
                     return productoHistorial.getCreador();
                 case 4:
-                    return productoHistorial.getPrecioUnitario();
-                case 5:
                     return formatDateToString(productoHistorial.getFechaCreacion());
                 default:
                     return null;
