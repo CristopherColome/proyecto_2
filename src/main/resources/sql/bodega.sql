@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.26, for Linux (x86_64)
 --
--- Host: localhost    Database: bodega
+-- Host: 172.16.100.140    Database: bodega
 -- ------------------------------------------------------
 -- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -96,7 +96,7 @@ CREATE TABLE `tb_producto` (
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_modificacion` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +105,7 @@ CREATE TABLE `tb_producto` (
 
 LOCK TABLES `tb_producto` WRITE;
 /*!40000 ALTER TABLE `tb_producto` DISABLE KEYS */;
-INSERT INTO `tb_producto` VALUES (1,'ARROZ ROMPE OLLA','FARAON','ABARROTES',3.60,100.00,NULL,'admin','admin','2022-05-04 15:50:33','2022-05-04 15:53:20');
+INSERT INTO `tb_producto` VALUES (1,'ARROZ ROMPE OLLA','FARAÓN','ABARROTES',3.60,100.00,'nuevo','admin','administrador','2022-05-04 15:50:33','2022-05-09 21:43:41'),(3,'ATUN SARDINA','CAMPOMAR','CONSERVA',5.00,50.00,'nuevo','admin','administrador','2022-05-09 17:03:23','2022-05-09 21:44:58'),(4,'ACEITE','PRIMOR','ABARROTES',9.50,77.00,'nuevo aceite','admin','administrador','2022-05-09 17:13:21','2022-05-09 21:33:05');
 /*!40000 ALTER TABLE `tb_producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +130,7 @@ CREATE TABLE `tb_producto_historial` (
   KEY `fk_tb_producto_historial_2_idx` (`id_venta`),
   CONSTRAINT `fk_tb_producto_historial_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_producto` (`id`),
   CONSTRAINT `fk_tb_producto_historial_2` FOREIGN KEY (`id_venta`) REFERENCES `tb_venta` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +139,7 @@ CREATE TABLE `tb_producto_historial` (
 
 LOCK TABLES `tb_producto_historial` WRITE;
 /*!40000 ALTER TABLE `tb_producto_historial` DISABLE KEYS */;
-INSERT INTO `tb_producto_historial` VALUES (1,1,NULL,'INGRESO',10.00,3.60,'admin','2022-05-04 16:00:53'),(2,1,1,'SALIDA',10.00,3.60,'admin','2022-05-04 16:05:51');
+INSERT INTO `tb_producto_historial` VALUES (1,1,NULL,'INGRESO',10.00,3.60,'admin','2022-05-04 16:00:53'),(2,1,1,'SALIDA',10.00,3.60,'admin','2022-05-04 16:05:51'),(3,3,NULL,'INGRESO',50.00,5.00,'admin','2022-05-09 17:03:24'),(4,4,NULL,'INGRESO',77.00,9.50,'admin','2022-05-09 17:13:21');
 /*!40000 ALTER TABLE `tb_producto_historial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,4 +212,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-05 12:10:17
+-- Dump completed on 2022-05-09 16:46:18

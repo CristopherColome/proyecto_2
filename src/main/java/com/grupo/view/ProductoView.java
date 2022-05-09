@@ -6,23 +6,31 @@
 package com.grupo.view;
 
 import com.grupo.controller.ProductoController;
+import com.grupo.controller.ProductoHistorialController;
 import com.grupo.entity.Producto;
+import com.grupo.entity.ProductoHistorial;
+import com.grupo.entity.Usuario;
+import com.grupo.util.Constantes;
 import com.grupo.util.Constantes.ComponentesTab;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.AbstractTableModel;
@@ -34,21 +42,27 @@ import javax.swing.table.AbstractTableModel;
 public class ProductoView extends JTabbedPane {
 
     private ProductoController productoController;
+    private ProductoHistorialController productoHistorialController;
+
+    private Usuario usuario;
 
     private JPanel consultaPanel;
 
     private JLabel consultaBuscarLabel;
     private JTextField consultaBuscarTextField;
     private JButton nuevoProductoButton;
+    private JButton detalleVerProductoButton;
 
-    private JScrollPane tablaScrollPane;
+    private JScrollPane productoTablaScrollPane;
     private JTable productosTable;
+    private Integer selectedProductosTable;
 
     // REGISTRO
     private JPanel registroPanel;
     private JLabel nuevoNombreLabel;
     private JLabel nuevoLineaLabel;
     private JLabel nuevoProductoLabel;
+    private JLabel nuevoValidacionLabel;
     private JLabel nuevoObservacionLabel;
     private JLabel nuevoPrecioULabel;
     private JLabel nuevoMarcaLabel;
@@ -56,7 +70,7 @@ public class ProductoView extends JTabbedPane {
     private JTextField nuevoNombreTextField;
     private JTextField nuevoLineaTextField;
     private JTextField nuevoMarcaTextField;
-    private JScrollPane observacionScrollPane1;
+    private JScrollPane nuevoObservacionScrollPane;
     private JSpinner nuevoPrecioUSpinner;
     private JSpinner nuevoStockSpinner;
     private JTextArea nuevoObservacionTextArea;
@@ -64,11 +78,11 @@ public class ProductoView extends JTabbedPane {
     private JButton nuevoCancelarButton;
     private JButton nuevoRegistrarButton;
 
-    private javax.swing.JScrollPane jScrollPane1;
-
-    // DETALLE   
+    // DETALLE
+    private Producto detalleProducto;
+    private Boolean detalleInProgress = false;
+    private Boolean detalleEditarInProgress = false;
     private javax.swing.JButton detalleAgregarPButton;
-    private javax.swing.JButton detalleEditarButto;
     private javax.swing.JButton detalleSalirButton;
     private javax.swing.JTextField detalleLineaTextField;
     private javax.swing.JLabel detalleMarcaLabel;
@@ -86,8 +100,9 @@ public class ProductoView extends JTabbedPane {
     private javax.swing.JSpinner detalleStockSpinner;
     private javax.swing.JButton detalleEditarButton;
     private javax.swing.JLabel detalleLineaLabel;
+    private javax.swing.JScrollPane detalleProductoHTablaScrollPane;
+    private javax.swing.JLabel detalleValidacionLabel;
     private javax.swing.JTable productoHTable;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
 
     public ProductoView() {
@@ -95,41 +110,43 @@ public class ProductoView extends JTabbedPane {
         initComponents();
     }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     private void initController() {
         productoController = new ProductoController();
+        productoHistorialController = new ProductoHistorialController();
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
-        setPreferredSize(new Dimension(670, 360));
-        jScrollPane1 = new javax.swing.JScrollPane();
-        consultaPanel = new JPanel();
-        consultaBuscarLabel = new JLabel();
-        consultaBuscarTextField = new JTextField();
-        nuevoProductoButton = new JButton();
-        tablaScrollPane = new JScrollPane();
-        productosTable = new JTable();
-        //REGISTRO
-        registroPanel = new JPanel();
-        nuevoNombreLabel = new JLabel();
-        nuevoLineaLabel = new JLabel();
-        nuevoProductoLabel = new JLabel();
-        nuevoObservacionLabel = new JLabel();
-        nuevoPrecioULabel = new JLabel();
-        nuevoMarcaLabel = new JLabel();
-        nuevoStockLabel = new JLabel();
-        nuevoNombreTextField = new JTextField();
-        nuevoLineaTextField = new JTextField();
-        nuevoMarcaTextField = new JTextField();
-        nuevoPrecioUSpinner = new JSpinner();
-        nuevoStockSpinner = new JSpinner();
-        nuevoCancelarButton = new JButton();
-        nuevoRegistrarButton = new JButton();
-        observacionScrollPane1 = new JScrollPane();
-        nuevoObservacionTextArea = new JTextArea();
-        //DETALLE
-
+//        productoTabbedPane = new javax.swing.JTabbedPane();
+        consultaPanel = new javax.swing.JPanel();
+        consultaBuscarLabel = new javax.swing.JLabel();
+        consultaBuscarTextField = new javax.swing.JTextField();
+        nuevoProductoButton = new javax.swing.JButton();
+        detalleVerProductoButton = new javax.swing.JButton();
+        productosTable = new javax.swing.JTable();
+        productoTablaScrollPane = new JScrollPane();
+        registroPanel = new javax.swing.JPanel();
+        nuevoProductoLabel = new javax.swing.JLabel();
+        nuevoNombreTextField = new javax.swing.JTextField();
+        nuevoNombreLabel = new javax.swing.JLabel();
+        nuevoMarcaLabel = new javax.swing.JLabel();
+        nuevoMarcaTextField = new javax.swing.JTextField();
+        nuevoLineaLabel = new javax.swing.JLabel();
+        nuevoLineaTextField = new javax.swing.JTextField();
+        nuevoStockSpinner = new javax.swing.JSpinner();
+        nuevoStockLabel = new javax.swing.JLabel();
+        nuevoPrecioULabel = new javax.swing.JLabel();
+        nuevoPrecioUSpinner = new javax.swing.JSpinner();
+        nuevoObservacionTextArea = new javax.swing.JTextArea();
+        nuevoObservacionLabel = new javax.swing.JLabel();
+        nuevoObservacionScrollPane = new JScrollPane();
+        nuevoRegistrarButton = new javax.swing.JButton();
+        nuevoCancelarButton = new javax.swing.JButton();
+        nuevoValidacionLabel = new javax.swing.JLabel();
         detallePanel = new javax.swing.JPanel();
         detalleProductoLabel = new javax.swing.JLabel();
         detalleNombreLabel = new javax.swing.JLabel();
@@ -143,16 +160,18 @@ public class ProductoView extends JTabbedPane {
         detalleObservacionLabel = new javax.swing.JLabel();
         detalleLineaLabel = new javax.swing.JLabel();
         detalleStockLabel = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
         productoHTable = new javax.swing.JTable();
         detalleProductoHLabel = new javax.swing.JLabel();
+        detalleProductoHTablaScrollPane = new JScrollPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         detalleObservacionTextArea = new javax.swing.JTextArea();
         detalleAgregarPButton = new javax.swing.JButton();
         detalleEditarButton = new javax.swing.JButton();
         detalleSalirButton = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        detalleValidacionLabel = new javax.swing.JLabel();
+
+        setMinimumSize(new java.awt.Dimension(620, 480));
+        setPreferredSize(new java.awt.Dimension(620, 480));
 
         consultaBuscarLabel.setText("Buscar :");
 
@@ -177,126 +196,36 @@ public class ProductoView extends JTabbedPane {
             nuevoProductoButtonActionPerformed(evt);
         });
 
-        productosTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{},
-                new String[]{
-                    "Id", "Descripcion", "Marca", "Linea", "Precio", "Stock", "Creación", "Modificación"
+        detalleVerProductoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+        detalleVerProductoButton.setText("Producto N°");
+        detalleVerProductoButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleVerProductoButtonActionPerformed(evt);
+        });
+        detalleVerProductoButton.setVisible(false);
+
+        productosTable.setModel(new ProductoTableModel());
+
+        productosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        productosTable.setRowSelectionAllowed(true);
+        productoTablaScrollPane.setViewportView(productosTable);
+
+        productosTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (!detalleInProgress) {
+                    int row = productosTable.getSelectedRow();
+
+                    if (selectedProductosTable != null && selectedProductosTable.equals(row)) {
+                        productosTable.getSelectionModel().clearSelection();
+                        selectedProductosTable = null;
+                        detalleVerProductoButton.setVisible(false);
+                    } else {
+                        selectedProductosTable = row;
+                        detalleVerProductoButton.setText("Producto N°: " + productosTable.getValueAt(row, 0));
+                        detalleVerProductoButton.setVisible(true);
+                    }
                 }
-        ) {
-            Class[] types = new Class[]{
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
             }
-        });
-        tablaScrollPane.setViewportView(productosTable);
-        if (productosTable.getColumnModel().getColumnCount() > 0) {
-            productosTable.getColumnModel().getColumn(0).setMinWidth(50);
-            productosTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-            productosTable.getColumnModel().getColumn(0).setMaxWidth(50);
-            productosTable.getColumnModel().getColumn(4).setMinWidth(50);
-            productosTable.getColumnModel().getColumn(4).setPreferredWidth(50);
-            productosTable.getColumnModel().getColumn(4).setMaxWidth(50);
-            productosTable.getColumnModel().getColumn(7).setHeaderValue("Modificación");
-        }
 
-        //REGISTRO
-        nuevoNombreLabel.setText("Nombre:");
-        nuevoProductoLabel.setText("Nuevo producto");
-
-        nuevoNombreLabel.setText("Nombre:");
-
-        nuevoMarcaLabel.setText("Marca:");
-
-        nuevoLineaLabel.setText("Linea:");
-
-        nuevoStockLabel.setText("Stock:");
-
-        nuevoPrecioULabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nuevoPrecioULabel.setText("<html><body>Precio<br>unitario:</body></html>");
-
-//        nuevoObservacionTextArea.setColumns(20);
-//        nuevoObservacionTextArea.setRows(5);
-//        observacionScrollPane1.setViewportView(nuevoObservacionTextArea);
-        nuevoObservacionTextArea.setColumns(20);
-        nuevoObservacionTextArea.setRows(5);
-        jScrollPane1.setViewportView(nuevoObservacionTextArea);
-
-        nuevoObservacionLabel.setText("Observaciones:");
-
-        nuevoRegistrarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrar.png"))); // NOI18N
-        nuevoRegistrarButton.setText("Registrar");
-        nuevoRegistrarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //nuevoRegistrarButtonActionPerformed(evt);
-            }
-        });
-
-        nuevoCancelarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
-        nuevoCancelarButton.setText("Cancelar");
-        nuevoCancelarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //nuevoCancelarButtonActionPerformed(evt);
-            }
-        });
-
-        //DETALLE
-        detalleProductoLabel.setText(" Detalle producto : N° ");
-
-        detalleNombreLabel.setText("Nombre:");
-
-        detalleMarcaLabel.setText("Marca:");
-
-        detallePrecioULabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        detallePrecioULabel.setText("<html><body>Precio<br>unitario:</body></html>");
-
-        detalleObservacionLabel.setText("Observaciones:");
-
-        detalleLineaLabel.setText("Linea:");
-
-        detalleStockLabel.setText("Stock:");
-
-        productoHTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{},
-                new String[]{
-                    "Operacion", "Cantidad", "Precio", "Creador", "Creación"
-                }
-        ) {
-            Class[] types = new Class[]{
-                java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(productoHTable);
-
-        detalleProductoHLabel.setText("Historial de operaciones:");
-
-        detalleObservacionTextArea.setColumns(20);
-        detalleObservacionTextArea.setRows(5);
-        jScrollPane5.setViewportView(detalleObservacionTextArea);
-
-        detalleAgregarPButton.setText("Agregar");
-        detalleAgregarPButton.addActionListener((java.awt.event.ActionEvent evt) -> {
-            //detalleAgregarPButtonActionPerformed(evt);
-        });
-
-        detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
-        detalleEditarButton.setToolTipText("Editar");
-        detalleEditarButton.setMaximumSize(new java.awt.Dimension(55, 40));
-        detalleEditarButton.setMinimumSize(new java.awt.Dimension(55, 40));
-        detalleEditarButton.addActionListener((java.awt.event.ActionEvent evt) -> {
-            // detalleEditarButtonActionPerformed(evt);
-        });
-
-        detalleSalirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
-        detalleSalirButton.setToolTipText("Salir");
-        detalleSalirButton.addActionListener((java.awt.event.ActionEvent evt) -> {
-            // detalleSalirButtonActionPerformed(evt);
         });
 
         javax.swing.GroupLayout consultaPanelLayout = new javax.swing.GroupLayout(consultaPanel);
@@ -306,12 +235,14 @@ public class ProductoView extends JTabbedPane {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultaPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(consultaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(tablaScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
+                                        .addComponent(productoTablaScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                                         .addGroup(consultaPanelLayout.createSequentialGroup()
                                                 .addComponent(consultaBuscarLabel)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(consultaBuscarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(detalleVerProductoButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(nuevoProductoButton)))
                                 .addContainerGap())
         );
@@ -326,13 +257,54 @@ public class ProductoView extends JTabbedPane {
                                                         .addComponent(consultaBuscarLabel)))
                                         .addGroup(consultaPanelLayout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(nuevoProductoButton)))
+                                                .addGroup(consultaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(nuevoProductoButton)
+                                                        .addComponent(detalleVerProductoButton))))
                                 .addGap(18, 18, 18)
-                                .addComponent(tablaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(productoTablaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         addTab(ComponentesTab.PRODUCTO_CONSULTA.getTitulo(), consultaPanel);
+
+        nuevoProductoLabel.setText("Nuevo producto");
+
+        nuevoNombreLabel.setText("Nombre:");
+
+        nuevoMarcaLabel.setText("Marca:");
+
+        nuevoLineaLabel.setText("Linea:");
+
+        nuevoStockSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
+        nuevoStockLabel.setText("Stock:");
+
+        nuevoPrecioULabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nuevoPrecioULabel.setText("<html><body>Precio<br>unitario:</body></html>");
+
+        nuevoPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
+        nuevoObservacionTextArea.setColumns(20);
+        nuevoObservacionTextArea.setRows(5);
+        nuevoObservacionScrollPane.setViewportView(nuevoObservacionTextArea);
+
+        nuevoObservacionLabel.setText("Observaciones:");
+
+        nuevoRegistrarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrar.png"))); // NOI18N
+        nuevoRegistrarButton.setText("Registrar");
+        nuevoRegistrarButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            nuevoRegistrarButtonActionPerformed(evt);
+        });
+
+        nuevoCancelarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
+        nuevoCancelarButton.setText("Cancelar");
+        nuevoCancelarButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            nuevoCancelarButtonActionPerformed(evt);
+        });
+
+        nuevoValidacionLabel.setBackground(new java.awt.Color(255, 0, 0));
+        nuevoValidacionLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        nuevoValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout registroPanelLayout = new javax.swing.GroupLayout(registroPanel);
         registroPanel.setLayout(registroPanelLayout);
@@ -341,47 +313,49 @@ public class ProductoView extends JTabbedPane {
                         .addGroup(registroPanelLayout.createSequentialGroup()
                                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(registroPanelLayout.createSequentialGroup()
-                                                .addComponent(nuevoNombreLabel)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(nuevoNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(nuevoLineaLabel)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(nuevoLineaTextField))
-                                        .addGroup(registroPanelLayout.createSequentialGroup()
                                                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(nuevoProductoLabel)
-                                                        .addComponent(nuevoObservacionLabel))
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(registroPanelLayout.createSequentialGroup()
-                                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registroPanelLayout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(jScrollPane1))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registroPanelLayout.createSequentialGroup()
+                                                        .addGroup(registroPanelLayout.createSequentialGroup()
                                                                 .addComponent(nuevoPrecioULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(nuevoPrecioUSpinner))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registroPanelLayout.createSequentialGroup()
-                                                                .addComponent(nuevoMarcaLabel)
-                                                                .addGap(30, 30, 30)
-                                                                .addComponent(nuevoMarcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(18, 18, 18)
-                                                .addComponent(nuevoStockLabel)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(nuevoStockSpinner)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(nuevoPrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(nuevoMarcaLabel)
+                                                        .addComponent(nuevoObservacionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(12, 12, 12)
+                                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                         .addGroup(registroPanelLayout.createSequentialGroup()
                                                                 .addComponent(nuevoCancelarButton)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(nuevoRegistrarButton)))))
-                                .addContainerGap())
+                                                                .addComponent(nuevoRegistrarButton))
+                                                        .addGroup(registroPanelLayout.createSequentialGroup()
+                                                                .addGap(5, 5, 5)
+                                                                .addComponent(nuevoStockLabel)
+                                                                .addGap(19, 19, 19)
+                                                                .addComponent(nuevoStockSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(nuevoObservacionLabel)
+                                        .addGroup(registroPanelLayout.createSequentialGroup()
+                                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(nuevoMarcaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(registroPanelLayout.createSequentialGroup()
+                                                                .addComponent(nuevoNombreLabel)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(nuevoNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(nuevoLineaLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(nuevoLineaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroPanelLayout.createSequentialGroup()
+                                                .addComponent(nuevoProductoLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(nuevoValidacionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(31, Short.MAX_VALUE))
         );
         registroPanelLayout.setVerticalGroup(
                 registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(registroPanelLayout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(nuevoProductoLabel)
+                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(nuevoProductoLabel)
+                                        .addComponent(nuevoValidacionLabel))
                                 .addGap(32, 32, 32)
                                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(nuevoNombreLabel)
@@ -405,11 +379,64 @@ public class ProductoView extends JTabbedPane {
                                         .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(nuevoCancelarButton)
                                                 .addComponent(nuevoRegistrarButton))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(nuevoObservacionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        addTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo(), registroPanel);
+        detalleProductoLabel.setText(" Detalle producto : N° ");
+
+        detalleNombreLabel.setText("Nombre:");
+
+        detalleMarcaLabel.setText("Marca:");
+
+        detallePrecioULabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detallePrecioULabel.setText("<html><body>Precio<br>unitario:</body></html>");
+
+        detalleObservacionLabel.setText("Observaciones:");
+
+        detalleLineaLabel.setText("Linea:");
+
+        detalleStockLabel.setText("Stock:");
+
+        detallePrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
+        detalleStockSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
+        productoHTable.setModel(new ProductoHistorialTableModel());
+        detalleProductoHTablaScrollPane.setViewportView(productoHTable);
+
+        detalleProductoHLabel.setText("Historial de operaciones:");
+
+        detalleValidacionLabel.setBackground(new java.awt.Color(255, 0, 0));
+        detalleValidacionLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        detalleValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
+        detalleValidacionLabel.setVisible(false);
+
+        detalleObservacionTextArea.setColumns(20);
+        detalleObservacionTextArea.setRows(5);
+        jScrollPane5.setViewportView(detalleObservacionTextArea);
+
+        detalleAgregarPButton.setText("Agregar");
+        detalleAgregarPButton.setVisible(false);
+//        detalleAgregarPButton.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                detalleAgregarPButtonActionPerformed(evt);
+//            }
+//        });
+
+        detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
+        detalleEditarButton.setToolTipText("Editar");
+        detalleEditarButton.setMaximumSize(new java.awt.Dimension(55, 40));
+        detalleEditarButton.setMinimumSize(new java.awt.Dimension(55, 40));
+        detalleEditarButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleEditarButtonActionPerformed(evt);
+        });
+
+        detalleSalirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        detalleSalirButton.setToolTipText("Salir");
+        detalleSalirButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleSalirButtonActionPerformed(evt);
+        });
 
         javax.swing.GroupLayout detallePanelLayout = new javax.swing.GroupLayout(detallePanel);
         detallePanel.setLayout(detallePanelLayout);
@@ -419,9 +446,11 @@ public class ProductoView extends JTabbedPane {
                                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
                                                 .addComponent(detalleProductoLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(detalleValidacionLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(detalleEditarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
                                                 .addComponent(detalleNombreLabel)
@@ -449,7 +478,7 @@ public class ProductoView extends JTabbedPane {
                                                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(detallePanelLayout.createSequentialGroup()
                                                                 .addContainerGap()
-                                                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                                                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
                                                         .addGroup(detallePanelLayout.createSequentialGroup()
                                                                 .addComponent(detalleObservacionLabel)
                                                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -459,7 +488,7 @@ public class ProductoView extends JTabbedPane {
                                                                 .addComponent(detalleProductoHLabel)
                                                                 .addGap(88, 88, 88)
                                                                 .addComponent(detalleAgregarPButton))
-                                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                        .addComponent(detalleProductoHTablaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addContainerGap())
         );
         detallePanelLayout.setVerticalGroup(
@@ -467,7 +496,9 @@ public class ProductoView extends JTabbedPane {
                         .addGroup(detallePanelLayout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(detalleProductoLabel)
+                                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(detalleProductoLabel)
+                                                .addComponent(detalleValidacionLabel))
                                         .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(detalleEditarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -493,13 +524,12 @@ public class ProductoView extends JTabbedPane {
                                         .addComponent(detalleAgregarPButton))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                        .addComponent(detalleProductoHTablaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
                                 .addContainerGap())
         );
 
-        addTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo(), detallePanel);
-
+//        addTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo(), detallePanel);
     }
 
     private void removeTab(String tabTitle) {
@@ -516,6 +546,9 @@ public class ProductoView extends JTabbedPane {
             List<Producto> productos = productoController.consultar(consultaBuscarTextField.getText());
 
             if (productos.size() > 0) {
+                for (Producto producto : productos) {
+                    System.out.println(producto.toString());
+                }
                 productosTable.setModel(new ProductoTableModel(productos));
             }
 
@@ -523,6 +556,283 @@ public class ProductoView extends JTabbedPane {
     }
 
     private void nuevoProductoButtonActionPerformed(ActionEvent evt) {
+        addTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo(), registroPanel);
+        setSelectedComponent(registroPanel);
+    }
+
+    private void detalleVerProductoButtonActionPerformed(ActionEvent evt) {
+        detalleInProgress = true;
+        productosTable.setRowSelectionAllowed(false);
+        detalleVerProductoButton.setVisible(false);
+
+        Producto productoDetalle = productoController.obtener(
+                (Integer) productosTable.getValueAt(productosTable.getSelectedRow(), 0)
+        );
+
+        detalleProducto = productoDetalle;
+        detalleProducto.setObservaciones("");
+
+        fillDetalleProducto();
+
+        addTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo(), detallePanel);
+        setSelectedComponent(detallePanel);
+    }
+
+    private void detalleEditarButtonActionPerformed(ActionEvent evt) {
+
+        if (!detalleEditarInProgress) {
+            detalleEditarInProgress = true;
+
+            detalleNombreTextField.setEditable(true);
+            detalleMarcaTextField.setEditable(true);
+            detalleLineaTextField.setEditable(true);
+            detalleObservacionTextArea.setEditable(true);
+
+            detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png")));
+            detalleAgregarPButton.setVisible(true);
+            detalleSalirButton.setEnabled(false);
+        } else {
+
+            boolean actualizacionValido = true;
+
+            if (detalleNombreTextField.getText().trim().equals("")) {
+                detalleValidacionLabel.setText("EL campo nombre es obligatorio.");
+                detalleValidacionLabel.setVisible(true);
+                actualizacionValido = false;
+            }
+            if (detalleMarcaTextField.getText().trim().equals("")) {
+                detalleValidacionLabel.setText("EL campo marca es obligatorio.");
+                detalleValidacionLabel.setVisible(true);
+                actualizacionValido = false;
+            }
+            if (detalleLineaTextField.getText().trim().equals("")) {
+                detalleValidacionLabel.setText("EL campo linea es obligatorio.");
+                detalleValidacionLabel.setVisible(true);
+                actualizacionValido = false;
+            }
+
+            if (actualizacionValido) {
+
+                String[] opciones = {"Sí", "No"};
+
+                int actualizar = JOptionPane.showOptionDialog(
+                        this,
+                        "¿Esta seguro de guardar los cambios",
+                        ComponentesTab.PRODUCTO_DETALLE.getTitulo(),
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        opciones,
+                        opciones[1]);
+
+                if (actualizar == JOptionPane.YES_OPTION) {
+
+                    if (!detalleProducto.getNombre().equals(detalleNombreTextField.getText())) {
+                        detalleProducto.setNombre(detalleNombreTextField.getText());
+                    }
+                    if (!detalleProducto.getMarca().equals(detalleMarcaTextField.getText())) {
+                        detalleProducto.setMarca(detalleMarcaTextField.getText());
+                    }
+                    if (!detalleProducto.getLinea().equals(detalleLineaTextField.getText())) {
+                        detalleProducto.setLinea(detalleLineaTextField.getText());
+                    }
+                    if (!detalleProducto.getObservaciones().equals(detalleObservacionTextArea.getText())) {
+                        detalleProducto.setObservaciones(detalleObservacionTextArea.getText());
+                    }
+
+                    detalleProducto.setModificador(usuario.getNombre());
+                    detalleProducto.setFechaModificacion(new Date());
+
+                    detalleValidacionLabel.setText("");
+                    detalleValidacionLabel.setVisible(false);
+                    detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
+                    detalleEditarInProgress = false;
+                    detalleSalirButton.setEnabled(true);
+
+                    try {
+                        if (productoController.actualizar(detalleProducto)) {
+                            fillDetalleProducto();
+                        }
+                    } catch (Exception e) {
+                        detalleValidacionLabel.setText(e.getMessage());
+                        detalleValidacionLabel.setVisible(true);
+                    }
+                }
+            }
+        }
+
+    }
+
+    private void fillDetalleProducto() {
+        detalleProductoLabel.setText(" Detalle producto : N° " + detalleProducto.getId());
+
+        detalleNombreTextField.setText(detalleProducto.getNombre());
+        detalleNombreTextField.setEditable(false);
+
+        detalleMarcaTextField.setText(detalleProducto.getMarca());
+        detalleMarcaTextField.setEditable(false);
+
+        detallePrecioUSpinner.setValue(detalleProducto.getPrecioUnitario());
+        ((DefaultEditor) detallePrecioUSpinner.getEditor()).getTextField().setEditable(false);
+
+        detalleLineaTextField.setText(detalleProducto.getLinea());
+        detalleLineaTextField.setEditable(false);
+
+        detalleStockSpinner.setValue(detalleProducto.getStock());
+        ((DefaultEditor) detalleStockSpinner.getEditor()).getTextField().setEditable(false);
+
+        detalleObservacionTextArea.setText(
+                detalleProducto.getObservaciones() != null ? detalleProducto.getObservaciones() : ""
+        );
+        detalleObservacionTextArea.setEditable(false);
+
+        if (!detalleProducto.getProductoHistorial().isEmpty()) {
+            productoHTable.setModel(new ProductoHistorialTableModel(
+                    detalleProducto.getProductoHistorial()
+            ));
+        }
+    }
+
+    private void detalleSalirButtonActionPerformed(ActionEvent evt) {
+
+        detalleProductoLabel.setText("");
+        detalleNombreTextField.setText("");
+        detalleMarcaTextField.setText("");
+        detallePrecioUSpinner.setValue(0.0);
+        detalleLineaTextField.setText("");
+        detalleStockSpinner.setValue(0.0);
+        detalleObservacionTextArea.setText("");
+
+        productoHTable.setModel(
+                new ProductoHistorialTableModel()
+        );
+
+        removeTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo());
+        setSelectedComponent(consultaPanel);
+    }
+
+    private void nuevoRegistrarButtonActionPerformed(ActionEvent evt) {
+
+        boolean registroValido = true;
+
+        if (nuevoNombreTextField.getText().trim().equals("")) {
+            nuevoValidacionLabel.setText("EL campo nombre es obligatorio.");
+            nuevoValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+        if (nuevoMarcaTextField.getText().trim().equals("")) {
+            nuevoValidacionLabel.setText("EL campo marca es obligatorio.");
+            nuevoValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+        if (nuevoPrecioUSpinner.getValue().equals(0)) {
+            nuevoValidacionLabel.setText("EL campo precio unitario es obligatorio.");
+            nuevoValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+        if (nuevoLineaTextField.getText().trim().equals("")) {
+            nuevoValidacionLabel.setText("EL campo linea es obligatorio.");
+            nuevoValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+        if (nuevoStockSpinner.getValue().equals(0)) {
+            nuevoValidacionLabel.setText("EL campo stock es obligatorio.");
+            nuevoValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+
+        if (registroValido) {
+
+            detalleValidacionLabel.setText("");
+            detalleValidacionLabel.setVisible(false);
+
+            registrarProducto();
+        }
+
+    }
+
+    private void registrarProducto() {
+
+        String[] opciones = {"Sí", "No"};
+
+        int registrar = JOptionPane.showOptionDialog(
+                this,
+                "Se registrará un nuevo producto.",
+                ComponentesTab.PRODUCTO_REGISTRO.getTitulo(),
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[1]);
+
+        if (registrar == JOptionPane.YES_OPTION) {
+            Producto nuevoProducto = new Producto();
+            ProductoHistorial nuevoProductoHistorial = new ProductoHistorial();
+
+            nuevoProducto.setNombre(nuevoNombreTextField.getText());
+            nuevoProducto.setMarca(nuevoMarcaTextField.getText());
+            nuevoProducto.setPrecioUnitario((Double) nuevoPrecioUSpinner.getValue());
+            nuevoProducto.setLinea(nuevoLineaTextField.getText());
+            nuevoProducto.setStock((Double) nuevoStockSpinner.getValue());
+
+            if (!nuevoObservacionTextArea.getText().trim().equals("")) {
+                nuevoProducto.setObservaciones(nuevoObservacionTextArea.getText());
+            }
+
+            nuevoProducto.setCreador(usuario.getUsername());
+            nuevoProducto.setFechaCreacion(new Date());
+            try {
+                productoController.registrar(nuevoProducto);
+
+                System.out.println(nuevoProducto.toString());
+                //REGISTRO DE PRODUCTO HISTORIAL
+                nuevoProductoHistorial.setIdProducto(nuevoProducto.getId());
+                nuevoProductoHistorial.setOperacion(Constantes.ProductoOperacion.INGRESO.name());
+                nuevoProductoHistorial.setCantidad(nuevoProducto.getStock());
+                nuevoProductoHistorial.setPrecioUnitario(nuevoProducto.getPrecioUnitario());
+
+                nuevoProductoHistorial.setCreador(usuario.getUsername());
+                nuevoProductoHistorial.setFechaCreacion(new Date());
+
+                productoHistorialController.registrar(nuevoProductoHistorial);
+
+                nuevoRegistroFinalizar();
+
+            } catch (Exception e) {
+                nuevoValidacionLabel.setText(e.getMessage());
+                nuevoValidacionLabel.setVisible(true);
+            }
+        }
+    }
+
+    private void nuevoCancelarButtonActionPerformed(ActionEvent evt) {
+        String[] opciones = {"Sí", "No"};
+
+        int cancelar = JOptionPane.showOptionDialog(
+                this,
+                "¿Esta seguro de cancelar el registro?",
+                ComponentesTab.PRODUCTO_REGISTRO.getTitulo(),
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[1]);
+
+        if (cancelar == JOptionPane.YES_OPTION) {
+            nuevoRegistroFinalizar();
+        }
+    }
+
+    private void nuevoRegistroFinalizar() {
+        nuevoNombreTextField.setText("");
+        nuevoMarcaTextField.setText("");
+        nuevoPrecioUSpinner.setValue(0.0);
+        nuevoLineaTextField.setText("");
+        nuevoStockSpinner.setValue(0.0);
+        nuevoObservacionTextArea.setText("");
+
+        removeTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo());
+        setSelectedComponent(consultaPanel);
     }
 
     private class ProductoTableModel extends AbstractTableModel {
@@ -619,6 +929,95 @@ public class ProductoView extends JTabbedPane {
 
         public Producto getProducto(int row) {
             return productos.get(row);
+        }
+
+        private String formatDateToString(Date value) {
+            SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            return parser.format(value);
+        }
+    }
+
+    private class ProductoHistorialTableModel extends AbstractTableModel {
+
+        private String[] columnNames
+                = new String[]{
+                    "Operacion", "Cantidad", "Precio", "Creador", "Creación"
+                };
+
+        private List<ProductoHistorial> productosHistorial;
+
+        public ProductoHistorialTableModel() {
+            productosHistorial = new ArrayList<ProductoHistorial>();
+        }
+
+        public ProductoHistorialTableModel(List<ProductoHistorial> productosHistorial) {
+            this.productosHistorial = productosHistorial;
+        }
+
+        @Override
+        public int getColumnCount() {
+            return columnNames.length;
+        }
+
+        @Override
+        public String getColumnName(int column) {
+            return columnNames[column];
+        }
+
+        @Override
+        public int getRowCount() {
+            return productosHistorial.size();
+        }
+
+        @Override
+        public Object getValueAt(int row, int column) {
+            ProductoHistorial productoHistorial = getProducto(row);
+
+            switch (column) {
+                case 0:
+                    return productoHistorial.getOperacion();
+                case 1:
+                    return productoHistorial.getCantidad();
+                case 2:
+                    return productoHistorial.getPrecioUnitario();
+                case 3:
+                    return productoHistorial.getCreador();
+                case 4:
+                    return productoHistorial.getPrecioUnitario();
+                case 5:
+                    return formatDateToString(productoHistorial.getFechaCreacion());
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public void setValueAt(Object value, int row, int column) {
+            ProductoHistorial productoHistorial = getProducto(row);
+
+            switch (column) {
+                case 0:
+                    productoHistorial.setOperacion((String) value);
+                    break;
+                case 1:
+                    productoHistorial.setCantidad((Double) value);
+                    break;
+                case 2:
+                    productoHistorial.setPrecioUnitario((Double) value);
+                    break;
+                case 3:
+                    productoHistorial.setCreador((String) value);
+                    break;
+                case 4:
+                    productoHistorial.setFechaCreacion((Date) value);
+                    break;
+            }
+
+            fireTableCellUpdated(row, column);
+        }
+
+        public ProductoHistorial getProducto(int row) {
+            return productosHistorial.get(row);
         }
 
         private String formatDateToString(Date value) {

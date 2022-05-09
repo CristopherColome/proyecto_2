@@ -25,7 +25,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -161,11 +160,11 @@ public class MainView extends JFrame {
 
         loginView = new LoginView();
         productoView = new ProductoView();
-        principalPanel = new JPanel();
-        principalToolBar = new JToolBar();
-        productoButton = new JButton();
-        ventaButton = new JButton();
-        clienteButton = new JButton();
+        principalPanel = new javax.swing.JPanel();
+        principalToolBar = new javax.swing.JToolBar();
+        productoButton = new javax.swing.JButton();
+        ventaButton = new javax.swing.JButton();
+        clienteButton = new javax.swing.JButton();
         usuarioButton = new javax.swing.JButton();
         salirButton = new javax.swing.JButton();
         componentePanel = new javax.swing.JPanel();
@@ -178,17 +177,18 @@ public class MainView extends JFrame {
         principalToolBar.setOrientation(javax.swing.SwingConstants.VERTICAL);
         principalToolBar.setRollover(true);
         principalToolBar.setToolTipText("");
+        principalToolBar.setMaximumSize(new java.awt.Dimension(100, 65968));
+        principalToolBar.setMinimumSize(new java.awt.Dimension(100, 480));
+        principalToolBar.setPreferredSize(new java.awt.Dimension(100, 480));
 
         productoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productos.png"))); // NOI18N
         productoButton.setText("Productos");
         productoButton.setFocusable(false);
         productoButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        productoButton.setMaximumSize(new java.awt.Dimension(90, 95));
-        productoButton.setMinimumSize(new java.awt.Dimension(90, 95));
         productoButton.setPreferredSize(new java.awt.Dimension(90, 95));
         productoButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        productoButton.addActionListener((ActionEvent evt) -> {
-            menuButtonActionPerformed(evt, PRODUCTO);
+        productoButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            menuButtonActionPerformed(evt, Menu.PRODUCTO);
         });
 
         ventaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/anadir-al-carrito.png"))); // NOI18N
@@ -199,8 +199,8 @@ public class MainView extends JFrame {
         ventaButton.setMinimumSize(new java.awt.Dimension(90, 95));
         ventaButton.setPreferredSize(new java.awt.Dimension(90, 95));
         ventaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ventaButton.addActionListener((ActionEvent evt) -> {
-            menuButtonActionPerformed(evt, VENTA);
+        ventaButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            menuButtonActionPerformed(evt, Menu.VENTA);
         });
 
         clienteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cliente.png"))); // NOI18N
@@ -208,63 +208,49 @@ public class MainView extends JFrame {
         clienteButton.setFocusable(false);
         clienteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         clienteButton.setMaximumSize(new java.awt.Dimension(90, 95));
-        clienteButton.setMinimumSize(new java.awt.Dimension(90, 95));
         clienteButton.setPreferredSize(new java.awt.Dimension(90, 95));
         clienteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        clienteButton.addActionListener((ActionEvent evt) -> {
-            menuButtonActionPerformed(evt, CLIENTE);
-        });
 
         usuarioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vendedora.png"))); // NOI18N
         usuarioButton.setText("Usuarios");
+        usuarioButton.setToolTipText("");
         usuarioButton.setFocusable(false);
         usuarioButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         usuarioButton.setMaximumSize(new java.awt.Dimension(90, 95));
         usuarioButton.setMinimumSize(new java.awt.Dimension(90, 95));
         usuarioButton.setPreferredSize(new java.awt.Dimension(90, 95));
         usuarioButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        usuarioButton.addActionListener((ActionEvent evt) -> {
-            menuButtonActionPerformed(evt, USUARIO);
-        });
 
         salirButton.setText("Salir");
+        salirButton.setToolTipText("");
         salirButton.setFocusable(false);
         salirButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salirButton.setMaximumSize(new java.awt.Dimension(90, 20));
         salirButton.setMinimumSize(new java.awt.Dimension(90, 20));
         salirButton.setPreferredSize(new java.awt.Dimension(90, 30));
-        salirButton.setVerticalTextPosition(SwingConstants.BOTTOM);
-        salirButton.addActionListener((ActionEvent evt) -> {
-            menuButtonActionPerformed(evt, SALIR);
+        salirButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        salirButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            menuButtonActionPerformed(evt, Menu.SALIR);
         });
 
         productoView.setVisible(false);
 
-        javax.swing.GroupLayout componentePanelLayout = new javax.swing.GroupLayout(componentePanel);
-        componentePanel.setLayout(componentePanelLayout);
-        componentePanelLayout.setHorizontalGroup(
-                componentePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        componentePanel.setMinimumSize(new java.awt.Dimension(620, 480));
+        componentePanel.setPreferredSize(new java.awt.Dimension(620, 480));
+
+        javax.swing.GroupLayout componentePanel1Layout = new javax.swing.GroupLayout(componentePanel);
+        componentePanel.setLayout(componentePanel1Layout);
+        componentePanel1Layout.setHorizontalGroup(
+                componentePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(productoView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 620, Short.MAX_VALUE)
         );
-        componentePanelLayout.setVerticalGroup(
-                componentePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(productoView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        componentePanel1Layout.setVerticalGroup(
+                componentePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(productoView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
         );
 
-//        javax.swing.GroupLayout principalPanelLayout = new javax.swing.GroupLayout(principalPanel);
-//        principalPanel.setLayout(principalPanelLayout);
-//        principalPanelLayout.setHorizontalGroup(
-//                principalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addGroup(principalPanelLayout.createSequentialGroup()
-//                                .addComponent(principalToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-//                                .addComponent(componentePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//        );
-//        principalPanelLayout.setVerticalGroup(
-//                principalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addComponent(principalToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                        .addComponent(componentePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//        );
         javax.swing.GroupLayout principalPanelLayout = new javax.swing.GroupLayout(principalPanel);
         principalPanel.setLayout(principalPanelLayout);
         principalPanelLayout.setHorizontalGroup(
@@ -272,7 +258,8 @@ public class MainView extends JFrame {
                         .addGroup(principalPanelLayout.createSequentialGroup()
                                 .addComponent(principalToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(componentePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(componentePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         principalPanelLayout.setVerticalGroup(
                 principalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,6 +268,7 @@ public class MainView extends JFrame {
         );
 
         principalPanel.setVisible(false);
+
         loginView.addPropertyChangeListener((PropertyChangeEvent event) -> {
             loginPropertyChangeEvent(event);
         });
@@ -382,7 +370,7 @@ public class MainView extends JFrame {
         try {
             switch (vista) {
                 case PRODUCTO:
-                    System.out.println("entro");
+                    productoView.setUsuario(usuario);
                     productoView.setVisible(true);
                     break;
                 case VENTA:
