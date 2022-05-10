@@ -34,6 +34,7 @@ public class MainView extends JFrame {
 
     private LoginView loginView;
     private ProductoView productoView;
+    private ClienteView clienteView;
 
     private Usuario usuario;
 
@@ -160,6 +161,7 @@ public class MainView extends JFrame {
 
         loginView = new LoginView();
         productoView = new ProductoView();
+        clienteView = new ClienteView();
         principalPanel = new javax.swing.JPanel();
         principalToolBar = new javax.swing.JToolBar();
         productoButton = new javax.swing.JButton();
@@ -210,6 +212,9 @@ public class MainView extends JFrame {
         clienteButton.setMaximumSize(new java.awt.Dimension(90, 95));
         clienteButton.setPreferredSize(new java.awt.Dimension(90, 95));
         clienteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        clienteButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            menuButtonActionPerformed(evt, Menu.CLIENTE);
+        });
 
         usuarioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vendedora.png"))); // NOI18N
         usuarioButton.setText("Usuarios");
@@ -220,6 +225,9 @@ public class MainView extends JFrame {
         usuarioButton.setMinimumSize(new java.awt.Dimension(90, 95));
         usuarioButton.setPreferredSize(new java.awt.Dimension(90, 95));
         usuarioButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        usuarioButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            menuButtonActionPerformed(evt, Menu.USUARIO);
+        });
 
         salirButton.setText("Salir");
         salirButton.setToolTipText("");
@@ -234,6 +242,7 @@ public class MainView extends JFrame {
         });
 
         productoView.setVisible(false);
+        clienteView.setVisible(false);
 
         componentePanel.setMinimumSize(new java.awt.Dimension(620, 480));
         componentePanel.setPreferredSize(new java.awt.Dimension(620, 480));
@@ -243,11 +252,13 @@ public class MainView extends JFrame {
         componentePanel1Layout.setHorizontalGroup(
                 componentePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(productoView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(clienteView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(0, 620, Short.MAX_VALUE)
         );
         componentePanel1Layout.setVerticalGroup(
                 componentePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(productoView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(clienteView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -283,16 +294,6 @@ public class MainView extends JFrame {
 
         principalPanel.setVisible(true);
 
-//        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-//        getContentPane().setLayout(layout);
-//        layout.setHorizontalGroup(
-//                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//        );
-//        layout.setVerticalGroup(
-//                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                        .addComponent(principalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//        );
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -370,12 +371,20 @@ public class MainView extends JFrame {
         try {
             switch (vista) {
                 case PRODUCTO:
+                    clienteView.setVisible(false);
+
                     productoView.setUsuario(usuario);
                     productoView.setVisible(true);
                     break;
                 case VENTA:
                     break;
                 case CLIENTE:
+                    System.out.println("entro");
+                    productoView.setVisible(false);
+
+                    clienteView.setUsuario(usuario);
+                    clienteView.setVisible(true);
+
                     break;
                 case USUARIO:
                     break;

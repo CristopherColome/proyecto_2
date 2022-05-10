@@ -5,6 +5,8 @@
  */
 package com.grupo.util;
 
+import java.util.Arrays;
+
 /**
  *
  * @author ccolome
@@ -34,10 +36,39 @@ public class Constantes {
         SALIDA
     }
 
+    public enum PersonaTipo {
+        C("Cliente"),
+        U("Usuario");
+
+        private final String descripcion;
+
+        PersonaTipo(String descripcion) {
+            this.descripcion = descripcion;
+        }
+
+        public String getDescripcion() {
+            return descripcion;
+        }
+    }
+
+    public enum ClienteTipoPersona {
+        NATURAL,
+        JURIDICO
+    }
+
+    public enum ClienteTipoDocumento {
+        DNI,
+        RUC,
+        CE
+    }
+
     public enum ComponentesTab {
         PRODUCTO_CONSULTA("Consulta de productos"),
         PRODUCTO_REGISTRO("Registro de producto"),
-        PRODUCTO_DETALLE("Detalle de producto");
+        PRODUCTO_DETALLE("Detalle de producto"),
+        CLIENTE_CONSULTA("Consulta de clientes"),
+        CLIENTE_REGISTRO("Registro de cliente"),
+        CLIENTE_DETALLE("Detalle de cliente");
 
         private final String titulo;
 
@@ -48,5 +79,9 @@ public class Constantes {
         public String getTitulo() {
             return titulo;
         }
+    }
+
+    public static String[] getNnombres(Class<? extends Enum<?>> e) {
+        return Arrays.stream(e.getEnumConstants()).map(Enum::name).toArray(String[]::new);
     }
 }

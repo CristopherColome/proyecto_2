@@ -7,9 +7,11 @@ package com.grupo.controller;
 
 import static com.grupo.app.ApplicationConfig.getEntityManager;
 import com.grupo.entity.Cliente;
+import com.grupo.entity.Producto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -69,6 +71,40 @@ public class ClienteController implements IClienteController {
     }
 
     @Override
+    public List<Cliente> consultar(String parametro) {
+        LOG.info("INICIO DE CONSULTA CLIENTES");
+
+        entityManager = getEntityManager();
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
+        try {
+            String sentencia = new StringBuilder()
+                    .append("SELECT C FROM Cliente C ")
+                    .append("WHERE  C.nombre  LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR C.id  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR C.apellidos  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR C.numeroDocumento  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR C.telefono  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR C.creador  LIKE CONCAT('%', :parametro ,'%')")
+                    .toString();
+            Query query = entityManager.createQuery(sentencia, Cliente.class);
+            query.setHint("eclipselink.refresh", true);
+            query.setParameter("parametro", parametro);
+
+            clientes = query.getResultList();
+            LOG.info("Se obtuvo correctamente los clientes.");
+        } catch (Exception e) {
+            LOG.error("Ocurrió un error al consultar clientes : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+        LOG.info("FIN DE CONSULTA CLIENTES");
+        return clientes;
+    }
+
+    @Override
     public Cliente obtener(Integer id) {
         LOG.info("INICIO OBTENER CLIENTE");
 
@@ -77,7 +113,13 @@ public class ClienteController implements IClienteController {
 
         try {
 
-            cliente = entityManager.find(Cliente.class, id);
+            Query query = entityManager.createQuery(
+                    "SELECT C FROM Cliente C LEFT JOIN C.ventas V ON V.idCliente = C.id WHERE C.id = :id",
+                    Cliente.class
+            );
+            query.setHint("eclipselink.refresh", true);
+            query.setParameter("id", id);
+            cliente = (Cliente) query.getSingleResult();
             LOG.info("Se obtuvo correctamente el cliente.");
         } catch (Exception e) {
             LOG.error("Ocurrió un error al obtener cliente : " + e);
@@ -120,11 +162,6 @@ public class ClienteController implements IClienteController {
 
     @Override
     public Boolean eliminar(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Cliente> consultar(String parametro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

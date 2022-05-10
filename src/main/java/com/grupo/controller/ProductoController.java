@@ -83,6 +83,7 @@ public class ProductoController implements IProductoController {
             String sentencia = new StringBuilder()
                     .append("SELECT P FROM Producto P ")
                     .append("WHERE  P.nombre  LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR P.id  LIKE CONCAT('%', :parametro ,'%')")
                     .append("OR P.marca  LIKE CONCAT('%', :parametro ,'%')")
                     .append("OR P.linea  LIKE CONCAT('%', :parametro ,'%')")
                     .append("OR P.creador  LIKE CONCAT('%', :parametro ,'%')")

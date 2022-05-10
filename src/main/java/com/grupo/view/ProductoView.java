@@ -20,8 +20,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -253,7 +251,6 @@ public class ProductoView extends JTabbedPane {
                     }
                 }
             }
-
         });
 
         javax.swing.GroupLayout consultaPanelLayout = new javax.swing.GroupLayout(consultaPanel);
@@ -568,7 +565,7 @@ public class ProductoView extends JTabbedPane {
     }
 
     private void consultaBuscarTextFieldActionPerformed() {
-        if (consultaBuscarTextField.getText().length() > 1) {
+        if (consultaBuscarTextField.getText().length() > 0) {
             List<Producto> productos = productoController.consultar(consultaBuscarTextField.getText());
 
             if (productos.size() > 0) {
@@ -579,6 +576,7 @@ public class ProductoView extends JTabbedPane {
     }
 
     private void nuevoProductoButtonActionPerformed(ActionEvent evt) {
+        nuevoProductoButton.setEnabled(false);
         addTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo(), registroPanel);
         setSelectedComponent(registroPanel);
     }
@@ -587,13 +585,13 @@ public class ProductoView extends JTabbedPane {
         detalleInProgress = true;
         productosTable.setRowSelectionAllowed(false);
         detalleVerProductoButton.setVisible(false);
+        nuevoProductoButton.setEnabled(false);
 
         Producto productoDetalle = productoController.obtener(
                 (Integer) productosTable.getValueAt(productosTable.getSelectedRow(), 0)
         );
 
         detalleProducto = productoDetalle;
-        detalleProducto.setObservaciones("");
 
         fillDetalleProducto();
 
@@ -686,6 +684,11 @@ public class ProductoView extends JTabbedPane {
     }
 
     private void fillDetalleProducto() {
+
+        if (detalleProducto.getObservaciones() == null) {
+            detalleProducto.setObservaciones("");
+        }
+
         detalleProductoLabel.setText(" Detalle producto : N° " + detalleProducto.getId());
 
         detalleNombreTextField.setText(detalleProducto.getNombre());
@@ -728,10 +731,11 @@ public class ProductoView extends JTabbedPane {
         productoHTable.setModel(
                 new ProductoHistorialTableModel()
         );
-        
+
         productosTable.setRowSelectionAllowed(true);
         detalleInProgress = false;
-        
+        nuevoProductoButton.setEnabled(true);
+
         removeTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo());
         setSelectedComponent(consultaPanel);
     }
@@ -768,8 +772,8 @@ public class ProductoView extends JTabbedPane {
 
         if (registroValido) {
 
-            detalleValidacionLabel.setText("");
-            detalleValidacionLabel.setVisible(false);
+            nuevoValidacionLabel.setText("");
+            nuevoValidacionLabel.setVisible(false);
 
             registrarProducto();
         }
@@ -855,7 +859,7 @@ public class ProductoView extends JTabbedPane {
         nuevoLineaTextField.setText("");
         nuevoStockSpinner.setValue(0.0);
         nuevoObservacionTextArea.setText("");
-
+        nuevoProductoButton.setEnabled(true);
         removeTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo());
         setSelectedComponent(consultaPanel);
     }
@@ -1077,7 +1081,7 @@ public class ProductoView extends JTabbedPane {
                 case 6:
                     return formatDateToString(producto.getFechaCreacion());
                 case 7:
-                    return formatDateToString(producto.getFechaCreacion());
+                    return formatDateToString(producto.getFechaModificacion());
                 default:
                     return null;
             }
@@ -1123,7 +1127,7 @@ public class ProductoView extends JTabbedPane {
 
         private String formatDateToString(Date value) {
             SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-            return parser.format(value);
+            return value != null ? parser.format(value) : "";
         }
     }
 
@@ -1210,7 +1214,7 @@ public class ProductoView extends JTabbedPane {
 
         private String formatDateToString(Date value) {
             SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-            return parser.format(value);
+            return value != null ? parser.format(value) : "";
         }
 
     }
