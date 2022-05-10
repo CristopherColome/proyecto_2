@@ -82,6 +82,7 @@ public class VentaController implements IVentaController {
                     "SELECT V FROM Venta V LEFT JOIN V.ventaItems VI ON VI.idVenta = V.id WHERE V.id = :id",
                     Venta.class
             );
+            query.setHint("eclipselink.refresh", true);
             query.setParameter("id", id);
             venta = (Venta) query.getSingleResult();
 

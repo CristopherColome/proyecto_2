@@ -88,6 +88,7 @@ public class ProductoController implements IProductoController {
                     .append("OR P.creador  LIKE CONCAT('%', :parametro ,'%')")
                     .toString();
             Query query = entityManager.createQuery(sentencia, Producto.class);
+            query.setHint("eclipselink.refresh", true);
             query.setParameter("parametro", parametro);
 
             productos = query.getResultList();
@@ -116,6 +117,7 @@ public class ProductoController implements IProductoController {
                     "SELECT P FROM Producto P LEFT JOIN P.productoHistorial PH ON PH.idProducto = P.id WHERE P.id = :id",
                     Producto.class
             );
+            query.setHint("eclipselink.refresh", true);
             query.setParameter("id", id);
             producto = (Producto) query.getSingleResult();
             LOG.info("Se obtuvo correctamente el producto.");

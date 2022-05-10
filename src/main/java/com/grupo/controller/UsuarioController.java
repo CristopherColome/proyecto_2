@@ -101,6 +101,7 @@ public class UsuarioController implements IUsuarioController {
 
         try {
             Query query = entityManager.createQuery("SELECT U FROM Usuario U WHERE U.username = :username");
+            query.setHint("eclipselink.refresh", true);
             query.setParameter("username", username);
             usuario = (Usuario) query.getSingleResult();
         } catch (Exception e) {

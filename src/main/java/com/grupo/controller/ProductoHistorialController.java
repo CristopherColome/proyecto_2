@@ -6,7 +6,6 @@
 package com.grupo.controller;
 
 import static com.grupo.app.ApplicationConfig.getEntityManager;
-import com.grupo.entity.Producto;
 import com.grupo.entity.ProductoHistorial;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +87,7 @@ public class ProductoHistorialController implements IProductoHistorialController
                 entityManager.close();
             }
         }
-        
+
         LOG.info("FIN OBTENER PRODUCTO HISTORIAL");
         return productoHistorial;
     }
@@ -107,4 +106,5 @@ public class ProductoHistorialController implements IProductoHistorialController
     public List<ProductoHistorial> consultar(String parametro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

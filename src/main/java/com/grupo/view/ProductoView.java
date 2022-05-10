@@ -20,6 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -443,7 +445,7 @@ public class ProductoView extends JTabbedPane {
         jScrollPane5.setViewportView(detalleObservacionTextArea);
 
         detalleAgregarPButton.setText("Agregar");
-        detalleAgregarPButton.setVisible(false);
+        // detalleAgregarPButton.setVisible(false);
         detalleAgregarPButton.addActionListener((java.awt.event.ActionEvent evt) -> {
             detalleAgregarPButtonActionPerformed(evt);
         });
@@ -570,9 +572,6 @@ public class ProductoView extends JTabbedPane {
             List<Producto> productos = productoController.consultar(consultaBuscarTextField.getText());
 
             if (productos.size() > 0) {
-                for (Producto producto : productos) {
-                    System.out.println(producto.toString());
-                }
                 productosTable.setModel(new ProductoTableModel(productos));
             }
 
@@ -613,7 +612,6 @@ public class ProductoView extends JTabbedPane {
             detalleObservacionTextArea.setEditable(true);
 
             detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png")));
-            detalleAgregarPButton.setVisible(true);
             detalleSalirButton.setEnabled(false);
         } else {
 
@@ -730,7 +728,10 @@ public class ProductoView extends JTabbedPane {
         productoHTable.setModel(
                 new ProductoHistorialTableModel()
         );
-
+        
+        productosTable.setRowSelectionAllowed(true);
+        detalleInProgress = false;
+        
         removeTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo());
         setSelectedComponent(consultaPanel);
     }
@@ -989,12 +990,21 @@ public class ProductoView extends JTabbedPane {
                     nuevoProductoHistorial.setFechaCreacion(new Date());
 
                     productoHistorialController.registrar(nuevoProductoHistorial);
-                    
-                    //FALTA TERMIAR
+
+                    // ACTUALIZAR STOCK Y PRECIO
+                    detalleProducto.setPrecioUnitario((Double) detallePHPrecioUSpinner.getValue());
+                    detalleProducto.setStock(
+                            detalleProducto.getStock() + (Double) detallePHCantidadSpinner.getValue()
+                    );
+                    detalleProducto.setModificador(usuario.getUsername());
+                    detalleProducto.setFechaModificacion(new Date());
+
+                    productoController.actualizar(detalleProducto);
+
                     Producto productoDetalle = productoController.obtener(
                             detalleProducto.getId()
                     );
-                    System.out.println(productoDetalle.toString());
+
                     detalleProducto = productoDetalle;
                     detalleProducto.setObservaciones("");
 

@@ -12,5 +12,5 @@ import com.grupo.entity.ProductoHistorial;
  * @author ccolome
  */
 public interface IProductoHistorialController extends BaseController<ProductoHistorial, Integer> {
-
+      
 }
