@@ -61,6 +61,11 @@ public class Constantes {
         RUC,
         CE
     }
+    
+    public enum VentaComprobante {
+        BOLETA,
+        FACTURA
+    }
 
     public enum ComponentesTab {
         PRODUCTO_CONSULTA("Consulta de productos"),
@@ -68,8 +73,11 @@ public class Constantes {
         PRODUCTO_DETALLE("Detalle de producto"),
         CLIENTE_CONSULTA("Consulta de clientes"),
         CLIENTE_REGISTRO("Registro de cliente"),
-        CLIENTE_DETALLE("Detalle de cliente");
-
+        CLIENTE_DETALLE("Detalle de cliente"),
+        VENTA_CONSULTA("Consulta de ventas"),
+        VENTA_REGISTRO("Registro de venta"),
+        VENTA_DETALLE("Detalle de venta");
+        
         private final String titulo;
 
         ComponentesTab(String titulo) {

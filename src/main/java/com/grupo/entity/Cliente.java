@@ -23,10 +23,10 @@ import javax.persistence.Table;
 @Table(name = "tb_cliente")
 @PrimaryKeyJoinColumn(name = "id_persona", referencedColumnName = "id")
 @DiscriminatorValue(
-    value = "C"
+        value = "C"
 )
 public class Cliente extends Persona {
-    
+
 //--- PROPIEDADES  -----------------------------------------------------------    
     @Column(name = "id_persona")
     private Integer idPersona;
@@ -39,9 +39,8 @@ public class Cliente extends Persona {
     public Cliente() {
         super();
     }
-    
-//--- GETTERS Y SETTERS  -----------------------------------------------------     
 
+//--- GETTERS Y SETTERS  -----------------------------------------------------     
     public Integer getIdPersona() {
         return idPersona;
     }
@@ -60,7 +59,8 @@ public class Cliente extends Persona {
 
     @Override
     public String toString() {
-        return super.toString() + " Cliente{" + " idPersona=" + idPersona + ", ventas=" + ventas + '}';
+        return "ID: " + idPersona + " | Nombre Completo : " + super.getNombre() + ", " + super.getApellidos() + " | N° documento : " + super.getNumeroDocumento() + " | Tipo Doc.: " + super.getTipoDocumento();
+        //return super.toString() + " Cliente{" + " idPersona=" + idPersona + ", ventas=" + ventas + '}';
     }
 
 }

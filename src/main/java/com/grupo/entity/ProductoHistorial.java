@@ -46,6 +46,9 @@ public class ProductoHistorial implements Serializable {
     @Column(name = "precio_unitario")
     private Double precioUnitario;
 
+    @Transient // PROPIEDAD NO PERSISTENTE
+    private String descripcion;
+
     // SE CALCULA ENTRE LA CANTIDAD POR EL PRECIO
     @Transient // PROPIEDAD NO PERSISTENTE
     private Double importeTotal;
@@ -59,6 +62,7 @@ public class ProductoHistorial implements Serializable {
 
 //============================================================================
     //--- GETTERS Y SETTERS  -----------------------------------------------------    
+
     public Integer getId() {
         return id;
     }
@@ -83,6 +87,14 @@ public class ProductoHistorial implements Serializable {
         this.idProducto = idProducto;
     }
 
+    public String getOperacion() {
+        return operacion;
+    }
+
+    public void setOperacion(String operacion) {
+        this.operacion = operacion;
+    }
+
     public Double getCantidad() {
         return cantidad;
     }
@@ -99,12 +111,12 @@ public class ProductoHistorial implements Serializable {
         this.precioUnitario = precioUnitario;
     }
 
-    public String getOperacion() {
-        return operacion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setOperacion(String operacion) {
-        this.operacion = operacion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Double getImporteTotal() {
@@ -133,7 +145,7 @@ public class ProductoHistorial implements Serializable {
 
     @Override
     public String toString() {
-        return "ProductoHistorial{" + "id=" + id + ", idVenta=" + idVenta + ", idProducto=" + idProducto + ", operacion=" + operacion + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + ", importeTotal=" + importeTotal + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + '}';
+        return "ProductoHistorial{" + "id=" + id + ", idVenta=" + idVenta + ", idProducto=" + idProducto + ", operacion=" + operacion + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + ", descripcion=" + descripcion + ", importeTotal=" + importeTotal + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + '}';
     }
 
 }

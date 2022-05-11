@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -45,6 +46,9 @@ public class Venta implements Serializable {
 
     @Column(name = "importe_total")
     private Double importeTotal;
+
+    @Column(name = "comprobante")
+    private String comprobante;
 
     @Column(name = "creador")
     private String creador;
@@ -100,6 +104,14 @@ public class Venta implements Serializable {
         this.importeTotal = importeTotal;
     }
 
+    public String getComprobante() {
+        return comprobante;
+    }
+
+    public void setComprobante(String comprobante) {
+        this.comprobante = comprobante;
+    }
+
     public String getCreador() {
         return creador;
     }
@@ -126,7 +138,7 @@ public class Venta implements Serializable {
 
     @Override
     public String toString() {
-        return "Venta{" + "id=" + id + ", idCliente=" + idCliente + ", serie=" + serie + ", correlativo=" + correlativo + ", importeTotal=" + importeTotal + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + ", ventaItems=" + ventaItems + '}';
+        return "Venta{" + "id=" + id + ", idCliente=" + idCliente + ", serie=" + serie + ", correlativo=" + correlativo + ", importeTotal=" + importeTotal + ", comprobante=" + comprobante + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + ", ventaItems=" + ventaItems + '}';
     }
 
 }

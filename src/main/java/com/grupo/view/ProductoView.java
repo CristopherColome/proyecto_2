@@ -408,6 +408,85 @@ public class ProductoView extends JTabbedPane {
                                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
+        detallePHTituloLabel.setText("Nuevo ingreso de stock");
+
+        detallePHOperacionLabel.setText("Operación:");
+        detallePHoperacionTextField.setText(ProductoOperacion.INGRESO.name());
+        detallePHoperacionTextField.setEnabled(false);
+
+        detallePHCantidadSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
+        detallePHCantidadJLabel.setText("Cantidad:");
+
+        detallePHPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+
+        detallePHPrecioULabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detallePHPrecioULabel.setText("<html><body>Precio<br>unitario:</body></html>");
+
+        detalleProductoHValidacionLabel.setBackground(new java.awt.Color(255, 0, 0));
+        detalleProductoHValidacionLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        detalleProductoHValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
+        detalleProductoHValidacionLabel.setVisible(false);
+
+        detalleRegistrarPHButton.setText("Registrar");
+        detalleRegistrarPHButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleRegistrarPHButtonActionPerformed(evt);
+        });
+        javax.swing.GroupLayout productoHPanelLayout = new javax.swing.GroupLayout(detalleProductoHPanel);
+        detalleProductoHPanel.setLayout(productoHPanelLayout);
+        productoHPanelLayout.setHorizontalGroup(
+                productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(detallePHTituloLabel)
+                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                                        .addComponent(detallePHPrecioULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(detallePHPrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(detallePHOperacionLabel)
+                                                                                .addComponent(detallePHCantidadJLabel))
+                                                                        .addGap(18, 18, 18)
+                                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(detallePHCantidadSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(detallePHoperacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                .addGap(113, 113, 113)
+                                                .addComponent(detalleRegistrarPHButton))
+                                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(detalleProductoHValidacionLabel)))
+                                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        productoHPanelLayout.setVerticalGroup(
+                productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(productoHPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(detallePHTituloLabel)
+                                .addGap(37, 37, 37)
+                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detallePHOperacionLabel)
+                                        .addComponent(detallePHoperacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detallePHCantidadSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detallePHCantidadJLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detallePHPrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detallePHPrecioULabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                .addComponent(detalleProductoHValidacionLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(detalleRegistrarPHButton)
+                                .addContainerGap())
+        );
+
         detalleProductoLabel.setText(" Detalle producto : N° ");
 
         detalleNombreLabel.setText("Nombre:");
@@ -633,6 +712,9 @@ public class ProductoView extends JTabbedPane {
 
             if (actualizacionValido) {
 
+                detalleValidacionLabel.setText("");
+                detalleValidacionLabel.setVisible(false);
+
                 String[] opciones = {"Sí", "No"};
 
                 int actualizar = JOptionPane.showOptionDialog(
@@ -660,11 +742,9 @@ public class ProductoView extends JTabbedPane {
                         detalleProducto.setObservaciones(detalleObservacionTextArea.getText());
                     }
 
-                    detalleProducto.setModificador(usuario.getNombre());
+                    detalleProducto.setModificador(usuario.getUsername());
                     detalleProducto.setFechaModificacion(new Date());
 
-                    detalleValidacionLabel.setText("");
-                    detalleValidacionLabel.setVisible(false);
                     detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
                     detalleEditarInProgress = false;
                     detalleSalirButton.setEnabled(true);
@@ -754,7 +834,7 @@ public class ProductoView extends JTabbedPane {
             nuevoValidacionLabel.setVisible(true);
             registroValido = false;
         }
-        if (nuevoPrecioUSpinner.getValue().equals(0)) {
+        if (nuevoPrecioUSpinner.getValue().equals(0.0d)) {
             nuevoValidacionLabel.setText("EL campo precio unitario es obligatorio.");
             nuevoValidacionLabel.setVisible(true);
             registroValido = false;
@@ -764,7 +844,7 @@ public class ProductoView extends JTabbedPane {
             nuevoValidacionLabel.setVisible(true);
             registroValido = false;
         }
-        if (nuevoStockSpinner.getValue().equals(0)) {
+        if (nuevoStockSpinner.getValue().equals(0.0d)) {
             nuevoValidacionLabel.setText("EL campo stock es obligatorio.");
             nuevoValidacionLabel.setVisible(true);
             registroValido = false;
@@ -866,87 +946,8 @@ public class ProductoView extends JTabbedPane {
 
     private void detalleAgregarPButtonActionPerformed(ActionEvent ev) {
 
-        detallePHTituloLabel.setText("Nuevo ingreso de stock");
-
-        detallePHOperacionLabel.setText("Operación:");
-        detallePHoperacionTextField.setText(ProductoOperacion.INGRESO.name());
-        detallePHoperacionTextField.setEnabled(false);
-
-        detallePHCantidadSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
-
-        detallePHCantidadJLabel.setText("Cantidad:");
-
-        detallePHPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
-
-        detallePHPrecioULabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        detallePHPrecioULabel.setText("<html><body>Precio<br>unitario:</body></html>");
-
-        detalleProductoHValidacionLabel.setBackground(new java.awt.Color(255, 0, 0));
-        detalleProductoHValidacionLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        detalleProductoHValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
-        detalleProductoHValidacionLabel.setVisible(false);
-
-        detalleRegistrarPHButton.setText("Registrar");
-        detalleRegistrarPHButton.addActionListener((java.awt.event.ActionEvent evt) -> {
-            detalleRegistrarPHButtonActionPerformed(evt);
-        });
-        javax.swing.GroupLayout productoHPanelLayout = new javax.swing.GroupLayout(detalleProductoHPanel);
-        detalleProductoHPanel.setLayout(productoHPanelLayout);
-        productoHPanelLayout.setHorizontalGroup(
-                productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(productoHPanelLayout.createSequentialGroup()
-                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(productoHPanelLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(detallePHTituloLabel)
-                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                .addGroup(productoHPanelLayout.createSequentialGroup()
-                                                                        .addComponent(detallePHPrecioULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(detallePHPrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGroup(productoHPanelLayout.createSequentialGroup()
-                                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(detallePHOperacionLabel)
-                                                                                .addComponent(detallePHCantidadJLabel))
-                                                                        .addGap(18, 18, 18)
-                                                                        .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(detallePHCantidadSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(detallePHoperacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                        .addGroup(productoHPanelLayout.createSequentialGroup()
-                                                .addGap(113, 113, 113)
-                                                .addComponent(detalleRegistrarPHButton))
-                                        .addGroup(productoHPanelLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(detalleProductoHValidacionLabel)))
-                                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        productoHPanelLayout.setVerticalGroup(
-                productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(productoHPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(detallePHTituloLabel)
-                                .addGap(37, 37, 37)
-                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(detallePHOperacionLabel)
-                                        .addComponent(detallePHoperacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(detallePHCantidadSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(detallePHCantidadJLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(productoHPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(detallePHPrecioUSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(detallePHPrecioULabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                                .addComponent(detalleProductoHValidacionLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(detalleRegistrarPHButton)
-                                .addContainerGap())
-        );
-
         JOptionPane detalleProductoHOP = new JOptionPane();
-        detalleProductoHDialog = detalleProductoHOP.createDialog(ComponentesTab.PRODUCTO_DETALLE.getTitulo());
+        detalleProductoHDialog = detalleProductoHOP.createDialog(ComponentesTab.VENTA_REGISTRO.getTitulo());
         detalleProductoHDialog.setSize(333, 266);
         detalleProductoHDialog.setContentPane(detalleProductoHPanel);
         detalleProductoHDialog.setVisible(true);
@@ -956,18 +957,22 @@ public class ProductoView extends JTabbedPane {
     private void detalleRegistrarPHButtonActionPerformed(ActionEvent ev) {
         boolean registroValido = true;
 
-        if (detallePHPrecioUSpinner.getValue().equals(0)) {
+        if (detallePHPrecioUSpinner.getValue().equals(0.0d)) {
             detalleProductoHValidacionLabel.setText("EL campo precio unitario es obligatorio.");
             detalleProductoHValidacionLabel.setVisible(true);
             registroValido = false;
         }
-        if (detallePHCantidadSpinner.getValue().equals(0)) {
+        if (detallePHCantidadSpinner.getValue().equals(0.0d)) {
             detalleProductoHValidacionLabel.setText("EL campo cantidad es obligatorio.");
             detalleProductoHValidacionLabel.setVisible(true);
             registroValido = false;
         }
 
         if (registroValido) {
+
+            detalleProductoHValidacionLabel.setText("");
+            detalleProductoHValidacionLabel.setVisible(false);
+
             String[] opciones = {"Sí", "No"};
 
             int registrar = JOptionPane.showOptionDialog(

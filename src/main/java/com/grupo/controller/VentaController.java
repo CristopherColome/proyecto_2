@@ -6,6 +6,7 @@
 package com.grupo.controller;
 
 import static com.grupo.app.ApplicationConfig.getEntityManager;
+import com.grupo.entity.Producto;
 import com.grupo.entity.Venta;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +72,38 @@ public class VentaController implements IVentaController {
     }
 
     @Override
+    public List<Venta> consultar(String parametro) {
+        LOG.info("INICIO DE CONSULTA VENTAS");
+
+        entityManager = getEntityManager();
+        List<Venta> ventas = new ArrayList<Venta>();
+
+        try {
+            String sentencia = new StringBuilder()
+                    .append("SELECT V FROM Venta V ")
+                    .append("WHERE  V.serie  LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR V.id  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR V.correlativo  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR V.comprobante  LIKE CONCAT('%', :parametro ,'%')")
+                    .toString();
+            Query query = entityManager.createQuery(sentencia, Producto.class);
+            query.setHint("eclipselink.refresh", true);
+            query.setParameter("parametro", parametro);
+
+            ventas = query.getResultList();
+            LOG.info("Se obtuvo correctamente las ventas.");
+        } catch (Exception e) {
+            LOG.error("Ocurrió un error al consultar ventas : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+        LOG.info("FIN DE CONSULTA VENTAS");
+        return ventas;
+    }
+
+    @Override
     public Venta obtener(Integer id) {
         LOG.info("INICIO OBTENER VENTA");
 
@@ -108,8 +141,4 @@ public class VentaController implements IVentaController {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public List<Venta> consultar(String parametro) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

@@ -7,7 +7,6 @@ package com.grupo.view;
 
 import com.grupo.controller.ClienteController;
 import com.grupo.entity.Cliente;
-import com.grupo.entity.Producto;
 import com.grupo.entity.Usuario;
 import com.grupo.entity.Venta;
 import com.grupo.util.Constantes;
@@ -406,7 +405,6 @@ public class ClienteView extends JTabbedPane {
                                 .addGap(50, 50, 50))
         );
 
-        //    detalleClienteLabel.setText(" Detalle cliente : N° ");
         detalleNombreLabel.setText("Nombre:");
         detalleMarcaLabel.setText("Apellido:");
 
@@ -419,11 +417,9 @@ public class ClienteView extends JTabbedPane {
         detalleEditarButton.setToolTipText("Editar");
         detalleEditarButton.setMaximumSize(new java.awt.Dimension(55, 40));
         detalleEditarButton.setMinimumSize(new java.awt.Dimension(55, 40));
-//        detalleEditarButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                detalleEditarButtonActionPerformed(evt);
-//            }
-//        });
+        detalleEditarButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleEditarButtonActionPerformed(evt);
+        });
 
         detalleSalirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         detalleSalirButton.setToolTipText("Salir");
@@ -720,7 +716,7 @@ public class ClienteView extends JTabbedPane {
         detalleCliente = clienteDetalle;
 
         fillDetalleCliente();
-        addTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo(), detallePanel);
+        addTab(ComponentesTab.CLIENTE_DETALLE.getTitulo(), detallePanel);
         setSelectedComponent(detallePanel);
     }
 
@@ -765,6 +761,111 @@ public class ClienteView extends JTabbedPane {
             clienteVentaTable.setModel(new ClienteVentaTableModel(
                     detalleCliente.getVentas()
             ));
+        }
+    }
+
+    private void detalleEditarButtonActionPerformed(ActionEvent evt) {
+
+        if (!detalleEditarInProgress) {
+
+            detalleEditarInProgress = true;
+
+            detalleNombreTextField.setEditable(true);
+            detalleApellidoTextField.setEditable(true);
+            detalleNumeroDocTextField.setEditable(true);
+
+            detalleTipoDocJComboBox.setEnabled(true);
+            detalleTipoDocJComboBox.setEditable(true);
+
+            detalleTipoPersonajComboBox.setEnabled(true);
+            detalleTipoPersonajComboBox.setEditable(true);
+
+            detalletelefonoTextField.setEditable(true);
+            detalleDireccionTextField.setEditable(true);
+            detalleEmailTextField.setEditable(true);
+
+            detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png")));
+            detalleSalirButton.setEnabled(false);
+        } else {
+            boolean actualizacionValido = true;
+
+            if (detalleNombreTextField.getText().trim().equals("")) {
+                detalleValidacionLabel.setText("EL campo nombre es obligatorio.");
+                detalleValidacionLabel.setVisible(true);
+                actualizacionValido = false;
+            }
+            if (detalleApellidoTextField.getText().trim().equals("")) {
+                detalleValidacionLabel.setText("EL campo apellidos es obligatorio.");
+                detalleValidacionLabel.setVisible(true);
+                actualizacionValido = false;
+            }
+            if (detalleNumeroDocTextField.getText().trim().equals("")) {
+                detalleValidacionLabel.setText("EL campo numero de documento es obligatorio.");
+                detalleValidacionLabel.setVisible(true);
+                actualizacionValido = false;
+            }
+
+            if (actualizacionValido) {
+
+                detalleValidacionLabel.setText("");
+                detalleValidacionLabel.setVisible(false);
+
+                String[] opciones = {"Sí", "No"};
+
+                int actualizar = JOptionPane.showOptionDialog(
+                        this,
+                        "¿Esta seguro de guardar los cambios",
+                        ComponentesTab.CLIENTE_DETALLE.getTitulo(),
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        opciones,
+                        opciones[1]);
+
+                if (actualizar == JOptionPane.YES_OPTION) {
+                    if (!detalleCliente.getNombre().equals(detalleNombreTextField.getText())) {
+                        detalleCliente.setNombre(detalleNombreTextField.getText());
+                    }
+                    if (!detalleCliente.getApellidos().equals(detalleApellidoTextField.getText())) {
+                        detalleCliente.setApellidos(detalleApellidoTextField.getText());
+                    }
+                    if (!detalleCliente.getNumeroDocumento().equals(detalleNumeroDocTextField.getText())) {
+                        detalleCliente.setNumeroDocumento(detalleNumeroDocTextField.getText());
+                    }
+                    if (!detalleCliente.getTipoDocumento().equals((String) detalleTipoDocJComboBox.getSelectedItem())) {
+                        detalleCliente.setTipoDocumento((String) detalleTipoDocJComboBox.getSelectedItem());
+                    }
+                    if (!detalleCliente.getTipoPersona().equals((String) detalleTipoPersonajComboBox.getSelectedItem())) {
+                        detalleCliente.setTipoPersona((String) detalleTipoPersonajComboBox.getSelectedItem());
+                    }
+                    if (!detalleCliente.getDireccion().equals(detalleDireccionTextField.getText())) {
+                        detalleCliente.setDireccion(detalleDireccionTextField.getText());
+                    }
+                    if (!detalleCliente.getTelefono().equals(detalletelefonoTextField.getText())) {
+                        detalleCliente.setTelefono(detalletelefonoTextField.getText());
+                    }
+                    if (!detalleCliente.getEmail().equals(detalleEmailTextField.getText())) {
+                        detalleCliente.setEmail(detalleEmailTextField.getText());
+                    }
+
+                    detalleCliente.setModificador(usuario.getUsername());
+                    detalleCliente.setFechaModificacion(new Date());
+
+                    detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
+                    detalleEditarInProgress = false;
+                    detalleSalirButton.setEnabled(true);
+
+                    try {
+                        if (clienteController.actualizar(detalleCliente)) {
+                            fillDetalleCliente();
+                        }
+                    } catch (Exception e) {
+                        detalleValidacionLabel.setText(e.getMessage());
+                        detalleValidacionLabel.setVisible(true);
+                    }
+
+                }
+            }
         }
     }
 
