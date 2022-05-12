@@ -141,4 +141,29 @@ public class VentaController implements IVentaController {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public String obtenerCorrelativo() {
+        LOG.info("INICIO OBTENER CORRELATIVO");
+
+        entityManager = getEntityManager();
+        String correlativo = "";
+
+        try {
+
+            correlativo = (String) entityManager.createNativeQuery(
+                    "SELECT CONCAT(DATE_FORMAT(CURDATE(), '%Y%m%d'),'-', (SELECT LPAD((COUNT(V.id) + 1), 4, 0) FROM bodega.tb_venta V WHERE DATE_FORMAT(V.fecha_creacion, '%Y-%m-%d') = CURDATE()))"
+            ).getSingleResult();
+
+            LOG.info("Se obtuvo correctamente el correlativo.");
+        } catch (Exception e) {
+            LOG.error("Ocurrió un error al obtener correlativo : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+        LOG.info("FIN DOBTENER CORRELATIVO");
+        return correlativo;
+    }
+
 }

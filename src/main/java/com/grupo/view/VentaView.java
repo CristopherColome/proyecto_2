@@ -7,6 +7,7 @@ package com.grupo.view;
 
 import com.grupo.controller.ClienteController;
 import com.grupo.controller.ProductoController;
+import com.grupo.controller.ProductoHistorialController;
 import com.grupo.controller.VentaController;
 import com.grupo.entity.Cliente;
 import com.grupo.entity.Producto;
@@ -15,11 +16,16 @@ import com.grupo.entity.Usuario;
 import com.grupo.entity.Venta;
 import com.grupo.util.Constantes;
 import com.grupo.util.Constantes.ComponentesTab;
+import com.grupo.util.Constantes.ProductoOperacion;
+import com.grupo.util.Constantes.VentaComprobante;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,6 +48,7 @@ public class VentaView extends JTabbedPane {
     private VentaController ventaController;
     private ClienteController clienteController;
     private ProductoController productoController;
+    private ProductoHistorialController productoHistorialController;
 
     private Usuario usuario;
 
@@ -56,6 +63,7 @@ public class VentaView extends JTabbedPane {
     // REGISTRO
     private Integer selectedClienteList;
     private Integer selectedProductoList;
+    private Integer selectedProductoTable;
     private List<Producto> ventaProductos;
     private List<ProductoHistorial> nuevoVentaProductos;
     private javax.swing.JLabel nuevoVentaLabel;
@@ -66,6 +74,7 @@ public class VentaView extends JTabbedPane {
     private javax.swing.JLabel nuevoComprobanteLabel;
     private javax.swing.JLabel nuevoIGVjLabel;
     private javax.swing.JButton nuevoProductojButton;
+    private javax.swing.JButton nuevoProductoEliminarjButton;
     private javax.swing.JLabel nuevoProductojLabel;
     private javax.swing.JTable nuevoProductosTable;
     private javax.swing.JButton nuevoRegistrarButton;
@@ -84,7 +93,7 @@ public class VentaView extends JTabbedPane {
     private javax.swing.JButton nuevoAgregarProdjButton;
     private javax.swing.JLabel nuevoCantidadJLabel;
     private javax.swing.JSpinner nuevoCantidadSpinner;
-    private javax.swing.JList<String> nuevoProductojList;
+    private javax.swing.JList<Producto> nuevoProductojList;
     private javax.swing.JLabel nuevoSeleccionProdLabel;
     private javax.swing.JTextField nuevoSelectProductoTextField;
     private javax.swing.JPanel nuevoVentaProductoPanel;
@@ -108,6 +117,7 @@ public class VentaView extends JTabbedPane {
         ventaController = new VentaController();
         clienteController = new ClienteController();
         productoController = new ProductoController();
+        productoHistorialController = new ProductoHistorialController();
     }
 
     @SuppressWarnings("unchecked")
@@ -143,6 +153,7 @@ public class VentaView extends JTabbedPane {
         nuevoComprobanteLabel = new javax.swing.JLabel();
         nuevoComprobanteComboBox = new javax.swing.JComboBox<>();
         nuevoProductojButton = new javax.swing.JButton();
+        nuevoProductoEliminarjButton = new javax.swing.JButton();
         //DIALOG VENTA PRODUCTO
         nuevoVentaProductoPanel = new javax.swing.JPanel();
         nuevoSeleccionProdLabel = new javax.swing.JLabel();
@@ -208,6 +219,7 @@ public class VentaView extends JTabbedPane {
 //                detalleVerVentaButtonActionPerformed(evt);
 //            }
 //        });
+        detalleVerVentaButton.setVisible(false);
 
         javax.swing.GroupLayout consultaPanelLayout = new javax.swing.GroupLayout(consultaPanel);
         consultaPanel.setLayout(consultaPanelLayout);
@@ -254,24 +266,19 @@ public class VentaView extends JTabbedPane {
 
         nuevoRegistrarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrar.png"))); // NOI18N
         nuevoRegistrarButton.setText("Registrar");
-//        nuevoRegistrarButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                nuevoRegistrarButtonActionPerformed(evt);
-//            }
-//        });
+        nuevoRegistrarButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            nuevoRegistrarButtonActionPerformed(evt);
+        });
 
         nuevoCancelarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
         nuevoCancelarButton.setText("Cancelar");
-//        nuevoCancelarButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                nuevoCancelarButtonActionPerformed(evt);
-//            }
-//        });
+        nuevoCancelarButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            nuevoCancelarButtonActionPerformed(evt);
+        });
 
         nuevoValidacionLabel.setBackground(new java.awt.Color(255, 0, 0));
         nuevoValidacionLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         nuevoValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
-//        nuevoValidacionLabel.setText("EL campo {} es obligatorio.");
         nuevoValidacionLabel.setVisible(false);
 
         nuevoSelectCliTextField.setText("Buscar cliente");
@@ -313,6 +320,22 @@ public class VentaView extends JTabbedPane {
 
         nuevoProductosTable.setModel(new VentaProductoTableModel());
 
+        nuevoProductosTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int row = nuevoProductosTable.getSelectedRow();
+
+                if (selectedProductoTable != null && selectedProductoTable.equals(row)) {
+                    nuevoProductosTable.getSelectionModel().clearSelection();
+                    selectedProductoTable = null;
+                    nuevoProductoEliminarjButton.setVisible(false);
+
+                } else {
+                    selectedProductoTable = row;
+                    nuevoProductoEliminarjButton.setVisible(true);
+                }
+            }
+        });
+
         jScrollPane5.setViewportView(nuevoProductosTable);
 
         nuevoProductojLabel.setText("Productos:");
@@ -333,6 +356,12 @@ public class VentaView extends JTabbedPane {
         nuevoProductojButton.addActionListener((java.awt.event.ActionEvent evt) -> {
             nuevoProductojButtonActionPerformed(evt);
         });
+
+        nuevoProductoEliminarjButton.setText("Eliminar");
+        nuevoProductoEliminarjButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            nuevoProductoEliminarjButtonActionPerformed(evt);
+        });
+        nuevoProductoEliminarjButton.setVisible(false);
 
         javax.swing.GroupLayout registroPanelLayout = new javax.swing.GroupLayout(registroPanel);
         registroPanel.setLayout(registroPanelLayout);
@@ -366,6 +395,8 @@ public class VentaView extends JTabbedPane {
                                                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addGroup(registroPanelLayout.createSequentialGroup()
                                                                 .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addComponent(nuevoProductoEliminarjButton)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(nuevoProductojButton))
                                                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                                 .addGap(22, 22, 22)
@@ -403,7 +434,9 @@ public class VentaView extends JTabbedPane {
                                         .addComponent(nuevoProductojLabel)
                                         .addGroup(registroPanelLayout.createSequentialGroup()
                                                 .addGap(1, 1, 1)
-                                                .addComponent(nuevoProductojButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(nuevoProductojButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(nuevoProductoEliminarjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -519,6 +552,15 @@ public class VentaView extends JTabbedPane {
 
     }
 
+    private void removeTab(String tabTitle) {
+        for (int i = 0; i < getTabCount(); i++) {
+            if (getTitleAt(i).equals(tabTitle)) {
+                remove(i);
+                break;
+            }
+        }
+    }
+
     private void consultaBuscarTextFieldActionPerformed() {
         if (consultaBuscarTextField.getText().length() > 0) {
             List<Venta> ventas = ventaController.consultar(consultaBuscarTextField.getText());
@@ -545,10 +587,148 @@ public class VentaView extends JTabbedPane {
         setSelectedComponent(registroPanel);
     }
 
+    private void nuevoCancelarButtonActionPerformed(ActionEvent evt) {
+        String[] opciones = {"Sí", "No"};
+
+        int cancelar = JOptionPane.showOptionDialog(
+                this,
+                "¿Esta seguro de cancelar el registro?",
+                ComponentesTab.VENTA_REGISTRO.getTitulo(),
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[1]);
+
+        if (cancelar == JOptionPane.YES_OPTION) {
+            nuevoRegistroFinalizar();
+        }
+    }
+
+    private void nuevoRegistrarButtonActionPerformed(ActionEvent evt) {
+        boolean registroValido = true;
+
+        if (nuevoSerieTextField.getText().trim().equals("")) {
+            nuevoValidacionLabel.setText("EL campo serie es obligatorio.");
+            nuevoValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+        if (nuevoSelectClientejList.isSelectionEmpty()) {
+            nuevoValidacionLabel.setText("Debe seleccionar un cliente.");
+            nuevoValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+        if (nuevoVentaProductos.isEmpty()) {
+            nuevoValidacionLabel.setText("Debe agregar productos para la venta.");
+            nuevoValidacionLabel.setVisible(true);
+            registroValido = false;
+        }
+
+        if (registroValido) {
+
+            nuevoValidacionLabel.setText("");
+            nuevoValidacionLabel.setVisible(false);
+
+            String[] opciones = {"Sí", "No"};
+
+            int actualizar = JOptionPane.showOptionDialog(
+                    this,
+                    "Se registrará una nueva venta",
+                    ComponentesTab.VENTA_REGISTRO.getTitulo(),
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    opciones,
+                    opciones[1]);
+
+            if (actualizar == JOptionPane.YES_OPTION) {
+
+                ClienteListModel clm = (ClienteListModel) nuevoSelectClientejList.getModel();
+                Cliente seleccionCliente = (Cliente) clm.getElementAt(nuevoSelectClientejList.getSelectedIndex());
+
+                try {
+                    // REGISTRAR VENTA
+                    Venta nuevaVenta = new Venta();
+
+                    nuevaVenta.setIdCliente(seleccionCliente.getIdPersona());
+                    nuevaVenta.setSerie(nuevoSerieTextField.getText());
+                    nuevaVenta.setCorrelativo(ventaController.obtenerCorrelativo());
+                    nuevaVenta.setComprobante((String) nuevoComprobanteComboBox.getSelectedItem());
+
+                    Double subTotal = nuevoVentaProductos.stream()
+                            .reduce(0.0d, (partialSubTotalResult, prod) -> partialSubTotalResult + prod.getImporteTotal(), Double::sum);
+                    Double igv = 18.00d * subTotal / 100;
+                    Double importeTotal = subTotal + igv;
+
+                    nuevaVenta.setImporteTotal(
+                            Double.valueOf(new DecimalFormat("#.##").format(importeTotal))
+                    );
+
+                    nuevaVenta.setCreador(usuario.getUsername());
+                    nuevaVenta.setFechaCreacion(new Date());
+
+                    ventaController.registrar(nuevaVenta);
+
+                    //REGISTRAR HISTORIAL DE PRODUCTO
+                    for (ProductoHistorial nuevoVentaProducto : nuevoVentaProductos) {
+
+                        nuevoVentaProducto.setIdVenta(nuevaVenta.getId());
+                        nuevoVentaProducto.setCreador(usuario.getUsername());
+                        nuevoVentaProducto.setFechaCreacion(new Date());
+
+                        productoHistorialController.registrar(nuevoVentaProducto);
+
+                        // ACTUALIZAR STOCK PRODUCTO
+                        Producto productoActualizar = productoController.obtener(nuevoVentaProducto.getIdProducto());
+                        productoActualizar.setStock(
+                                productoActualizar.getStock() - nuevoVentaProducto.getCantidad()
+                        );
+                        productoActualizar.setModificador(usuario.getUsername());
+                        productoActualizar.setFechaModificacion(new Date());
+
+                        productoController.actualizar(productoActualizar);
+                    }
+
+                    nuevoRegistroFinalizar();
+                } catch (Exception e) {
+                    nuevoValidacionLabel.setText(e.getMessage());
+                    nuevoValidacionLabel.setVisible(true);
+                }
+            }
+        }
+    }
+
+    private void nuevoRegistroFinalizar() {
+
+        nuevoSerieTextField.setText("");
+        nuevoSelectCliTextField.setText("");
+        nuevoComprobanteComboBox.setSelectedItem(VentaComprobante.BOLETA.name());
+        nuevoSelectClientejList.setModel(new ClienteListModel());
+        nuevoVentaProductos = new ArrayList();
+
+        nuevoProductosTable.setModel(new VentaProductoTableModel());
+
+        nuevoSubTotaljLabel.setText("SubTotal: ");
+        nuevoIGVjLabel.setText("I:G.V(18%): ");
+        nuevoTotaljLabel.setText("Total: ");
+
+        selectedProductoTable = null;
+        nuevoVentaButton.setEnabled(true);
+
+        removeTab(ComponentesTab.VENTA_REGISTRO.getTitulo());
+        setSelectedComponent(consultaPanel);
+    }
+
     private void nuevoProductojButtonActionPerformed(ActionEvent evt) {
 
         JOptionPane detalleProductoHOP = new JOptionPane();
         nuevoVentaProductoDialog = detalleProductoHOP.createDialog(ComponentesTab.PRODUCTO_DETALLE.getTitulo());
+        nuevoVentaProductoDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        nuevoVentaProductoDialog.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                nuevoVentaProductoAgregarFinalizar();
+            }
+        });
         nuevoVentaProductoDialog.setSize(460, 213);
         nuevoVentaProductoDialog.setContentPane(nuevoVentaProductoPanel);
         nuevoVentaProductoDialog.setVisible(true);
@@ -566,7 +746,11 @@ public class VentaView extends JTabbedPane {
     }
 
     private void nuevoAgregarProdjButtonActionPerformed(ActionEvent evt1) {
+
         boolean registroValido = true;
+
+        ProductoListModel plm = (ProductoListModel) nuevoProductojList.getModel();
+        Producto seleccionProducto = (Producto) plm.getElementAt(nuevoProductojList.getSelectedIndex());
 
         if (nuevoProductojList.isSelectionEmpty()) {
             nuevoVentaProductoValidaLabel.setText("Debe seleccionar un producto.");
@@ -578,16 +762,32 @@ public class VentaView extends JTabbedPane {
             nuevoVentaProductoValidaLabel.setVisible(true);
             registroValido = false;
         }
+        if ((Double) nuevoCantidadSpinner.getValue() > seleccionProducto.getStock()) {
+
+            nuevoVentaProductoValidaLabel.setText("La cantidad seleccionada supera al stock.");
+            nuevoVentaProductoValidaLabel.setVisible(true);
+            registroValido = false;
+
+        }
+
+        if (nuevoVentaProductos.size() > 0) {
+            Double cantidadProducto = nuevoVentaProductos.stream()
+                    .filter(p -> p.getIdProducto().equals(seleccionProducto.getId()))
+                    .map(p -> p.getCantidad())
+                    .findFirst()
+                    .orElse(Double.NaN);
+
+            if (((Double) nuevoCantidadSpinner.getValue() + cantidadProducto) > seleccionProducto.getStock()) {
+                nuevoVentaProductoValidaLabel.setText("La cantidad seleccionada supera al stock.");
+                nuevoVentaProductoValidaLabel.setVisible(true);
+                registroValido = false;
+            }
+        }
 
         if (registroValido) {
             nuevoVentaProductoValidaLabel.setText("");
             nuevoVentaProductoValidaLabel.setVisible(false);
 
-            ProductoListModel plm = (ProductoListModel) nuevoProductojList.getModel();
-            Producto seleccionProducto = (Producto) plm.getElementAt(nuevoProductojList.getSelectedIndex());
-            
-            // VALIDAR STOCK
-            //
             boolean existeProducto = nuevoVentaProductos.stream()
                     .filter(p -> p.getIdProducto().equals(seleccionProducto.getId()))
                     .count() > 0;
@@ -596,11 +796,15 @@ public class VentaView extends JTabbedPane {
                 ProductoHistorial nuevoVentaPH = new ProductoHistorial();
 
                 nuevoVentaPH.setIdProducto(seleccionProducto.getId());
+                nuevoVentaPH.setOperacion(ProductoOperacion.SALIDA.name());
                 nuevoVentaPH.setDescripcion(seleccionProducto.getNombre());
                 nuevoVentaPH.setPrecioUnitario(seleccionProducto.getPrecioUnitario());
                 nuevoVentaPH.setCantidad((Double) nuevoCantidadSpinner.getValue());
+
+                Double importeTotal = seleccionProducto.getPrecioUnitario() * (Double) nuevoCantidadSpinner.getValue();
+
                 nuevoVentaPH.setImporteTotal(
-                        (Double) seleccionProducto.getPrecioUnitario() * (Double) nuevoCantidadSpinner.getValue()
+                        Double.valueOf(new DecimalFormat("#.##").format(importeTotal))
                 );
                 nuevoVentaProductos.add(nuevoVentaPH);
 
@@ -630,25 +834,35 @@ public class VentaView extends JTabbedPane {
 
     private void nuevoSetPreciosImporte() {
 
-        Double subtotal = nuevoVentaProductos.stream()
-                .reduce(0d, (partialAgeResult, user) -> partialAgeResult + user.getImporteTotal(), Double::sum);
+        Double subTotal = nuevoVentaProductos.stream()
+                .reduce(0.0d, (partialSubTotalResult, prod) -> partialSubTotalResult + prod.getImporteTotal(), Double::sum);
 
-        Double igv = 18.00d * subtotal / 100;
+        Double igv = 18.00d * subTotal / 100;
 
-        Double importeTotal = subtotal + igv;
+        Double importeTotal = subTotal + igv;
 
-        nuevoSubTotaljLabel.setText("SubTotal: " + subtotal);
+        nuevoSubTotaljLabel.setText("SubTotal: " + new DecimalFormat("S/#.##").format(subTotal));
 
-        nuevoIGVjLabel.setText("I:G.V(18%): " + igv);
+        nuevoIGVjLabel.setText("I:G.V(18%): " + new DecimalFormat("S/#.##").format(igv));
 
-        nuevoTotaljLabel.setText("Total: " + importeTotal);
+        nuevoTotaljLabel.setText("Total: " + new DecimalFormat("S/#.##").format(importeTotal));
 
+    }
+
+    private void nuevoProductoEliminarjButtonActionPerformed(ActionEvent evt1) {
+
+        nuevoVentaProductos.remove(nuevoProductosTable.getSelectedRow());
+        nuevoProductosTable.setModel(new VentaProductoTableModel(nuevoVentaProductos));
+        nuevoSetPreciosImporte();
+
+        nuevoProductoEliminarjButton.setVisible(false);
+        selectedProductoTable = null;
     }
 
     private void nuevoVentaProductoAgregarFinalizar() {
         nuevoSelectProductoTextField.setText("");
         nuevoProductojList.setModel(new ProductoListModel());
-        nuevoCantidadSpinner.setValue(0.0);
+        nuevoCantidadSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
 
         selectedProductoList = null;
 

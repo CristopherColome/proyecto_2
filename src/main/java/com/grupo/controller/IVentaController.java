@@ -12,5 +12,7 @@ import com.grupo.entity.Venta;
  * @author ccolome
  */
 public interface IVentaController extends BaseController<Venta, Integer> {
-
+    
+    String obtenerCorrelativo();
+    
 }

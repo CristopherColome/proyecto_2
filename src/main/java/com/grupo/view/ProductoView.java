@@ -719,7 +719,7 @@ public class ProductoView extends JTabbedPane {
 
                 int actualizar = JOptionPane.showOptionDialog(
                         this,
-                        "¿Esta seguro de guardar los cambios",
+                        "¿Esta seguro de guardar los cambios?",
                         ComponentesTab.PRODUCTO_DETALLE.getTitulo(),
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE,
@@ -935,9 +935,9 @@ public class ProductoView extends JTabbedPane {
     private void nuevoRegistroFinalizar() {
         nuevoNombreTextField.setText("");
         nuevoMarcaTextField.setText("");
-        nuevoPrecioUSpinner.setValue(0.0);
+        nuevoPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         nuevoLineaTextField.setText("");
-        nuevoStockSpinner.setValue(0.0);
+        nuevoStockSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         nuevoObservacionTextArea.setText("");
         nuevoProductoButton.setEnabled(true);
         removeTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo());
@@ -1028,8 +1028,8 @@ public class ProductoView extends JTabbedPane {
     }
 
     private void nuevoProductoHRegistroFinalizar() {
-        detallePHCantidadSpinner.setValue(0.0);
-        detallePHPrecioUSpinner.setValue(0.0);
+        detallePHCantidadSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));;
+        detallePHPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));;
 
         detalleProductoHDialog.setVisible(false);
     }

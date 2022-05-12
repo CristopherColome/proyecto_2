@@ -81,6 +81,7 @@ public class VentaPrueba extends javax.swing.JFrame {
         nuevoComprobanteLabel = new javax.swing.JLabel();
         nuevoComprobanteComboBox = new javax.swing.JComboBox<>();
         nuevoProductojButton = new javax.swing.JButton();
+        nuevoProductoEliminarjButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -442,6 +443,13 @@ public class VentaPrueba extends javax.swing.JFrame {
             }
         });
 
+        nuevoProductoEliminarjButton.setText("Eliminar");
+        nuevoProductoEliminarjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoProductoEliminarjButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout registroPanelLayout = new javax.swing.GroupLayout(registroPanel);
         registroPanel.setLayout(registroPanelLayout);
         registroPanelLayout.setHorizontalGroup(
@@ -474,6 +482,8 @@ public class VentaPrueba extends javax.swing.JFrame {
                         .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(registroPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(nuevoProductoEliminarjButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(nuevoProductojButton))
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(22, 22, 22)
@@ -511,7 +521,9 @@ public class VentaPrueba extends javax.swing.JFrame {
                     .addComponent(nuevoProductojLabel)
                     .addGroup(registroPanelLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(nuevoProductojButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nuevoProductojButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nuevoProductoEliminarjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -597,6 +609,10 @@ public class VentaPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nuevoProductojButtonActionPerformed
 
+    private void nuevoProductoEliminarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoProductoEliminarjButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevoProductoEliminarjButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -675,6 +691,7 @@ public class VentaPrueba extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> nuevoComprobanteComboBox;
     private javax.swing.JLabel nuevoComprobanteLabel;
     private javax.swing.JLabel nuevoIGVjLabel;
+    private javax.swing.JButton nuevoProductoEliminarjButton;
     private javax.swing.JButton nuevoProductojButton;
     private javax.swing.JLabel nuevoProductojLabel;
     private javax.swing.JTable nuevoProductosTable;
