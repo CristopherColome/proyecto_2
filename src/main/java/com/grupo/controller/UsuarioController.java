@@ -6,6 +6,7 @@
 package com.grupo.controller;
 
 import static com.grupo.app.ApplicationConfig.getEntityManager;
+import com.grupo.entity.Cliente;
 import com.grupo.entity.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,41 @@ public class UsuarioController implements IUsuarioController {
             }
         }
         LOG.info("FIN DE LISTAR USUARIOS");
+        return usuarios;
+    }
+
+    @Override
+    public List<Usuario> consultar(String parametro) {
+        LOG.info("INICIO DE CONSULTA CLIENTES");
+
+        entityManager = getEntityManager();
+        List<Usuario> usuarios = new ArrayList<Usuario>();
+
+        try {
+            String sentencia = new StringBuilder()
+                    .append("SELECT U FROM Usuario U ")
+                    .append("WHERE  U.nombre  LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR U.username  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR U.id  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR U.apellidos  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR U.numeroDocumento  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR U.telefono  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR U.creador  LIKE CONCAT('%', :parametro ,'%')")
+                    .toString();
+            Query query = entityManager.createQuery(sentencia, Usuario.class);
+            query.setHint("eclipselink.refresh", true);
+            query.setParameter("parametro", parametro);
+
+            usuarios = query.getResultList();
+            LOG.info("Se obtuvo correctamente los clientes.");
+        } catch (Exception e) {
+            LOG.error("Ocurrió un error al consultar clientes : " + e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+        LOG.info("FIN DE CONSULTA CLIENTES");
         return usuarios;
     }
 
@@ -145,11 +181,6 @@ public class UsuarioController implements IUsuarioController {
 
     @Override
     public Boolean eliminar(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Usuario> consultar(String parametro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

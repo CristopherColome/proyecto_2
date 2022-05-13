@@ -578,10 +578,10 @@ public class ClienteView extends JTabbedPane {
 
     private void consultaBuscarTextFieldActionPerformed() {
         if (consultaBuscarTextField.getText().length() > 0) {
-            List<Cliente> productos = clienteController.consultar(consultaBuscarTextField.getText());
+            List<Cliente> clientes = clienteController.consultar(consultaBuscarTextField.getText());
 
-            if (productos.size() > 0) {
-                clientesTable.setModel(new ClienteTableModel(productos));
+            if (clientes.size() > 0) {
+                clientesTable.setModel(new ClienteTableModel(clientes));
             }
         }
     }

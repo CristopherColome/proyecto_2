@@ -36,6 +36,7 @@ public class MainView extends JFrame {
     private ProductoView productoView;
     private VentaView ventaView;
     private ClienteView clienteView;
+    private UsuarioView usuarioView;
 
     private Usuario usuario;
 
@@ -164,6 +165,8 @@ public class MainView extends JFrame {
         productoView = new ProductoView();
         ventaView = new VentaView();
         clienteView = new ClienteView();
+        usuarioView = new UsuarioView();
+
         principalPanel = new javax.swing.JPanel();
         principalToolBar = new javax.swing.JToolBar();
         productoButton = new javax.swing.JButton();
@@ -246,6 +249,7 @@ public class MainView extends JFrame {
         productoView.setVisible(false);
         ventaView.setVisible(false);
         clienteView.setVisible(false);
+        usuarioView.setVisible(false);
 
         componentePanel.setMinimumSize(new java.awt.Dimension(620, 480));
         componentePanel.setPreferredSize(new java.awt.Dimension(620, 480));
@@ -257,6 +261,7 @@ public class MainView extends JFrame {
                         .addComponent(productoView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ventaView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(clienteView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(usuarioView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(0, 620, Short.MAX_VALUE)
         );
         componentePanel1Layout.setVerticalGroup(
@@ -264,6 +269,7 @@ public class MainView extends JFrame {
                         .addComponent(productoView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ventaView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(clienteView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(usuarioView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -378,6 +384,7 @@ public class MainView extends JFrame {
                 case PRODUCTO:
                     clienteView.setVisible(false);
                     ventaView.setVisible(false);
+                    usuarioView.setVisible(false);
 
                     productoView.setUsuario(usuario);
                     productoView.setVisible(true);
@@ -386,6 +393,7 @@ public class MainView extends JFrame {
 
                     productoView.setVisible(false);
                     clienteView.setVisible(false);
+                    usuarioView.setVisible(false);
 
                     ventaView.setUsuario(usuario);
                     ventaView.setVisible(true);
@@ -394,12 +402,20 @@ public class MainView extends JFrame {
 
                     productoView.setVisible(false);
                     ventaView.setVisible(false);
+                    usuarioView.setVisible(false);
 
                     clienteView.setUsuario(usuario);
                     clienteView.setVisible(true);
 
                     break;
                 case USUARIO:
+
+                    productoView.setVisible(false);
+                    ventaView.setVisible(false);
+                    clienteView.setVisible(false);
+
+                    usuarioView.setUsuario(usuario);
+                    usuarioView.setVisible(true);
                     break;
                 case SALIR:
                     break;

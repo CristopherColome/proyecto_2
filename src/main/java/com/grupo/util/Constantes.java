@@ -61,7 +61,7 @@ public class Constantes {
         RUC,
         CE
     }
-    
+
     public enum VentaComprobante {
         BOLETA,
         FACTURA
@@ -76,7 +76,10 @@ public class Constantes {
         CLIENTE_DETALLE("Detalle de cliente"),
         VENTA_CONSULTA("Consulta de ventas"),
         VENTA_REGISTRO("Registro de venta"),
-        VENTA_DETALLE("Detalle de venta");
+        VENTA_DETALLE("Detalle de venta"),
+        USUARIO_CONSULTA("Consulta de usuarios"),
+        USUARIO_REGISTRO("Registro de usuario"),
+        USUARIO_DETALLE("Detalle de usuario");
         
         private final String titulo;
 
