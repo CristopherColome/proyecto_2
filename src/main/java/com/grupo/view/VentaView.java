@@ -25,18 +25,25 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractListModel;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -60,6 +67,7 @@ public class VentaView extends JTabbedPane {
     private javax.swing.JScrollPane ventasTableScrollPane;
     private javax.swing.JTable ventasTable;
     private javax.swing.JButton detalleVerVentaButton;
+    private Integer selectedVentasTable;
     // REGISTRO
     private Integer selectedClienteList;
     private Integer selectedProductoList;
@@ -98,11 +106,30 @@ public class VentaView extends JTabbedPane {
     private javax.swing.JTextField nuevoSelectProductoTextField;
     private javax.swing.JPanel nuevoVentaProductoPanel;
     private javax.swing.JLabel nuevoVentaProductoValidaLabel;
-
-    private javax.swing.JTable clienteVentaTable;
-    private javax.swing.JLabel deatlleEmailLabel;
-    private javax.swing.JTextField detalleApellidoTextField;
-    private javax.swing.JLabel detalleClienteLabel;
+    //DETALLE
+    private Venta detalleVenta;
+    private Boolean detalleInProgress = false;
+    private javax.swing.JComboBox<String> detalleComprobanteComboBox;
+    private javax.swing.JLabel detalleComprobanteLabel;
+    private javax.swing.JLabel detalleCorrelativoLabel;
+    private javax.swing.JTextField detalleCorrelativoTextField;
+    private javax.swing.JLabel detalleDocClienteLabel;
+    private javax.swing.JTextField detalleDocClienteTextField;
+    private javax.swing.JLabel detalleIGVjLabel;
+    private javax.swing.JLabel detalleNombreClienteLabel;
+    private javax.swing.JTextField detalleNombreClienteTextField;
+    private javax.swing.JPanel detallePanel;
+    private javax.swing.JLabel detalleProductojLabel;
+    private javax.swing.JTable detalleProductosTable;
+    private javax.swing.JButton detalleSalirButton;
+    private javax.swing.JButton detalleImprimirButton;
+    private javax.swing.JLabel detalleSerieLabel;
+    private javax.swing.JTextField detalleSerieTextField;
+    private javax.swing.JLabel detalleSubTotaljLabel;
+    private javax.swing.JLabel detalleTotaljLabel;
+    private javax.swing.JLabel detalleValidacionLabel;
+    private javax.swing.JLabel detalleVentaLabel;
+    private javax.swing.JScrollPane detalleProdcutoTableScrollPane;
 
     public VentaView() {
         initController();
@@ -164,6 +191,29 @@ public class VentaView extends JTabbedPane {
         nuevoAgregarProdjButton = new javax.swing.JButton();
         nuevoSelectProductoTextField = new javax.swing.JTextField();
         nuevoVentaProductoValidaLabel = new javax.swing.JLabel();
+        //DETALLE
+
+        detallePanel = new javax.swing.JPanel();
+        detalleVentaLabel = new javax.swing.JLabel();
+        detalleSerieLabel = new javax.swing.JLabel();
+        detalleSerieTextField = new javax.swing.JTextField();
+        detalleCorrelativoTextField = new javax.swing.JTextField();
+        detalleCorrelativoLabel = new javax.swing.JLabel();
+        detalleSalirButton = new javax.swing.JButton();
+        detalleImprimirButton = new javax.swing.JButton();
+        detalleValidacionLabel = new javax.swing.JLabel();
+        detalleComprobanteLabel = new javax.swing.JLabel();
+        detalleNombreClienteTextField = new javax.swing.JTextField();
+        detalleNombreClienteLabel = new javax.swing.JLabel();
+        detalleDocClienteTextField = new javax.swing.JTextField();
+        detalleDocClienteLabel = new javax.swing.JLabel();
+        detalleProductojLabel = new javax.swing.JLabel();
+        detalleProdcutoTableScrollPane = new javax.swing.JScrollPane();
+        detalleProductosTable = new javax.swing.JTable();
+        detalleSubTotaljLabel = new javax.swing.JLabel();
+        detalleIGVjLabel = new javax.swing.JLabel();
+        detalleTotaljLabel = new javax.swing.JLabel();
+        detalleComprobanteComboBox = new javax.swing.JComboBox<>();
 
         consultaBuscarLabel.setText("Buscar :");
 
@@ -196,29 +246,28 @@ public class VentaView extends JTabbedPane {
         ventasTableScrollPane.setViewportView(ventasTable);
         ventasTable.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-//                if (!detalleInProgress) {
-//                    int row = clientesTable.getSelectedRow();
-//
-//                    if (selectedProductosTable != null && selectedProductosTable.equals(row)) {
-//                        clientesTable.getSelectionModel().clearSelection();
-//                        selectedProductosTable = null;
-//                        detalleVerClienteButton.setVisible(false);
-//                    } else {
-//                        selectedProductosTable = row;
-//                        detalleVerClienteButton.setText("Cliente N°: " + clientesTable.getValueAt(row, 0));
-//                        detalleVerClienteButton.setVisible(true);
-//                    }
-//                }
+                if (!detalleInProgress) {
+                    int row = ventasTable.getSelectedRow();
+
+                    if (selectedVentasTable != null && selectedVentasTable.equals(row)) {
+                        ventasTable.getSelectionModel().clearSelection();
+                        selectedVentasTable = null;
+                        detalleVerVentaButton.setVisible(false);
+                    } else {
+                        selectedVentasTable = row;
+                        detalleVerVentaButton.setText("Venta N°: " + ventasTable.getValueAt(row, 0));
+                        detalleVerVentaButton.setVisible(true);
+                    }
+                }
             }
         });
 
         detalleVerVentaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
         detalleVerVentaButton.setText("Venta N°");
-//        detalleVerVentaButton.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                detalleVerVentaButtonActionPerformed(evt);
-//            }
-//        });
+        detalleVerVentaButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleVerVentaButtonActionPerformed(evt);
+        });
+
         detalleVerVentaButton.setVisible(false);
 
         javax.swing.GroupLayout consultaPanelLayout = new javax.swing.GroupLayout(consultaPanel);
@@ -550,6 +599,136 @@ public class VentaView extends JTabbedPane {
                                 .addGap(15, 15, 15))
         );
 
+        detalleVentaLabel.setText(" Detalle venta : N° ");
+
+        detalleSerieLabel.setText("Serie:");
+
+        detalleCorrelativoLabel.setText("Correlativo:");
+
+        detalleSalirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        detalleSalirButton.setToolTipText("Salir");
+        detalleSalirButton.addActionListener((java.awt.event.ActionEvent evt1) -> {
+            detalleSalirButtonActionPerformed(evt1);
+        });
+
+        detalleImprimirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
+        detalleImprimirButton.setToolTipText("imprimit");
+        detalleImprimirButton.addActionListener((java.awt.event.ActionEvent evt) -> {
+            detalleImprimirButtonActionPerformed(evt);
+        });
+
+        detalleValidacionLabel.setBackground(new java.awt.Color(255, 0, 0));
+        detalleValidacionLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        detalleValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
+        detalleValidacionLabel.setVisible(false);
+
+        detalleComprobanteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detalleComprobanteLabel.setText("Comprobante:");
+
+        detalleNombreClienteLabel.setText("<html><body>Nombre<br>cliente:</body></html>");
+
+        detalleDocClienteLabel.setText("<html><body>N° Doc<br>cliente:</body></html>");
+
+        detalleProductojLabel.setText("Productos:");
+
+        detalleProductosTable.setModel(new VentaProductoTableModel());
+        detalleProdcutoTableScrollPane.setViewportView(detalleProductosTable);
+
+        detalleSubTotaljLabel.setText("SubTotal:");
+
+        detalleIGVjLabel.setText("I:G.V(18%):");
+
+        detalleTotaljLabel.setText("Total:");
+
+        detalleComprobanteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"BOLETA", "FACTURA"}));
+
+        javax.swing.GroupLayout detallePanelLayout = new javax.swing.GroupLayout(detallePanel);
+        detallePanel.setLayout(detallePanelLayout);
+        detallePanelLayout.setHorizontalGroup(
+                detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(detalleVentaLabel)
+                                                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                                                .addComponent(detalleSerieLabel)
+                                                                .addGap(37, 37, 37)
+                                                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                                                                .addComponent(detalleSerieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(detalleCorrelativoLabel))
+                                                                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                                                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                                        .addComponent(detalleDocClienteTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                                                                        .addComponent(detalleNombreClienteTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(detalleComprobanteLabel)))))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
+                                                                                .addComponent(detalleImprimirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(detalleCorrelativoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(detalleComprobanteComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                                                .addComponent(detalleProdcutoTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(detalleSubTotaljLabel)
+                                                                        .addComponent(detalleIGVjLabel)
+                                                                        .addComponent(detalleTotaljLabel)))
+                                                        .addComponent(detalleNombreClienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(detalleDocClienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(detalleProductojLabel))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
+        );
+        detallePanelLayout.setVerticalGroup(
+                detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(detalleVentaLabel)
+                                        .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detalleImprimirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detalleSerieLabel)
+                                        .addComponent(detalleSerieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detalleCorrelativoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detalleCorrelativoLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detalleNombreClienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detalleNombreClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detalleComprobanteLabel)
+                                        .addComponent(detalleComprobanteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(detalleDocClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detalleDocClienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(detalleProductojLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(detalleProdcutoTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addGroup(detallePanelLayout.createSequentialGroup()
+                                                .addComponent(detalleSubTotaljLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(detalleIGVjLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(detalleTotaljLabel)
+                                                .addGap(0, 145, Short.MAX_VALUE))))
+        );
+
     }
 
     private void removeTab(String tabTitle) {
@@ -579,6 +758,195 @@ public class VentaView extends JTabbedPane {
                 nuevoSelectClientejList.setModel(new ClienteListModel(clientes));
             }
         }
+    }
+
+    private void detalleVerVentaButtonActionPerformed(ActionEvent evt) {
+        detalleInProgress = true;
+        ventasTable.setRowSelectionAllowed(false);
+        detalleVerVentaButton.setVisible(false);
+        nuevoVentaButton.setEnabled(false);
+
+        detalleVenta = ventaController.obtener(
+                (Integer) ventasTable.getValueAt(ventasTable.getSelectedRow(), 0)
+        );
+
+        fillDetalleVenta();
+
+        addTab(ComponentesTab.VENTA_DETALLE.getTitulo(), detallePanel);
+        setSelectedComponent(detallePanel);
+    }
+
+    private void fillDetalleVenta() {
+
+        Cliente clienteVenta = clienteController.obtener(detalleVenta.getIdCliente());
+
+        detalleVentaLabel.setText(" Detalle venta : N° " + detalleVenta.getId());
+
+        detalleSerieTextField.setText(detalleVenta.getSerie());
+        detalleSerieTextField.setEditable(false);
+
+        detalleCorrelativoTextField.setText(detalleVenta.getCorrelativo());
+        detalleCorrelativoTextField.setEditable(false);
+
+        detalleNombreClienteTextField.setText(
+                clienteVenta.getNombre() + ", " + clienteVenta.getApellidos()
+        );
+        detalleNombreClienteTextField.setEditable(false);
+
+        detalleDocClienteTextField.setText(clienteVenta.getNumeroDocumento());
+        detalleDocClienteTextField.setEditable(false);
+
+        if (!detalleVenta.getVentaItems().isEmpty()) {
+            detalleVenta.getVentaItems().stream()
+                    .forEach(p -> {
+                        Producto productoItem = productoController.obtener(p.getIdProducto());
+                        p.setDescripcion(productoItem.getNombre());
+                        p.setImporteTotal(
+                                Double.valueOf(new DecimalFormat("#.##").format(
+                                        p.getPrecioUnitario() * p.getCantidad()
+                                ))
+                        );
+                    });
+
+            Double subTotal = detalleVenta.getVentaItems().stream()
+                    .reduce(0.0d, (partialSubTotalResult, prod) -> partialSubTotalResult + prod.getImporteTotal(), Double::sum);
+
+            Double igv = 18.00d * subTotal / 100;
+
+            Double importeTotal = subTotal + igv;
+
+            detalleSubTotaljLabel.setText("SubTotal: " + new DecimalFormat("S/#.##").format(subTotal));
+
+            detalleIGVjLabel.setText("I:G.V(18%): " + new DecimalFormat("S/#.##").format(igv));
+
+            detalleTotaljLabel.setText("Total: " + new DecimalFormat("S/#.##").format(importeTotal));
+
+            detalleProductosTable.setModel(new VentaProductoTableModel(
+                    detalleVenta.getVentaItems()
+            ));
+
+        }
+    }
+
+    private void detalleSalirButtonActionPerformed(ActionEvent evt) {
+
+        detalleVentaLabel.setText("");
+
+        detalleSerieTextField.setText("");
+        detalleCorrelativoTextField.setText("");
+        detalleNombreClienteTextField.setText("");
+        detalleDocClienteTextField.setText("");
+
+        detalleProductosTable.setModel(new VentaProductoTableModel());
+        detalleProductosTable.setRowSelectionAllowed(true);
+
+        detalleInProgress = false;
+        nuevoVentaButton.setEnabled(true);
+
+        removeTab(ComponentesTab.VENTA_DETALLE.getTitulo());
+        setSelectedComponent(consultaPanel);
+
+    }
+
+    private void detalleImprimirButtonActionPerformed(ActionEvent evt) {
+        StringBuilder comprobanteBuild = new StringBuilder()
+                .append("                   BODEGA ROSITA                   \n")
+                .append("                COMPROBANTE DE VENTA               \n")
+                .append("****************************************************\n")
+                .append("CORRELATIVO:   {{correlativo}}                     \n")
+                .append("FECHA:         {{fechaCreacion}}                   \n")
+                .append("VENDEDOR:      {{creador}}                         \n")
+                .append("****************************************************\n")
+                .append("CLIENTE:       {{nombres}}                         \n")
+                .append("N°DOCUMENTO:   {{numeroDocumento}}                 \n")
+                .append("****************************************************\n")
+                .append("PRODUCTOS                                          \n")
+                .append("****************************************************\n");
+
+        for (ProductoHistorial ventaItem : detalleVenta.getVentaItems()) {
+            comprobanteBuild.append(ventaItem.getDescripcion())
+                    .append(" : ")
+                    .append(new DecimalFormat("S/#.##").format(ventaItem.getImporteTotal()))
+                    .append("\n");
+        }
+
+        Double subTotal = detalleVenta.getVentaItems().stream()
+                .reduce(0.0d, (partialSubTotalResult, prod) -> partialSubTotalResult + prod.getImporteTotal(), Double::sum);
+
+        Double igv = 18.00d * subTotal / 100;
+
+        Double importeTotal = subTotal + igv;
+
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        comprobanteBuild.append("****************************************************\n")
+                .append("SUBTOTAL:                                   ")
+                .append(new DecimalFormat("S/#.##").format(subTotal))
+                .append("\n")
+                .append("IGV(18%):                                   ")
+                .append(new DecimalFormat("S/#.##").format(igv))
+                .append("\n")
+                .append("TOTAL:                                      ")
+                .append(new DecimalFormat("S/#.##").format(importeTotal))
+                .append("\n")
+                .append("\n")
+                .append("FECHA CREACION:           ")
+                .append(parser.format(new Date()))
+                .append("\n")
+                .append("		¡GRACIAS POR SU COMPRA!               ");
+
+        Cliente clienteVenta = clienteController.obtener(detalleVenta.getIdCliente());
+
+        String comprobante = comprobanteBuild.toString();
+        comprobante = comprobante.replace("{{correlativo}}", detalleVenta.getCorrelativo());
+        comprobante = comprobante.replace("{{fechaCreacion}}", parser.format(detalleVenta.getFechaCreacion()));
+        comprobante = comprobante.replace("{{creador}}", detalleVenta.getCreador());
+        comprobante = comprobante.replace("{{nombres}}",
+                clienteVenta.getNombre() + ", " + clienteVenta.getApellidos()
+        );
+        comprobante = comprobante.replace("{{numeroDocumento}}", clienteVenta.getNumeroDocumento());
+
+        //GUARGAR ARCHIVO
+        JFileChooser fileChooser = new JFileChooser();
+        String defaultPath = System.getProperty("user.home");
+        String defaultNombreArchivo = detalleVenta.getCorrelativo() + ".txt";
+
+        File voucher = new File(defaultPath + "/" + defaultNombreArchivo);
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivo de texto", "txt", "text"));
+        fileChooser.setSelectedFile(voucher);
+
+        if (fileChooser.showSaveDialog(detallePanel) == JFileChooser.APPROVE_OPTION) {
+            try {
+                PrintWriter writeFile = null;
+
+                if (!defaultPath.equals(fileChooser.getCurrentDirectory().toString())
+                        && !defaultNombreArchivo.equals(fileChooser.getSelectedFile().getName())) {
+                    voucher = new File(
+                            fileChooser.getCurrentDirectory().toString()
+                            + "/"
+                            + fileChooser.getSelectedFile().getName());
+                }
+                if (!defaultNombreArchivo.equals(fileChooser.getSelectedFile().getName())) {
+                    voucher = new File(
+                            defaultPath
+                            + "/"
+                            + fileChooser.getSelectedFile().getName());
+                }
+                if (!defaultPath.equals(fileChooser.getCurrentDirectory().toString())) {
+                    voucher = new File(
+                            fileChooser.getCurrentDirectory().toString()
+                            + "/"
+                            + defaultNombreArchivo);
+                }
+
+                writeFile = new PrintWriter(voucher);
+                writeFile.println(comprobante);
+                writeFile.close();
+            } catch (FileNotFoundException ex) {
+                System.out.println("Ocurrió un error al guargar archivo");
+            }
+        }
+
     }
 
     private void nuevoVentaButtonActionPerformed(ActionEvent evt) {
@@ -711,6 +1079,8 @@ public class VentaView extends JTabbedPane {
         nuevoSubTotaljLabel.setText("SubTotal: ");
         nuevoIGVjLabel.setText("I:G.V(18%): ");
         nuevoTotaljLabel.setText("Total: ");
+
+        ventasTable.setRowSelectionAllowed(true);
 
         selectedProductoTable = null;
         nuevoVentaButton.setEnabled(true);

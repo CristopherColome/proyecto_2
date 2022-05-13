@@ -37,30 +37,6 @@ public class VentaPrueba extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         ventasTable = new javax.swing.JTable();
         detalleVerVentaButton = new javax.swing.JButton();
-        detallePanel = new javax.swing.JPanel();
-        detalleClienteLabel = new javax.swing.JLabel();
-        detalleNombreLabel = new javax.swing.JLabel();
-        detalleNombreTextField = new javax.swing.JTextField();
-        detalleApellidoTextField = new javax.swing.JTextField();
-        detalleMarcaLabel = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        clienteVentaTable = new javax.swing.JTable();
-        detalleProductoHLabel = new javax.swing.JLabel();
-        detalleEditarButton = new javax.swing.JButton();
-        detalleSalirButton = new javax.swing.JButton();
-        detalleValidacionLabel = new javax.swing.JLabel();
-        detalleNumeroDocLabel = new javax.swing.JLabel();
-        detalleNumeroDocTextField = new javax.swing.JTextField();
-        detalleTipoPersonajComboBox = new javax.swing.JComboBox<>();
-        detalleTIpoPersonaLabel = new javax.swing.JLabel();
-        detalleTipoDocULabel = new javax.swing.JLabel();
-        detalleTipoDocJComboBox = new javax.swing.JComboBox<>();
-        detalleDireccionTextField = new javax.swing.JTextField();
-        detalleDIreccionLabel = new javax.swing.JLabel();
-        detalleTelefonoLabel = new javax.swing.JLabel();
-        detalletelefonoTextField = new javax.swing.JTextField();
-        deatlleEmailLabel = new javax.swing.JLabel();
-        detalleEmailTextField = new javax.swing.JTextField();
         registroPanel = new javax.swing.JPanel();
         nuevoVentaLabel = new javax.swing.JLabel();
         nuevoSelecionCliLabel = new javax.swing.JLabel();
@@ -82,6 +58,26 @@ public class VentaPrueba extends javax.swing.JFrame {
         nuevoComprobanteComboBox = new javax.swing.JComboBox<>();
         nuevoProductojButton = new javax.swing.JButton();
         nuevoProductoEliminarjButton = new javax.swing.JButton();
+        detallePanel = new javax.swing.JPanel();
+        detalleVentaLabel = new javax.swing.JLabel();
+        detalleSerieLabel = new javax.swing.JLabel();
+        detalleSerieTextField = new javax.swing.JTextField();
+        detalleCorrelativoTextField = new javax.swing.JTextField();
+        detalleCorrelativoLabel = new javax.swing.JLabel();
+        detalleSalirButton = new javax.swing.JButton();
+        detalleComprobanteLabel = new javax.swing.JLabel();
+        detalleNombreClienteTextField = new javax.swing.JTextField();
+        detalleNombreClienteLabel = new javax.swing.JLabel();
+        detalleDocClienteTextField = new javax.swing.JTextField();
+        detalleDocClienteLabel = new javax.swing.JLabel();
+        detalleProductojLabel = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        detalleProductosTable = new javax.swing.JTable();
+        detalleSubTotaljLabel = new javax.swing.JLabel();
+        detalleIGVjLabel = new javax.swing.JLabel();
+        detalleTotaljLabel = new javax.swing.JLabel();
+        detalleComprobanteComboBox = new javax.swing.JComboBox<>();
+        detalleImprimirButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,192 +164,6 @@ public class VentaPrueba extends javax.swing.JFrame {
         );
 
         ventaTabbedPane.addTab("Consulta de ventas", consultaPanel);
-
-        detalleClienteLabel.setText(" Detalle cliente : N° ");
-
-        detalleNombreLabel.setText("Nombre:");
-
-        detalleApellidoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detalleApellidoTextFieldActionPerformed(evt);
-            }
-        });
-
-        detalleMarcaLabel.setText("Apellido:");
-
-        clienteVentaTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Correlativo", "Serie", "Importe Total", "Creador", "Creación"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(clienteVentaTable);
-        if (clienteVentaTable.getColumnModel().getColumnCount() > 0) {
-            clienteVentaTable.getColumnModel().getColumn(4).setResizable(false);
-            clienteVentaTable.getColumnModel().getColumn(4).setHeaderValue("Creación");
-        }
-
-        detalleProductoHLabel.setText("Historial de compras:");
-
-        detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
-        detalleEditarButton.setToolTipText("Editar");
-        detalleEditarButton.setMaximumSize(new java.awt.Dimension(55, 40));
-        detalleEditarButton.setMinimumSize(new java.awt.Dimension(55, 40));
-        detalleEditarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detalleEditarButtonActionPerformed(evt);
-            }
-        });
-
-        detalleSalirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
-        detalleSalirButton.setToolTipText("Salir");
-        detalleSalirButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detalleSalirButtonActionPerformed(evt);
-            }
-        });
-
-        detalleValidacionLabel.setBackground(new java.awt.Color(255, 0, 0));
-        detalleValidacionLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        detalleValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
-        detalleValidacionLabel.setText("EL campo {} es obligatorio.");
-
-        detalleNumeroDocLabel.setText("<html><body>Numero<br>documento:</body></html>");
-
-        detalleTipoPersonajComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NATURAL", "JURIDICA" }));
-
-        detalleTIpoPersonaLabel.setText("Tipo:");
-
-        detalleTipoDocULabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        detalleTipoDocULabel.setText("<html><body>Tipo<br>documento:</body></html>");
-
-        detalleTipoDocJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "RUC", "CE" }));
-
-        detalleDIreccionLabel.setText("DIrección:");
-
-        detalleTelefonoLabel.setText("Teléfono:");
-
-        deatlleEmailLabel.setText("Email:");
-
-        javax.swing.GroupLayout detallePanelLayout = new javax.swing.GroupLayout(detallePanel);
-        detallePanel.setLayout(detallePanelLayout);
-        detallePanelLayout.setHorizontalGroup(
-            detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detallePanelLayout.createSequentialGroup()
-                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                        .addComponent(detalleClienteLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(detalleValidacionLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(detalleEditarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(detallePanelLayout.createSequentialGroup()
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(detalleDireccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(detallePanelLayout.createSequentialGroup()
-                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(detalleNumeroDocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(detalleMarcaLabel)
-                                    .addComponent(detalleNombreLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(detalleNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(detalleApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(detalleNumeroDocTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(detallePanelLayout.createSequentialGroup()
-                                        .addComponent(detalleTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(detalleTipoPersonajComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(detalleTipoDocJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(detallePanelLayout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(detalleTIpoPersonaLabel))))
-                            .addGroup(detallePanelLayout.createSequentialGroup()
-                                .addComponent(detalleTelefonoLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(detalletelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(detallePanelLayout.createSequentialGroup()
-                                .addComponent(deatlleEmailLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(detalleEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(detallePanelLayout.createSequentialGroup()
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(detalleDIreccionLabel)
-                            .addComponent(detalleProductoHLabel))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        detallePanelLayout.setVerticalGroup(
-            detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detallePanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(detalleClienteLabel)
-                        .addComponent(detalleValidacionLabel))
-                    .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(detalleEditarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detallePanelLayout.createSequentialGroup()
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(detalleNombreLabel)
-                            .addComponent(detalleNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(detalleMarcaLabel)
-                            .addComponent(detalleApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(detallePanelLayout.createSequentialGroup()
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(detalleTIpoPersonaLabel)
-                            .addComponent(detalleTipoPersonajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(detallePanelLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(detalleTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(detalleTipoDocJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(18, 18, 18)
-                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(detalleNumeroDocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(detalleNumeroDocTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(detalleTelefonoLabel)
-                        .addComponent(detalletelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(detalleDireccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(detalleDIreccionLabel)
-                    .addComponent(deatlleEmailLabel)
-                    .addComponent(detalleEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(detalleProductoHLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        ventaTabbedPane.addTab("Detalle de venta", detallePanel);
 
         nuevoVentaLabel.setText("Nueva venta");
 
@@ -542,6 +352,158 @@ public class VentaPrueba extends javax.swing.JFrame {
 
         ventaTabbedPane.addTab("Registro de venta", registroPanel);
 
+        detalleVentaLabel.setText(" Detalle venta : N° ");
+
+        detalleSerieLabel.setText("Serie:");
+
+        detalleCorrelativoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detalleCorrelativoTextFieldActionPerformed(evt);
+            }
+        });
+
+        detalleCorrelativoLabel.setText("Correlativo:");
+
+        detalleSalirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        detalleSalirButton.setToolTipText("Salir");
+        detalleSalirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detalleSalirButtonActionPerformed(evt);
+            }
+        });
+
+        detalleComprobanteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detalleComprobanteLabel.setText("Comprobante:");
+
+        detalleNombreClienteLabel.setText("<html><body>Nombre<br>cliente:</body></html>");
+
+        detalleDocClienteLabel.setText("<html><body>N° Doc<br>cliente:</body></html>");
+
+        detalleProductojLabel.setText("Productos:");
+
+        detalleProductosTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Descripcion", "Cantidad", "Precio", "Importe"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(detalleProductosTable);
+
+        detalleSubTotaljLabel.setText("SubTotal:");
+
+        detalleIGVjLabel.setText("I:G.V(18%):");
+
+        detalleTotaljLabel.setText("Total:");
+
+        detalleComprobanteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOLETA", "FACTURA" }));
+
+        detalleImprimirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
+        detalleImprimirButton.setToolTipText("Salir");
+        detalleImprimirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detalleImprimirButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout detallePanelLayout = new javax.swing.GroupLayout(detallePanel);
+        detallePanel.setLayout(detallePanelLayout);
+        detallePanelLayout.setHorizontalGroup(
+            detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detallePanelLayout.createSequentialGroup()
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detallePanelLayout.createSequentialGroup()
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(detalleVentaLabel)
+                            .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addComponent(detalleSerieLabel)
+                                .addGap(37, 37, 37)
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(detallePanelLayout.createSequentialGroup()
+                                        .addComponent(detalleSerieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(detalleCorrelativoLabel))
+                                    .addGroup(detallePanelLayout.createSequentialGroup()
+                                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(detalleDocClienteTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                            .addComponent(detalleNombreClienteTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(detalleComprobanteLabel)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
+                                        .addComponent(detalleImprimirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(detalleCorrelativoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(detalleComprobanteComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(detallePanelLayout.createSequentialGroup()
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(detalleSubTotaljLabel)
+                                    .addComponent(detalleIGVjLabel)
+                                    .addComponent(detalleTotaljLabel)))
+                            .addComponent(detalleNombreClienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(detalleDocClienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(detalleProductojLabel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        detallePanelLayout.setVerticalGroup(
+            detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detallePanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(detalleVentaLabel)
+                    .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleImprimirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(detalleSerieLabel)
+                    .addComponent(detalleSerieTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleCorrelativoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleCorrelativoLabel))
+                .addGap(18, 18, 18)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(detalleNombreClienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleNombreClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleComprobanteLabel)
+                    .addComponent(detalleComprobanteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(detalleDocClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleDocClienteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(detalleProductojLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(detallePanelLayout.createSequentialGroup()
+                        .addComponent(detalleSubTotaljLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(detalleIGVjLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(detalleTotaljLabel)
+                        .addGap(0, 145, Short.MAX_VALUE))))
+        );
+
+        ventaTabbedPane.addTab("Detalle de venta", detallePanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -572,10 +534,6 @@ public class VentaPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nuevoCancelarButtonActionPerformed
 
-    private void detalleEditarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleEditarButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_detalleEditarButtonActionPerformed
-
     private void detalleSalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleSalirButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_detalleSalirButtonActionPerformed
@@ -584,9 +542,9 @@ public class VentaPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_detalleVerVentaButtonActionPerformed
 
-    private void detalleApellidoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleApellidoTextFieldActionPerformed
+    private void detalleCorrelativoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleCorrelativoTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_detalleApellidoTextFieldActionPerformed
+    }//GEN-LAST:event_detalleCorrelativoTextFieldActionPerformed
 
     private void nuevoSelectCliTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoSelectCliTextFieldActionPerformed
         // TODO add your handling code here:
@@ -612,6 +570,10 @@ public class VentaPrueba extends javax.swing.JFrame {
     private void nuevoProductoEliminarjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoProductoEliminarjButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nuevoProductoEliminarjButtonActionPerformed
+
+    private void detalleImprimirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleImprimirButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_detalleImprimirButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -656,37 +618,33 @@ public class VentaPrueba extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable clienteVentaTable;
     private javax.swing.JLabel consultaBuscarLabel;
     private javax.swing.JTextField consultaBuscarTextField;
     private javax.swing.JPanel consultaPanel;
-    private javax.swing.JLabel deatlleEmailLabel;
-    private javax.swing.JTextField detalleApellidoTextField;
-    private javax.swing.JLabel detalleClienteLabel;
-    private javax.swing.JLabel detalleDIreccionLabel;
-    private javax.swing.JTextField detalleDireccionTextField;
-    private javax.swing.JButton detalleEditarButton;
-    private javax.swing.JTextField detalleEmailTextField;
-    private javax.swing.JLabel detalleMarcaLabel;
-    private javax.swing.JLabel detalleNombreLabel;
-    private javax.swing.JTextField detalleNombreTextField;
-    private javax.swing.JLabel detalleNumeroDocLabel;
-    private javax.swing.JTextField detalleNumeroDocTextField;
+    private javax.swing.JComboBox<String> detalleComprobanteComboBox;
+    private javax.swing.JLabel detalleComprobanteLabel;
+    private javax.swing.JLabel detalleCorrelativoLabel;
+    private javax.swing.JTextField detalleCorrelativoTextField;
+    private javax.swing.JLabel detalleDocClienteLabel;
+    private javax.swing.JTextField detalleDocClienteTextField;
+    private javax.swing.JLabel detalleIGVjLabel;
+    private javax.swing.JButton detalleImprimirButton;
+    private javax.swing.JLabel detalleNombreClienteLabel;
+    private javax.swing.JTextField detalleNombreClienteTextField;
     private javax.swing.JPanel detallePanel;
-    private javax.swing.JLabel detalleProductoHLabel;
+    private javax.swing.JLabel detalleProductojLabel;
+    private javax.swing.JTable detalleProductosTable;
     private javax.swing.JButton detalleSalirButton;
-    private javax.swing.JLabel detalleTIpoPersonaLabel;
-    private javax.swing.JLabel detalleTelefonoLabel;
-    private javax.swing.JComboBox<String> detalleTipoDocJComboBox;
-    private javax.swing.JLabel detalleTipoDocULabel;
-    private javax.swing.JComboBox<String> detalleTipoPersonajComboBox;
-    private javax.swing.JLabel detalleValidacionLabel;
+    private javax.swing.JLabel detalleSerieLabel;
+    private javax.swing.JTextField detalleSerieTextField;
+    private javax.swing.JLabel detalleSubTotaljLabel;
+    private javax.swing.JLabel detalleTotaljLabel;
+    private javax.swing.JLabel detalleVentaLabel;
     private javax.swing.JButton detalleVerVentaButton;
-    private javax.swing.JTextField detalletelefonoTextField;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JButton nuevoCancelarButton;
     private javax.swing.JComboBox<String> nuevoComprobanteComboBox;
     private javax.swing.JLabel nuevoComprobanteLabel;
