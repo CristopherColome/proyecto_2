@@ -134,6 +134,7 @@ public class ProductoView extends JTabbedPane {
         productoHistorialController = new ProductoHistorialController();
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Código autogenerado del formulario">
     @SuppressWarnings("unchecked")
     private void initComponents() {
 //        productoTabbedPane = new javax.swing.JTabbedPane();
@@ -631,9 +632,10 @@ public class ProductoView extends JTabbedPane {
                                 .addContainerGap())
         );
 
-//        addTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo(), detallePanel);
+        //     addTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo(), detallePanel);
     }
 
+//</editor-fold>
     private void removeTab(String tabTitle) {
         for (int i = 0; i < getTabCount(); i++) {
             if (getTitleAt(i).equals(tabTitle)) {
@@ -643,44 +645,61 @@ public class ProductoView extends JTabbedPane {
         }
     }
 
+    //se activa al hacer clic sobre el botón buscar producto
     private void consultaBuscarTextFieldActionPerformed() {
+        //verifica que exista un texto
         if (consultaBuscarTextField.getText().length() > 0) {
+            //se usa el controlador de productos llamando a su funcion 'consultar'
+            //se agrega el producto encontrado a la lista de productos
             List<Producto> productos = productoController.consultar(consultaBuscarTextField.getText());
 
+            //si encuentra el producto
             if (productos.size() > 0) {
+                //carga el producto a la tabla de productos en memoria
                 productosTable.setModel(new ProductoTableModel(productos));
             }
-
         }
     }
 
+    //creación de nuevo producto
     private void nuevoProductoButtonActionPerformed(ActionEvent evt) {
         nuevoProductoButton.setEnabled(false);
         addTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo(), registroPanel);
         setSelectedComponent(registroPanel);
     }
 
+    //ver detalles del producto, se busca por Id seleccionado
     private void detalleVerProductoButtonActionPerformed(ActionEvent evt) {
         detalleInProgress = true;
         productosTable.setRowSelectionAllowed(false);
         detalleVerProductoButton.setVisible(false);
         nuevoProductoButton.setEnabled(false);
 
+        //obtiene el id del producto seleccionado usando el controlador
+        //se crea el objeto producto
         Producto productoDetalle = productoController.obtener(
                 (Integer) productosTable.getValueAt(productosTable.getSelectedRow(), 0)
         );
 
         detalleProducto = productoDetalle;
 
+        //carga datos del producto al formulario 
         fillDetalleProducto();
 
+        //agrega la pastaña de detalle del producto al formulario principal
         addTab(ComponentesTab.PRODUCTO_DETALLE.getTitulo(), detallePanel);
+
+        //marca al panel del producto como el formulario activo
         setSelectedComponent(detallePanel);
     }
 
+    //botón de edición y guardado de producto
     private void detalleEditarButtonActionPerformed(ActionEvent evt) {
 
-        if (!detalleEditarInProgress) {
+        //se evalua el estado para saber si se está guardando o editando el producto
+        if (!detalleEditarInProgress) { //se está editando
+
+            //habilita la edición del formulario
             detalleEditarInProgress = true;
 
             detalleNombreTextField.setEditable(true);
@@ -690,7 +709,7 @@ public class ProductoView extends JTabbedPane {
 
             detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png")));
             detalleSalirButton.setEnabled(false);
-        } else {
+        } else { //se está guardando
 
             boolean actualizacionValido = true;
 
@@ -717,6 +736,7 @@ public class ProductoView extends JTabbedPane {
 
                 String[] opciones = {"Sí", "No"};
 
+                //confirmación de guardado
                 int actualizar = JOptionPane.showOptionDialog(
                         this,
                         "¿Esta seguro de guardar los cambios?",
@@ -727,8 +747,11 @@ public class ProductoView extends JTabbedPane {
                         opciones,
                         opciones[1]);
 
+                //si responde que sí
                 if (actualizar == JOptionPane.YES_OPTION) {
 
+                    //inicia guardado
+                    //agrega datos al producto. valida antes que exista.
                     if (!detalleProducto.getNombre().equals(detalleNombreTextField.getText())) {
                         detalleProducto.setNombre(detalleNombreTextField.getText());
                     }
@@ -750,7 +773,9 @@ public class ProductoView extends JTabbedPane {
                     detalleSalirButton.setEnabled(true);
 
                     try {
+                        //guardado del producto haciendo uso de la función del controlador
                         if (productoController.actualizar(detalleProducto)) {
+                            //se vuelven a llenar los datos desde el objeto
                             fillDetalleProducto();
                         }
                     } catch (Exception e) {
@@ -760,9 +785,9 @@ public class ProductoView extends JTabbedPane {
                 }
             }
         }
-
     }
 
+    //llenado de campos del formulario de producto
     private void fillDetalleProducto() {
 
         if (detalleProducto.getObservaciones() == null) {
@@ -798,6 +823,7 @@ public class ProductoView extends JTabbedPane {
         }
     }
 
+    //salir del formulario
     private void detalleSalirButtonActionPerformed(ActionEvent evt) {
 
         detalleProductoLabel.setText("");
@@ -820,6 +846,7 @@ public class ProductoView extends JTabbedPane {
         setSelectedComponent(consultaPanel);
     }
 
+    //botón de creación de nuevo producto
     private void nuevoRegistrarButtonActionPerformed(ActionEvent evt) {
 
         boolean registroValido = true;
@@ -860,10 +887,12 @@ public class ProductoView extends JTabbedPane {
 
     }
 
+    //método de creación de producto
     private void registrarProducto() {
 
         String[] opciones = {"Sí", "No"};
 
+        //confirmación
         int registrar = JOptionPane.showOptionDialog(
                 this,
                 "Se registrará un nuevo producto.",
@@ -872,12 +901,16 @@ public class ProductoView extends JTabbedPane {
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 opciones,
-                opciones[1]);
+                opciones[0]);
 
         if (registrar == JOptionPane.YES_OPTION) {
+            //se crea nuevo objeto Producto
             Producto nuevoProducto = new Producto();
+
+            //se crea el objeto historia de producto
             ProductoHistorial nuevoProductoHistorial = new ProductoHistorial();
 
+            //se cargan los campos
             nuevoProducto.setNombre(nuevoNombreTextField.getText());
             nuevoProducto.setMarca(nuevoMarcaTextField.getText());
             nuevoProducto.setPrecioUnitario((Double) nuevoPrecioUSpinner.getValue());
@@ -890,10 +923,14 @@ public class ProductoView extends JTabbedPane {
 
             nuevoProducto.setCreador(usuario.getUsername());
             nuevoProducto.setFechaCreacion(new Date());
+
+            //se intenta guardar el objeto haciendo uso del controlador
             try {
                 productoController.registrar(nuevoProducto);
 
+                //mensaje de confirmación para la consola
                 System.out.println(nuevoProducto.toString());
+
                 //REGISTRO DE PRODUCTO HISTORIAL
                 nuevoProductoHistorial.setIdProducto(nuevoProducto.getId());
                 nuevoProductoHistorial.setOperacion(Constantes.ProductoOperacion.INGRESO.name());
@@ -905,8 +942,10 @@ public class ProductoView extends JTabbedPane {
 
                 productoHistorialController.registrar(nuevoProductoHistorial);
 
+                //limpieza del formulario
                 nuevoRegistroFinalizar();
 
+                //si hay un error muestra el mensaje de error
             } catch (Exception e) {
                 nuevoValidacionLabel.setText(e.getMessage());
                 nuevoValidacionLabel.setVisible(true);
@@ -914,6 +953,19 @@ public class ProductoView extends JTabbedPane {
         }
     }
 
+    private void nuevoRegistroFinalizar() {
+        nuevoNombreTextField.setText("");
+        nuevoMarcaTextField.setText("");
+        nuevoPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        nuevoLineaTextField.setText("");
+        nuevoStockSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        nuevoObservacionTextArea.setText("");
+        nuevoProductoButton.setEnabled(true);
+        removeTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo());
+        setSelectedComponent(consultaPanel);
+    }
+
+    //cancela la creación del nuevo producto
     private void nuevoCancelarButtonActionPerformed(ActionEvent evt) {
         String[] opciones = {"Sí", "No"};
 
@@ -932,18 +984,7 @@ public class ProductoView extends JTabbedPane {
         }
     }
 
-    private void nuevoRegistroFinalizar() {
-        nuevoNombreTextField.setText("");
-        nuevoMarcaTextField.setText("");
-        nuevoPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
-        nuevoLineaTextField.setText("");
-        nuevoStockSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
-        nuevoObservacionTextArea.setText("");
-        nuevoProductoButton.setEnabled(true);
-        removeTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo());
-        setSelectedComponent(consultaPanel);
-    }
-
+    //botón de agregado de registro de compra o ingreso del producto
     private void detalleAgregarPButtonActionPerformed(ActionEvent ev) {
 
         JOptionPane detalleProductoHOP = new JOptionPane();
@@ -954,6 +995,7 @@ public class ProductoView extends JTabbedPane {
 
     }
 
+    //aceptar guardado de compra o ingreso
     private void detalleRegistrarPHButtonActionPerformed(ActionEvent ev) {
         boolean registroValido = true;
 
@@ -1027,13 +1069,17 @@ public class ProductoView extends JTabbedPane {
         }
     }
 
+    //finaliza el ingreso de compra
     private void nuevoProductoHRegistroFinalizar() {
         detallePHCantidadSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));;
         detallePHPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));;
 
         detalleProductoHDialog.setVisible(false);
     }
-
+    
+    
+    //<editor-fold defaultstate="collapsed" desc="Código autogenerado del formulario">
+        
     private class ProductoTableModel extends AbstractTableModel {
 
         private String[] columnNames
@@ -1223,4 +1269,7 @@ public class ProductoView extends JTabbedPane {
         }
 
     }
+    
+    //</editor-fold>
+    
 }

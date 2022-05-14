@@ -111,6 +111,7 @@ public class ClienteView extends JTabbedPane {
         clienteController = new ClienteController();
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Código de diseño del formulario autogenerado">
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
@@ -196,8 +197,9 @@ public class ClienteView extends JTabbedPane {
         clientesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         clientesTable.setRowSelectionAllowed(true);
 
+        //evento para que aparezca botón de consulta al hacer clic sobre la fila
         clienteTableScrollPane.setViewportView(clientesTable);
-        clientesTable.addMouseListener(new MouseAdapter() {
+        clientesTable.addMouseListener(new MouseAdapter() {            
             public void mouseClicked(MouseEvent e) {
                 if (!detalleInProgress) {
                     int row = clientesTable.getSelectedRow();
@@ -566,7 +568,8 @@ public class ClienteView extends JTabbedPane {
         );
 
     }
-
+//</editor-fold>
+    
     private void removeTab(String tabTitle) {
         for (int i = 0; i < getTabCount(); i++) {
             if (getTitleAt(i).equals(tabTitle)) {
@@ -576,6 +579,7 @@ public class ClienteView extends JTabbedPane {
         }
     }
 
+    
     private void consultaBuscarTextFieldActionPerformed() {
         if (consultaBuscarTextField.getText().length() > 0) {
             List<Cliente> clientes = clienteController.consultar(consultaBuscarTextField.getText());

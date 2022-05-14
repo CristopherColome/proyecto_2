@@ -366,7 +366,6 @@ public class MainView extends JFrame {
         } catch (Exception e) {
             System.out.println("Error al designar menu: " + e.getMessage());
         }
-
     }
 
     private void loginPropertyChangeEvent(PropertyChangeEvent event) {

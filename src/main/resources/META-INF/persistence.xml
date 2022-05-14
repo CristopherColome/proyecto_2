@@ -9,10 +9,10 @@
     <class>com.grupo.entity.Usuario</class>
     <class>com.grupo.entity.Venta</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.16.100.140:3306/bodega?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/bodega?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="root"/>
+      <property name="javax.persistence.jdbc.password" value="UTPsc,2022"/>
       <property name="eclipselink.logging.level" value="FINE"/>
     </properties>
   </persistence-unit>
