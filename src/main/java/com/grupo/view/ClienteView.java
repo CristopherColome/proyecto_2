@@ -111,8 +111,8 @@ public class ClienteView extends JTabbedPane {
         clienteController = new ClienteController();
     }
 
-    //<editor-fold defaultstate="collapsed" desc="Código de diseño del formulario autogenerado">
     @SuppressWarnings("unchecked")
+    //<editor-fold defaultstate="collapsed" desc="Código de diseño del formulario autogenerado">
     private void initComponents() {
 
         consultaPanel = new javax.swing.JPanel();
@@ -175,6 +175,9 @@ public class ClienteView extends JTabbedPane {
         consultaBuscarTextField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void removeUpdate(DocumentEvent e) {
+                if (consultaBuscarTextField.getText().length() == 0) {
+                    clientesTable.setModel(new ClienteTableModel(clienteController.listar()));
+                }
             }
 
             @Override
@@ -193,13 +196,13 @@ public class ClienteView extends JTabbedPane {
             nuevoClienteButtonActionPerformed(evt);
         });
 
-        clientesTable.setModel(new ClienteTableModel());
+        clientesTable.setModel(new ClienteTableModel(clienteController.listar()));
         clientesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         clientesTable.setRowSelectionAllowed(true);
 
         //evento para que aparezca botón de consulta al hacer clic sobre la fila
         clienteTableScrollPane.setViewportView(clientesTable);
-        clientesTable.addMouseListener(new MouseAdapter() {            
+        clientesTable.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (!detalleInProgress) {
                     int row = clientesTable.getSelectedRow();
@@ -569,7 +572,7 @@ public class ClienteView extends JTabbedPane {
 
     }
 //</editor-fold>
-    
+
     private void removeTab(String tabTitle) {
         for (int i = 0; i < getTabCount(); i++) {
             if (getTitleAt(i).equals(tabTitle)) {
@@ -579,7 +582,6 @@ public class ClienteView extends JTabbedPane {
         }
     }
 
-    
     private void consultaBuscarTextFieldActionPerformed() {
         if (consultaBuscarTextField.getText().length() > 0) {
             List<Cliente> clientes = clienteController.consultar(consultaBuscarTextField.getText());
@@ -700,6 +702,9 @@ public class ClienteView extends JTabbedPane {
         nuevotelefonoTextField.setText("");
         nuevoDireccionTextField.setText("");
         nuevoEmailTextField.setText("");
+
+        clientesTable.setModel(new ClienteTableModel(clienteController.listar()));
+        clientesTable.setRowSelectionAllowed(true);
 
         nuevoClienteButton.setEnabled(true);
         removeTab(ComponentesTab.CLIENTE_REGISTRO.getTitulo());
@@ -867,7 +872,12 @@ public class ClienteView extends JTabbedPane {
                         detalleValidacionLabel.setText(e.getMessage());
                         detalleValidacionLabel.setVisible(true);
                     }
+                } else {
+                    detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
+                    detalleEditarInProgress = false;
+                    detalleSalirButton.setEnabled(true);
 
+                    fillDetalleCliente();
                 }
             }
         }

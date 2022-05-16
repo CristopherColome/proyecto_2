@@ -71,7 +71,7 @@ public class VentaProductoPrueba extends javax.swing.JFrame {
         nuevoVentaProductoValidaLabel.setBackground(new java.awt.Color(255, 0, 0));
         nuevoVentaProductoValidaLabel.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         nuevoVentaProductoValidaLabel.setForeground(new java.awt.Color(255, 0, 0));
-        nuevoVentaProductoValidaLabel.setText("EL campo {} es obligatorio.");
+        nuevoVentaProductoValidaLabel.setText("La cantidad seleccionada supera al stock.");
 
         javax.swing.GroupLayout nuevoVentaProductoPanelLayout = new javax.swing.GroupLayout(nuevoVentaProductoPanel);
         nuevoVentaProductoPanel.setLayout(nuevoVentaProductoPanelLayout);
@@ -86,48 +86,52 @@ public class VentaProductoPrueba extends javax.swing.JFrame {
                                 .addGap(31, 31, 31))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nuevoVentaProductoPanelLayout.createSequentialGroup()
                                 .addComponent(nuevoSeleccionProdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addGap(18, 18, 18)))
                         .addGroup(nuevoVentaProductoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nuevoSelectProductoTextField)
                             .addComponent(jScrollPane1)
-                            .addComponent(nuevoSelectProductoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-                            .addComponent(nuevoCantidadSpinner)))
-                    .addGroup(nuevoVentaProductoPanelLayout.createSequentialGroup()
+                            .addComponent(nuevoCantidadSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nuevoVentaProductoPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(nuevoAgregarProdjButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nuevoVentaProductoValidaLabel)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(nuevoVentaProductoValidaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nuevoAgregarProdjButton)))
+                .addContainerGap())
         );
         nuevoVentaProductoPanelLayout.setVerticalGroup(
             nuevoVentaProductoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nuevoVentaProductoPanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(nuevoVentaProductoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nuevoSeleccionProdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nuevoSelectProductoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(nuevoVentaProductoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(nuevoVentaProductoPanelLayout.createSequentialGroup()
-                        .addComponent(nuevoSelectProductoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(nuevoSeleccionProdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(nuevoVentaProductoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nuevoCantidadJLabel)
                     .addComponent(nuevoCantidadSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addGroup(nuevoVentaProductoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nuevoAgregarProdjButton)
                     .addComponent(nuevoVentaProductoValidaLabel))
-                .addGap(15, 15, 15))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(nuevoVentaProductoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(nuevoVentaProductoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(nuevoVentaProductoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(nuevoVentaProductoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

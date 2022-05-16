@@ -58,7 +58,7 @@ public class VentaController implements IVentaController {
         List<Venta> ventas = new ArrayList<Venta>();
 
         try {
-            ventas = entityManager.createQuery("SELECT V FROM Venta V", Venta.class).getResultList();
+            ventas = entityManager.createQuery("SELECT V FROM Venta V LEFT JOIN V.cliente C ON C.idPersona = V.cliente.id", Venta.class).getResultList();
             LOG.info("Se obtuvo correctamente las ventas.");
         } catch (Exception e) {
             LOG.error("Ocurrió un error al listar ventas : " + e);
@@ -81,10 +81,14 @@ public class VentaController implements IVentaController {
         try {
             String sentencia = new StringBuilder()
                     .append("SELECT V FROM Venta V ")
+                    .append("LEFT JOIN V.cliente C ON C.idPersona = V.cliente.id ")
                     .append("WHERE  V.serie  LIKE CONCAT('%', :parametro ,'%') ")
-                    .append("OR V.id  LIKE CONCAT('%', :parametro ,'%')")
-                    .append("OR V.correlativo  LIKE CONCAT('%', :parametro ,'%')")
-                    .append("OR V.comprobante  LIKE CONCAT('%', :parametro ,'%')")
+                    .append("OR V.id  LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR V.correlativo  LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR V.comprobante  LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR C.nombre LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR C.apellidos LIKE CONCAT('%', :parametro ,'%') ")
+                    .append("OR C.numeroDocumento LIKE CONCAT('%', :parametro ,'%')")
                     .toString();
             Query query = entityManager.createQuery(sentencia, Producto.class);
             query.setHint("eclipselink.refresh", true);
@@ -112,7 +116,7 @@ public class VentaController implements IVentaController {
 
         try {
             Query query = entityManager.createQuery(
-                    "SELECT V FROM Venta V LEFT JOIN V.ventaItems VI ON VI.idVenta = V.id WHERE V.id = :id",
+                    "SELECT V FROM Venta V LEFT JOIN V.ventaItems VI ON VI.idVenta = V.id  LEFT JOIN V.cliente C ON C.idPersona = V.cliente.id WHERE V.id = :id",
                     Venta.class
             );
             query.setHint("eclipselink.refresh", true);

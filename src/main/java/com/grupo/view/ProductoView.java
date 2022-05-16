@@ -205,6 +205,9 @@ public class ProductoView extends JTabbedPane {
         consultaBuscarTextField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void removeUpdate(DocumentEvent e) {
+                if (consultaBuscarTextField.getText().length() == 0) {
+                    productosTable.setModel(new ProductoTableModel(productoController.listar()));
+                }
             }
 
             @Override
@@ -230,7 +233,7 @@ public class ProductoView extends JTabbedPane {
         });
         detalleVerProductoButton.setVisible(false);
 
-        productosTable.setModel(new ProductoTableModel());
+        productosTable.setModel(new ProductoTableModel(productoController.listar()));
 
         productosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         productosTable.setRowSelectionAllowed(true);
@@ -782,6 +785,14 @@ public class ProductoView extends JTabbedPane {
                         detalleValidacionLabel.setText(e.getMessage());
                         detalleValidacionLabel.setVisible(true);
                     }
+                } else {
+
+                    detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
+                    detalleEditarInProgress = false;
+                    detalleSalirButton.setEnabled(true);
+
+                    fillDetalleProducto();
+
                 }
             }
         }
@@ -829,9 +840,9 @@ public class ProductoView extends JTabbedPane {
         detalleProductoLabel.setText("");
         detalleNombreTextField.setText("");
         detalleMarcaTextField.setText("");
-        detallePrecioUSpinner.setValue(0.0);
+        detallePrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));;
         detalleLineaTextField.setText("");
-        detalleStockSpinner.setValue(0.0);
+        detalleStockSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));;
         detalleObservacionTextArea.setText("");
 
         productoHTable.setModel(
@@ -954,13 +965,19 @@ public class ProductoView extends JTabbedPane {
     }
 
     private void nuevoRegistroFinalizar() {
+
         nuevoNombreTextField.setText("");
         nuevoMarcaTextField.setText("");
         nuevoPrecioUSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         nuevoLineaTextField.setText("");
         nuevoStockSpinner.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         nuevoObservacionTextArea.setText("");
+
+        productosTable.setModel(new ProductoTableModel(productoController.listar()));
+        productosTable.setRowSelectionAllowed(true);
+
         nuevoProductoButton.setEnabled(true);
+
         removeTab(ComponentesTab.PRODUCTO_REGISTRO.getTitulo());
         setSelectedComponent(consultaPanel);
     }
@@ -988,7 +1005,7 @@ public class ProductoView extends JTabbedPane {
     private void detalleAgregarPButtonActionPerformed(ActionEvent ev) {
 
         JOptionPane detalleProductoHOP = new JOptionPane();
-        detalleProductoHDialog = detalleProductoHOP.createDialog(ComponentesTab.VENTA_REGISTRO.getTitulo());
+        detalleProductoHDialog = detalleProductoHOP.createDialog(ComponentesTab.PRODUCTO_DETALLE.getTitulo());
         detalleProductoHDialog.setSize(333, 266);
         detalleProductoHDialog.setContentPane(detalleProductoHPanel);
         detalleProductoHDialog.setVisible(true);
@@ -1076,10 +1093,8 @@ public class ProductoView extends JTabbedPane {
 
         detalleProductoHDialog.setVisible(false);
     }
-    
-    
+
     //<editor-fold defaultstate="collapsed" desc="Código autogenerado del formulario">
-        
     private class ProductoTableModel extends AbstractTableModel {
 
         private String[] columnNames
@@ -1269,7 +1284,6 @@ public class ProductoView extends JTabbedPane {
         }
 
     }
-    
+
     //</editor-fold>
-    
 }

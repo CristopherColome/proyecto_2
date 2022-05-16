@@ -15,6 +15,16 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+--
+-- Recreate schema
+--
+DROP SCHEMA IF EXISTS `bodega`;
+
+CREATE SCHEMA `bodega`;
+
+USE `bodega`;
+
 --
 -- Table structure for table `tb_cliente`
 --
@@ -36,7 +46,7 @@ CREATE TABLE `tb_cliente` (
 
 LOCK TABLES `tb_cliente` WRITE;
 /*!40000 ALTER TABLE `tb_cliente` DISABLE KEYS */;
-INSERT INTO `tb_cliente` VALUES (2),(3),(4),(5),(6),(7),(10),(11);
+INSERT INTO `tb_cliente` VALUES (2),(3),(4),(5),(6),(7),(10),(11),(13);
 /*!40000 ALTER TABLE `tb_cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +73,7 @@ CREATE TABLE `tb_persona` (
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_modificacion` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +82,7 @@ CREATE TABLE `tb_persona` (
 
 LOCK TABLES `tb_persona` WRITE;
 /*!40000 ALTER TABLE `tb_persona` DISABLE KEYS */;
-INSERT INTO `tb_persona` VALUES (1,'U','NATURAL','administrador','administrador','DNI','0000000','LOCAL','000000000','administrador@bodega.com','admin',NULL,'2022-05-03 15:42:12','2022-05-05 15:12:18'),(2,'C','NATURAL','cliente','uno','DNI','11111111',NULL,NULL,NULL,'admin',NULL,'2022-05-03 15:50:42','2022-05-05 15:12:18'),(3,'C','NATURAL','a','a1','DNI','22222222',NULL,NULL,NULL,'admin',NULL,'2022-05-03 18:54:51','2022-05-05 15:12:18'),(4,'C','NATURAL','b','b_0','DNI','333333333',NULL,NULL,NULL,'admin','admin','2022-05-03 18:56:07','2022-05-05 15:12:18'),(5,'C','NATURAL','b','b2','DNI','333333333',NULL,NULL,NULL,'admin','admin','2022-05-03 21:35:45','2022-05-05 15:12:18'),(6,'C','NATURAL','c','c1','DNI','444444444',NULL,NULL,NULL,'admin',NULL,'2022-05-04 14:54:26','2022-05-05 15:12:18'),(7,'C','NATURAL','d','d_1','DNI','55555555',NULL,NULL,NULL,'admin','admin','2022-05-04 14:55:04','2022-05-05 15:12:18'),(9,'U','NATURAL','ven','ta','DNI','88888888',NULL,NULL,NULL,'admin','admin','2022-05-04 15:40:16','2022-05-05 15:12:18'),(10,'C','JURIDICO','f','f1','RUC','99999999','','','','admin','admin','2022-05-05 15:27:37','2022-05-11 14:23:16'),(11,'C','NATURAL','ALF','NEP','DNI','99999999',NULL,NULL,NULL,'admin',NULL,'2022-05-10 21:42:36',NULL),(12,'U','NATURAL','almac','en','DNI','78878787',NULL,NULL,NULL,'admin',NULL,'2022-05-13 21:15:15',NULL);
+INSERT INTO `tb_persona` VALUES (1,'U','NATURAL','administrador','administrador','DNI','0000000','LOCAL','000000000','administrador@bodega.com','admin',NULL,'2022-05-03 15:42:12','2022-05-05 15:12:18'),(2,'C','NATURAL','cliente','uno','DNI','11111111',NULL,NULL,NULL,'admin',NULL,'2022-05-03 15:50:42','2022-05-05 15:12:18'),(3,'C','NATURAL','a','a1','DNI','22222222',NULL,NULL,NULL,'admin',NULL,'2022-05-03 18:54:51','2022-05-05 15:12:18'),(4,'C','NATURAL','b','b_0','DNI','333333333',NULL,NULL,NULL,'admin','admin','2022-05-03 18:56:07','2022-05-05 15:12:18'),(5,'C','NATURAL','b','b2','DNI','333333333',NULL,NULL,NULL,'admin','admin','2022-05-03 21:35:45','2022-05-05 15:12:18'),(6,'C','NATURAL','c','c1','DNI','444444444',NULL,NULL,NULL,'admin',NULL,'2022-05-04 14:54:26','2022-05-05 15:12:18'),(7,'C','NATURAL','d','d_1','DNI','55555555',NULL,NULL,NULL,'admin','admin','2022-05-04 14:55:04','2022-05-05 15:12:18'),(9,'U','NATURAL','ven','ta','DNI','88888888',NULL,NULL,NULL,'admin','admin','2022-05-04 15:40:16','2022-05-05 15:12:18'),(10,'C','JURIDICO','f','f1','RUC','99999999','','','','admin','admin','2022-05-05 15:27:37','2022-05-11 14:23:16'),(11,'C','NATURAL','ALF','NEP','DNI','99999999','av sol','','','admin','admin','2022-05-10 21:42:36','2022-05-16 16:05:51'),(12,'U','NATURAL','almac','en','DNI','78878787',NULL,NULL,NULL,'admin',NULL,'2022-05-13 21:15:15',NULL),(13,'C','NATURAL','juan','son','DNI','12211221',NULL,NULL,NULL,'admin',NULL,'2022-05-16 16:35:54',NULL);
 /*!40000 ALTER TABLE `tb_persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +106,7 @@ CREATE TABLE `tb_producto` (
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_modificacion` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +115,7 @@ CREATE TABLE `tb_producto` (
 
 LOCK TABLES `tb_producto` WRITE;
 /*!40000 ALTER TABLE `tb_producto` DISABLE KEYS */;
-INSERT INTO `tb_producto` VALUES (1,'ARROZ ROMPE OLLA','FARAON','ABARROTES',3.70,93.50,'','admin','admin','2022-05-04 15:50:33','2022-05-12 20:57:53'),(3,'ATUN SARDINA','CAMPOMAR','CONSERVA',6.00,90.00,'','admin','admin','2022-05-09 17:03:23','2022-05-12 20:55:43'),(4,'ACEITE','PRIMOR','ABARROTES',10.00,84.00,'test','admin','admin','2022-05-09 17:13:21','2022-05-13 19:25:01'),(5,'HARINA','BLANCA FLOR','ABRROTES',8.50,48.00,NULL,'admin','admin','2022-05-13 19:24:21','2022-05-13 19:25:01');
+INSERT INTO `tb_producto` VALUES (1,'ARROZ ROMPE OLLA','FARAON','ABARROTES',3.70,91.00,'','admin','admin','2022-05-04 15:50:33','2022-05-16 15:18:56'),(3,'ATUN SARDINA','CAMPOMAR','CONSERVA',6.00,87.00,'','admin','admin','2022-05-09 17:03:23','2022-05-16 16:30:15'),(4,'ACEITE','PRIMOR','ABARROTES',10.00,78.00,'test','admin','admin','2022-05-09 17:13:21','2022-05-16 16:30:15'),(5,'HARINA','BLANCA FLOR','ABRROTES',8.50,48.00,NULL,'admin','admin','2022-05-13 19:24:21','2022-05-13 19:25:01'),(6,'queso','Laive','LACTEOS',5.60,78.00,'nuevo ingreso','admin','admin','2022-05-16 16:35:04','2022-05-16 16:36:35');
 /*!40000 ALTER TABLE `tb_producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +140,7 @@ CREATE TABLE `tb_producto_historial` (
   KEY `fk_tb_producto_historial_2_idx` (`id_venta`),
   CONSTRAINT `fk_tb_producto_historial_1` FOREIGN KEY (`id_producto`) REFERENCES `tb_producto` (`id`),
   CONSTRAINT `fk_tb_producto_historial_2` FOREIGN KEY (`id_venta`) REFERENCES `tb_venta` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +149,7 @@ CREATE TABLE `tb_producto_historial` (
 
 LOCK TABLES `tb_producto_historial` WRITE;
 /*!40000 ALTER TABLE `tb_producto_historial` DISABLE KEYS */;
-INSERT INTO `tb_producto_historial` VALUES (1,1,NULL,'INGRESO',10.00,3.60,'admin','2022-05-04 16:00:53'),(2,1,1,'SALIDA',10.00,3.60,'admin','2022-05-04 16:05:51'),(3,3,NULL,'INGRESO',50.00,5.00,'admin','2022-05-09 17:03:24'),(4,4,NULL,'INGRESO',77.00,9.50,'admin','2022-05-09 17:13:21'),(5,3,NULL,'INGRESO',5.00,5.00,'admin','2022-05-09 23:15:05'),(6,3,NULL,'INGRESO',15.00,5.00,'admin','2022-05-09 23:18:06'),(7,3,NULL,'INGRESO',10.00,5.50,'admin','2022-05-10 14:14:38'),(8,3,NULL,'INGRESO',10.00,5.50,'admin','2022-05-10 14:23:51'),(9,3,NULL,'INGRESO',15.00,6.00,'admin','2022-05-10 14:28:02'),(10,3,NULL,'INGRESO',4.00,5.50,'admin','2022-05-10 14:34:22'),(11,3,NULL,'INGRESO',1.00,6.00,'admin','2022-05-10 14:42:30'),(12,3,NULL,'INGRESO',2.00,3.00,'admin','2022-05-10 14:45:22'),(13,3,NULL,'INGRESO',3.00,4.00,'admin','2022-05-10 14:49:02'),(14,3,NULL,'INGRESO',2.00,3.20,'admin','2022-05-10 14:51:46'),(15,3,NULL,'INGRESO',4.00,5.00,'admin','2022-05-10 14:52:22'),(16,3,NULL,'INGRESO',0.00,0.00,'admin','2022-05-10 14:52:30'),(17,3,NULL,'INGRESO',5.00,5.00,'admin','2022-05-10 14:52:49'),(18,1,NULL,'INGRESO',5.00,3.70,'admin','2022-05-10 14:54:27'),(19,4,NULL,'INGRESO',8.00,10.00,'admin','2022-05-10 15:12:21'),(20,3,NULL,'INGRESO',1.00,6.00,'admin','2022-05-12 20:48:24'),(22,1,2,'SALIDA',11.50,3.70,'admin','2022-05-12 20:57:52'),(23,5,NULL,'INGRESO',50.00,8.50,'admin','2022-05-13 19:24:21'),(24,5,3,'SALIDA',2.00,8.50,'admin','2022-05-13 19:25:00'),(25,4,3,'SALIDA',1.00,10.00,'admin','2022-05-13 19:25:00');
+INSERT INTO `tb_producto_historial` VALUES (1,1,NULL,'INGRESO',10.00,3.60,'admin','2022-05-04 16:00:53'),(2,1,1,'SALIDA',10.00,3.60,'admin','2022-05-04 16:05:51'),(3,3,NULL,'INGRESO',50.00,5.00,'admin','2022-05-09 17:03:24'),(4,4,NULL,'INGRESO',77.00,9.50,'admin','2022-05-09 17:13:21'),(5,3,NULL,'INGRESO',5.00,5.00,'admin','2022-05-09 23:15:05'),(6,3,NULL,'INGRESO',15.00,5.00,'admin','2022-05-09 23:18:06'),(7,3,NULL,'INGRESO',10.00,5.50,'admin','2022-05-10 14:14:38'),(8,3,NULL,'INGRESO',10.00,5.50,'admin','2022-05-10 14:23:51'),(9,3,NULL,'INGRESO',15.00,6.00,'admin','2022-05-10 14:28:02'),(10,3,NULL,'INGRESO',4.00,5.50,'admin','2022-05-10 14:34:22'),(11,3,NULL,'INGRESO',1.00,6.00,'admin','2022-05-10 14:42:30'),(12,3,NULL,'INGRESO',2.00,3.00,'admin','2022-05-10 14:45:22'),(13,3,NULL,'INGRESO',3.00,4.00,'admin','2022-05-10 14:49:02'),(14,3,NULL,'INGRESO',2.00,3.20,'admin','2022-05-10 14:51:46'),(15,3,NULL,'INGRESO',4.00,5.00,'admin','2022-05-10 14:52:22'),(16,3,NULL,'INGRESO',0.00,0.00,'admin','2022-05-10 14:52:30'),(17,3,NULL,'INGRESO',5.00,5.00,'admin','2022-05-10 14:52:49'),(18,1,NULL,'INGRESO',5.00,3.70,'admin','2022-05-10 14:54:27'),(19,4,NULL,'INGRESO',8.00,10.00,'admin','2022-05-10 15:12:21'),(20,3,NULL,'INGRESO',1.00,6.00,'admin','2022-05-12 20:48:24'),(22,1,2,'SALIDA',11.50,3.70,'admin','2022-05-12 20:57:52'),(23,5,NULL,'INGRESO',50.00,8.50,'admin','2022-05-13 19:24:21'),(24,5,3,'SALIDA',2.00,8.50,'admin','2022-05-13 19:25:00'),(25,4,3,'SALIDA',1.00,10.00,'admin','2022-05-13 19:25:00'),(26,1,4,'SALIDA',2.50,3.70,'admin','2022-05-16 15:18:56'),(27,4,5,'SALIDA',1.00,10.00,'admin','2022-05-16 16:10:09'),(28,4,6,'SALIDA',5.00,10.00,'admin','2022-05-16 16:30:14'),(29,3,6,'SALIDA',3.00,6.00,'admin','2022-05-16 16:30:15'),(30,6,NULL,'INGRESO',80.00,5.60,'admin','2022-05-16 16:35:04'),(31,6,7,'SALIDA',2.00,5.60,'admin','2022-05-16 16:36:34');
 /*!40000 ALTER TABLE `tb_producto_historial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +201,7 @@ CREATE TABLE `tb_venta` (
   PRIMARY KEY (`id`),
   KEY `fk_tb_venta_1_idx` (`id_cliente`),
   CONSTRAINT `fk_tb_venta_1` FOREIGN KEY (`id_cliente`) REFERENCES `tb_cliente` (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +210,7 @@ CREATE TABLE `tb_venta` (
 
 LOCK TABLES `tb_venta` WRITE;
 /*!40000 ALTER TABLE `tb_venta` DISABLE KEYS */;
-INSERT INTO `tb_venta` VALUES (1,7,'1','2022',36.00,'BOLETA','admin','2022-05-04 16:12:47'),(2,11,'20220512-0001','23346',50.21,'BOLETA','admin','2022-05-12 20:57:52'),(3,11,'20220513-0001','2014841',31.86,'BOLETA','admin','2022-05-13 19:25:00');
+INSERT INTO `tb_venta` VALUES (1,7,'1','2022',36.00,'BOLETA','admin','2022-05-04 16:12:47'),(2,11,'20220512-0001','23346',50.21,'BOLETA','admin','2022-05-12 20:57:52'),(3,11,'20220513-0001','2014841',31.86,'BOLETA','admin','2022-05-13 19:25:00'),(4,11,'20220516-0001','457821',10.91,'BOLETA','admin','2022-05-16 15:18:56'),(5,2,'20220516-0002','21893796',11.80,'BOLETA','admin','2022-05-16 16:10:09'),(6,2,'20220516-0003','2343',80.24,'BOLETA','admin','2022-05-16 16:30:14'),(7,13,'20220516-0004','234234',13.22,'BOLETA','admin','2022-05-16 16:36:34');
 /*!40000 ALTER TABLE `tb_venta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -213,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-13 16:18:33
+-- Dump completed on 2022-05-16 11:48:44

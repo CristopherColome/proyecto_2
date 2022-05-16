@@ -15,11 +15,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 /**
  *
@@ -34,10 +35,7 @@ public class Venta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    //--------------------------------------------------------------
-    @Column(name = "id_cliente")
-    private Integer idCliente;
-
+    
     @Column(name = "serie")
     private String serie;
 
@@ -58,6 +56,10 @@ public class Venta implements Serializable {
     private Date fechaCreacion;
 
 //--- RELACIONES -------------------------------------------------------------
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+
     @OneToMany(targetEntity = ProductoHistorial.class, orphanRemoval = true,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "id_venta")
@@ -70,14 +72,6 @@ public class Venta implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
     }
 
     public String getSerie() {
@@ -128,6 +122,14 @@ public class Venta implements Serializable {
         this.fechaCreacion = fechaCreacion;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public List<ProductoHistorial> getVentaItems() {
         return ventaItems;
     }
@@ -138,7 +140,7 @@ public class Venta implements Serializable {
 
     @Override
     public String toString() {
-        return "Venta{" + "id=" + id + ", idCliente=" + idCliente + ", serie=" + serie + ", correlativo=" + correlativo + ", importeTotal=" + importeTotal + ", comprobante=" + comprobante + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + ", ventaItems=" + ventaItems + '}';
+        return "Venta{" + "id=" + id + ", idCliente=" + ", serie=" + serie + ", correlativo=" + correlativo + ", importeTotal=" + importeTotal + ", comprobante=" + comprobante + ", creador=" + creador + ", fechaCreacion=" + fechaCreacion + ", cliente=" + cliente + ", ventaItems=" + ventaItems + '}';
     }
 
 }

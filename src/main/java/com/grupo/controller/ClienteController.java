@@ -7,7 +7,6 @@ package com.grupo.controller;
 
 import static com.grupo.app.ApplicationConfig.getEntityManager;
 import com.grupo.entity.Cliente;
-import com.grupo.entity.Producto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -114,10 +113,9 @@ public class ClienteController implements IClienteController {
         try {
 
             Query query = entityManager.createQuery(
-                    "SELECT C FROM Cliente C LEFT JOIN C.ventas V ON V.idCliente = C.id WHERE C.id = :id",
-                    Cliente.class
+                    "SELECT C FROM Cliente C  WHERE C.id = :id", Cliente.class
             );
-            query.setHint("eclipselink.refresh", true);
+        query.setHint("eclipselink.refresh", true);
             query.setParameter("id", id);
             cliente = (Cliente) query.getSingleResult();
             LOG.info("Se obtuvo correctamente el cliente.");

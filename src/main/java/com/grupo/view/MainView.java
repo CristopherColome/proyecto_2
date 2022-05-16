@@ -5,7 +5,9 @@
  */
 package com.grupo.view;
 
+import com.grupo.controller.VentaController;
 import com.grupo.entity.Usuario;
+import com.grupo.entity.Venta;
 import com.grupo.util.Constantes.Evento;
 import com.grupo.util.Constantes.Menu;
 import com.grupo.util.Constantes.Rol;
@@ -138,6 +140,9 @@ public class MainView extends JFrame {
 //            System.out.println(object.toString());
 //        }
 //        VentaController vc = new VentaController();
+//        for (Venta venta : vc.listar()) {
+//            System.out.println(venta.toString());
+//        }
 //        Venta v = new Venta();
 //        v.setIdCliente(7);
 //        v.setSerie("2022");

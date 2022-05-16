@@ -32,7 +32,7 @@ public class Cliente extends Persona {
     private Integer idPersona;
 
     @OneToMany(targetEntity = Venta.class, orphanRemoval = true,
-            fetch = FetchType.EAGER)
+            fetch = FetchType.EAGER, mappedBy = "cliente")
     @JoinColumn(name = "id_cliente")
     private List<Venta> ventas;
 
