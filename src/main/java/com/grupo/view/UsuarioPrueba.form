@@ -221,88 +221,90 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="nuevoValidacionLabel" min="-2" pref="457" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="nuevoApellidoLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="nuevoNombreLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="nuevoNombreTextField" pref="186" max="32767" attributes="0"/>
-                                              <Component id="nuevoApellidoTextField" alignment="0" pref="186" max="32767" attributes="0"/>
-                                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="nuevoApellidoLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nuevoNombreLabel" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="nuevoNumeroDocLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="nuevoNumeroDocTextField" min="-2" pref="186" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nuevoNombreTextField" min="-2" pref="189" max="-2" attributes="0"/>
+                                          <Component id="nuevoApellidoTextField" min="-2" pref="189" max="-2" attributes="0"/>
                                       </Group>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="nuevoTelefonoLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="nuevoCancelarButton" min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="nuevoDireccionTextField" alignment="1" min="-2" pref="186" max="-2" attributes="0"/>
-                                                  <Component id="nuevotelefonoTextField" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Component id="nuevoTIpoPersonaLabel" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="nuevoCancelarButton" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="1" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="nuevoTIpoUsuarioLabel1" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="nuevoTipoDocULabel" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="nuevoDireccionTextField" max="32767" attributes="0"/>
+                                                      <Component id="nuevotelefonoTextField" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="nuevoTipoPersonajComboBox" pref="197" max="32767" attributes="0"/>
-                                              <Component id="nuevoTipoDocJComboBox" max="32767" attributes="0"/>
-                                              <Component id="nuevoTipoUsuariojComboBox" alignment="1" min="-2" pref="195" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="nuevoNumeroDocLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nuevoDIreccionLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nuevoNombreUsuarioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="nuevoNombreUsuarioTextField" max="32767" attributes="0"/>
+                                              <Component id="nuevoNumeroDocTextField" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="nuevoEmailLabel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                                          <Component id="nuevoRegistrarButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="nuevoDIreccionLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nuevoNombreUsuarioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                                      <Component id="nuevoRegistrarButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Component id="nuevoNombreUsuarioTextField" min="-2" pref="182" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="nuevoContraseñaLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="nuevoEmailTextField" pref="192" max="32767" attributes="0"/>
-                                      <Component id="nuevojPasswordField" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="nuevoTIpoUsuarioLabel1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="nuevoTipoDocULabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="nuevoTIpoPersonaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="nuevoConfirmarPasslLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="nuevoContraseñaLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="nuevoEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nuevoTipoDocJComboBox" min="-2" pref="197" max="-2" attributes="0"/>
+                                          <Component id="nuevoTipoPersonajComboBox" min="-2" pref="197" max="-2" attributes="0"/>
+                                          <Component id="nuevoEmailTextField" min="-2" pref="192" max="-2" attributes="0"/>
+                                          <Component id="nuevoTipoUsuariojComboBox" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                          <Component id="nuevojPasswordField" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                          <Component id="nuevoConfirmarjPasswordField" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -314,36 +316,33 @@
                           <Component id="nuevoUsuarioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="nuevoValidacionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="nuevoTipoPersonajComboBox" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="nuevoTIpoPersonaLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="nuevoNombreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="nuevoNombreTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="nuevoTIpoPersonaLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="nuevoTipoDocULabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="nuevoApellidoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nuevoApellidoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Component id="nuevoTipoDocULabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="nuevoApellidoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nuevoApellidoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="nuevoTipoPersonajComboBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="nuevoTipoDocJComboBox" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -368,14 +367,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="nuevotelefonoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nuevoEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nuevoEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="nuevoTelefonoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="19" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="nuevoDIreccionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nuevoDireccionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nuevoConfirmarPasslLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nuevoConfirmarjPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -385,8 +379,14 @@
                                   <Component id="nuevoContraseñaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="nuevojPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
+                      </Group>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nuevoDIreccionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nuevoDireccionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nuevoEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nuevoEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -503,12 +503,10 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevotelefonoTextFieldActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="nuevoEmailLabel">
+            <Component class="javax.swing.JLabel" name="nuevoConfirmarPasslLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Email:"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;Contrase&#xf1;a&lt;br&gt;confirmar:&lt;/body&gt;&lt;/html&gt;"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="nuevoEmailTextField">
             </Component>
             <Component class="javax.swing.JComboBox" name="nuevoTipoPersonajComboBox">
               <Properties>
@@ -530,7 +528,10 @@
             </Component>
             <Component class="javax.swing.JTextField" name="nuevoNombreUsuarioTextField">
             </Component>
-            <Component class="javax.swing.JPasswordField" name="nuevojPasswordField">
+            <Component class="javax.swing.JPasswordField" name="nuevoConfirmarjPasswordField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoConfirmarjPasswordFieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="nuevoContrase&#xf1;aLabel">
               <Properties>
@@ -556,13 +557,22 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JLabel" name="nuevoEmailLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Email:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="nuevoEmailTextField">
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="nuevojPasswordField">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="detallePanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Detalle de cliente">
-                <Property name="tabTitle" type="java.lang.String" value="Detalle de cliente"/>
+              <JTabbedPaneConstraints tabName="Detalle de usuario">
+                <Property name="tabTitle" type="java.lang.String" value="Detalle de usuario"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -573,7 +583,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="detalleClienteLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="detalleUsuarioLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="detalleValidacionLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -582,60 +592,82 @@
                               <Component id="detalleSalirButton" min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="detalleDireccionTextField" alignment="1" min="-2" pref="207" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="detalleMarcaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalleNombreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="detalleTipoPersonajComboBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="detalleTipoDocJComboBox" alignment="0" min="-2" pref="197" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="detalleTelefonoLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="detalletelefonoTextField" min="-2" pref="189" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="detalleNumeroDocLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="detalleMarcaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="detalleNombreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="detalleDIreccionLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="detalleEmailLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="detalleNombreUsuarioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="detalleNombreTextField" min="-2" pref="205" max="-2" attributes="0"/>
-                                          <Component id="detalleApellidoTextField" min="-2" pref="207" max="-2" attributes="0"/>
-                                          <Component id="detalleNumeroDocTextField" min="-2" pref="207" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace pref="28" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="detalleTipoDocULabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="detalleTipoPersonajComboBox" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="detalleTipoDocJComboBox" alignment="0" min="-2" pref="197" max="-2" attributes="0"/>
+                                                  <Component id="detalleNumeroDocTextField" alignment="0" pref="189" max="32767" attributes="0"/>
+                                                  <Component id="detalleApellidoTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="detalleNombreTextField" max="32767" attributes="0"/>
+                                                  <Component id="detalleNombreUsuarioTextField" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                              <Component id="detalleTIpoPersonaLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="detalleEmailTextField" min="-2" pref="189" max="-2" attributes="0"/>
+                                                  <Component id="detalleDireccionTextField" min="-2" pref="189" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="detalleTelefonoLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="detalletelefonoTextField" min="-2" pref="197" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="detalleTIpoUsuarioLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="detallepassLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="detalleConfirmarPasslLabel" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="detalleTipoUsuariojComboBox" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                              <Component id="detalleConfirmarjPasswordField" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="detallejPasswordField" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="deatlleEmailLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="detalleEmailTextField" min="-2" pref="197" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="detalleTIpoPersonaLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="detalleTipoDocULabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Component id="jScrollPane4" alignment="1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="detalleDIreccionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="detalleProductoHLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -648,71 +680,87 @@
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="detalleClienteLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="detalleUsuarioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="detalleValidacionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="detalleSalirButton" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="detalleEditarButton" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="detalleEditarButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="detalleNombreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="detalleNombreTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="detalleNombreLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="detalleNombreTextField" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="detalleTIpoPersonaLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="detalleMarcaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="detalleApellidoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalleTipoDocULabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
+                              <Component id="detalleTipoPersonajComboBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="detalleTipoDocJComboBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="detalleTIpoUsuarioLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="detalleNumeroDocTextField" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="detalleNumeroDocLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="detalleTipoUsuariojComboBox" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="detalleNombreUsuarioLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="detalleTIpoPersonaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="detalleTipoPersonajComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalletelefonoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalleTelefonoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalleConfirmarPasslLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detalleConfirmarjPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                      <Component id="detalleTipoDocULabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="detalleTipoDocJComboBox" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="detalleNombreUsuarioTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detallepassLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="detallejPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="detalleNumeroDocLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="detalleNumeroDocTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="detalleTelefonoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="detalletelefonoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="detalleDireccionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="detalleDIreccionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="deatlleEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="detalleEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="detalleEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="detalleProductoHLabel" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="162" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="detalleClienteLabel">
+            <Component class="javax.swing.JLabel" name="detalleUsuarioLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Detalle cliente : N&#xb0; "/>
+                <Property name="text" type="java.lang.String" value=" Detalle usuario : N&#xb0; "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="detalleNombreLabel">
@@ -730,65 +778,6 @@
             <Component class="javax.swing.JLabel" name="detalleMarcaLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Apellido:"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="clienteVentaTable">
-                  <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="0">
-                        <Column editable="true" title="Correlativo" type="java.lang.Integer"/>
-                        <Column editable="true" title="Serie" type="java.lang.String"/>
-                        <Column editable="true" title="Importe Total" type="java.lang.Double"/>
-                        <Column editable="true" title="Creador" type="java.lang.String"/>
-                        <Column editable="true" title="Creaci&#xf3;n" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                      </TableColumnModel>
-                    </Property>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="detalleProductoHLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Historial de compras:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="detalleEditarButton">
@@ -833,13 +822,6 @@
                 <Property name="text" type="java.lang.String" value="EL campo {} es obligatorio."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="detalleNumeroDocLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;Numero&lt;br&gt;documento:&lt;/body&gt;&lt;/html&gt;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="detalleNumeroDocTextField">
-            </Component>
             <Component class="javax.swing.JComboBox" name="detalleTipoPersonajComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -878,12 +860,19 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="detalleDireccionTextField">
-            </Component>
-            <Component class="javax.swing.JLabel" name="detalleDIreccionLabel">
+            <Component class="javax.swing.JLabel" name="detalleNumeroDocLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="DIrecci&#xf3;n:"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;Numero&lt;br&gt;documento:&lt;/body&gt;&lt;/html&gt;"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="detalleNombreUsuarioLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;Nombre&lt;br&gt;de&lt;br&gt;Usuario:&lt;/body&gt;&lt;/html&gt;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="detalleNombreUsuarioTextField">
+            </Component>
+            <Component class="javax.swing.JTextField" name="detalleNumeroDocTextField">
             </Component>
             <Component class="javax.swing.JLabel" name="detalleTelefonoLabel">
               <Properties>
@@ -891,13 +880,59 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="detalletelefonoTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detalletelefonoTextFieldActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="deatlleEmailLabel">
+            <Component class="javax.swing.JLabel" name="detalleDIreccionLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="DIrecci&#xf3;n:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="detalleDireccionTextField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="detalleEmailLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Email:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="detalleEmailTextField">
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="detalleConfirmarjPasswordField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detalleConfirmarjPasswordFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="detalleConfirmarPasslLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;Contrase&#xf1;a&lt;br&gt;confirmar:&lt;/body&gt;&lt;/html&gt;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="detallepassLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="detallejPasswordField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="detalleTIpoUsuarioLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;Tipo&lt;br&gt;Usuario:&lt;/body&gt;&lt;/html&gt;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="detalleTipoUsuariojComboBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="VENDEDOR"/>
+                    <StringItem index="1" value="ALMACEN"/>
+                    <StringItem index="2" value="ADMINISTRADOR"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

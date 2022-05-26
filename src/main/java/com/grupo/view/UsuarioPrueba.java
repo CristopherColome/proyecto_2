@@ -53,39 +53,46 @@ public class UsuarioPrueba extends javax.swing.JFrame {
         nuevoDIreccionLabel = new javax.swing.JLabel();
         nuevoTelefonoLabel = new javax.swing.JLabel();
         nuevotelefonoTextField = new javax.swing.JTextField();
-        nuevoEmailLabel = new javax.swing.JLabel();
-        nuevoEmailTextField = new javax.swing.JTextField();
+        nuevoConfirmarPasslLabel = new javax.swing.JLabel();
         nuevoTipoPersonajComboBox = new javax.swing.JComboBox<>();
         nuevoNombreUsuarioLabel = new javax.swing.JLabel();
         nuevoNombreUsuarioTextField = new javax.swing.JTextField();
-        nuevojPasswordField = new javax.swing.JPasswordField();
+        nuevoConfirmarjPasswordField = new javax.swing.JPasswordField();
         nuevoContraseñaLabel = new javax.swing.JLabel();
         nuevoTIpoUsuarioLabel1 = new javax.swing.JLabel();
         nuevoTipoUsuariojComboBox = new javax.swing.JComboBox<>();
+        nuevoEmailLabel = new javax.swing.JLabel();
+        nuevoEmailTextField = new javax.swing.JTextField();
+        nuevojPasswordField = new javax.swing.JPasswordField();
         detallePanel = new javax.swing.JPanel();
-        detalleClienteLabel = new javax.swing.JLabel();
+        detalleUsuarioLabel = new javax.swing.JLabel();
         detalleNombreLabel = new javax.swing.JLabel();
         detalleNombreTextField = new javax.swing.JTextField();
         detalleApellidoTextField = new javax.swing.JTextField();
         detalleMarcaLabel = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        clienteVentaTable = new javax.swing.JTable();
-        detalleProductoHLabel = new javax.swing.JLabel();
         detalleEditarButton = new javax.swing.JButton();
         detalleSalirButton = new javax.swing.JButton();
         detalleValidacionLabel = new javax.swing.JLabel();
-        detalleNumeroDocLabel = new javax.swing.JLabel();
-        detalleNumeroDocTextField = new javax.swing.JTextField();
         detalleTipoPersonajComboBox = new javax.swing.JComboBox<>();
         detalleTIpoPersonaLabel = new javax.swing.JLabel();
         detalleTipoDocULabel = new javax.swing.JLabel();
         detalleTipoDocJComboBox = new javax.swing.JComboBox<>();
-        detalleDireccionTextField = new javax.swing.JTextField();
-        detalleDIreccionLabel = new javax.swing.JLabel();
+        detalleNumeroDocLabel = new javax.swing.JLabel();
+        detalleNombreUsuarioLabel = new javax.swing.JLabel();
+        detalleNombreUsuarioTextField = new javax.swing.JTextField();
+        detalleNumeroDocTextField = new javax.swing.JTextField();
         detalleTelefonoLabel = new javax.swing.JLabel();
         detalletelefonoTextField = new javax.swing.JTextField();
-        deatlleEmailLabel = new javax.swing.JLabel();
+        detalleDIreccionLabel = new javax.swing.JLabel();
+        detalleDireccionTextField = new javax.swing.JTextField();
+        detalleEmailLabel = new javax.swing.JLabel();
         detalleEmailTextField = new javax.swing.JTextField();
+        detalleConfirmarjPasswordField = new javax.swing.JPasswordField();
+        detalleConfirmarPasslLabel = new javax.swing.JLabel();
+        detallepassLabel = new javax.swing.JLabel();
+        detallejPasswordField = new javax.swing.JPasswordField();
+        detalleTIpoUsuarioLabel = new javax.swing.JLabel();
+        detalleTipoUsuariojComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -219,17 +226,25 @@ public class UsuarioPrueba extends javax.swing.JFrame {
             }
         });
 
-        nuevoEmailLabel.setText("Email:");
+        nuevoConfirmarPasslLabel.setText("<html><body>Contraseña<br>confirmar:</body></html>");
 
         nuevoTipoPersonajComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NATURAL", "JURIDICA" }));
 
         nuevoNombreUsuarioLabel.setText("<html><body>Nombre<br>de<br>Usuario:</body></html>");
+
+        nuevoConfirmarjPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoConfirmarjPasswordFieldActionPerformed(evt);
+            }
+        });
 
         nuevoContraseñaLabel.setText("Contraseña:");
 
         nuevoTIpoUsuarioLabel1.setText("<html><body>Tipo<br>Usuario:</body></html>");
 
         nuevoTipoUsuariojComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VENDEDOR", "ALMACEN", "ADMINISTRADOR" }));
+
+        nuevoEmailLabel.setText("Email:");
 
         javax.swing.GroupLayout registroPanelLayout = new javax.swing.GroupLayout(registroPanel);
         registroPanel.setLayout(registroPanelLayout);
@@ -241,65 +256,66 @@ public class UsuarioPrueba extends javax.swing.JFrame {
                         .addComponent(nuevoUsuarioLabel)
                         .addGap(18, 18, 18)
                         .addComponent(nuevoValidacionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(nuevoApellidoLabel)
-                        .addComponent(nuevoNombreLabel))
-                    .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(registroPanelLayout.createSequentialGroup()
-                            .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroPanelLayout.createSequentialGroup()
+                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(registroPanelLayout.createSequentialGroup()
+                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nuevoApellidoLabel)
+                                    .addComponent(nuevoNombreLabel))
+                                .addGap(34, 34, 34)
+                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nuevoNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nuevoApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(registroPanelLayout.createSequentialGroup()
-                                    .addGap(90, 90, 90)
-                                    .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(nuevoNombreTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                                        .addComponent(nuevoApellidoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)))
-                                .addGroup(registroPanelLayout.createSequentialGroup()
-                                    .addComponent(nuevoNumeroDocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(nuevoNumeroDocTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroPanelLayout.createSequentialGroup()
                                     .addComponent(nuevoTelefonoLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(nuevoCancelarButton)
-                                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(nuevoDireccionTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(nuevotelefonoTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(registroPanelLayout.createSequentialGroup()
-                                    .addGap(8, 8, 8)
-                                    .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(registroPanelLayout.createSequentialGroup()
-                                            .addComponent(nuevoTIpoPersonaLabel)
-                                            .addGap(63, 63, 63))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(nuevoCancelarButton)
+                                            .addGap(83, 83, 83))
                                         .addGroup(registroPanelLayout.createSequentialGroup()
+                                            .addGap(29, 29, 29)
                                             .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(nuevoTIpoUsuarioLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(nuevoTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                    .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(nuevoTipoPersonajComboBox, 0, 197, Short.MAX_VALUE)
-                                        .addComponent(nuevoTipoDocJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(nuevoTipoUsuariojComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(registroPanelLayout.createSequentialGroup()
+                                                .addComponent(nuevoDireccionTextField)
+                                                .addComponent(nuevotelefonoTextField)))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registroPanelLayout.createSequentialGroup()
+                                    .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nuevoNumeroDocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nuevoDIreccionLabel)
+                                        .addComponent(nuevoNombreUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(nuevoEmailLabel))
-                                .addGroup(registroPanelLayout.createSequentialGroup()
-                                    .addGap(109, 109, 109)
-                                    .addComponent(nuevoRegistrarButton)))
-                            .addGap(201, 201, 201))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registroPanelLayout.createSequentialGroup()
-                            .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nuevoDIreccionLabel)
-                                .addComponent(nuevoNombreUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(21, 21, 21)
-                            .addComponent(nuevoNombreUsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(nuevoContraseñaLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nuevoEmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                                .addComponent(nuevojPasswordField)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nuevoNombreUsuarioTextField)
+                                        .addComponent(nuevoNumeroDocTextField)))))
+                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(registroPanelLayout.createSequentialGroup()
+                                .addGap(109, 109, 109)
+                                .addComponent(nuevoRegistrarButton))
+                            .addGroup(registroPanelLayout.createSequentialGroup()
+                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(registroPanelLayout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(nuevoTIpoUsuarioLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(nuevoTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(nuevoTIpoPersonaLabel))
+                                        .addGap(22, 22, 22))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroPanelLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(nuevoConfirmarPasslLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(nuevoContraseñaLabel)
+                                            .addComponent(nuevoEmailLabel))
+                                        .addGap(18, 18, 18)))
+                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nuevoTipoDocJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nuevoTipoPersonajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nuevoEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nuevoTipoUsuariojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nuevojPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nuevoConfirmarjPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         registroPanelLayout.setVerticalGroup(
             registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,28 +324,26 @@ public class UsuarioPrueba extends javax.swing.JFrame {
                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nuevoUsuarioLabel)
                     .addComponent(nuevoValidacionLabel))
-                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(33, 33, 33)
+                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(registroPanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(nuevoTipoPersonajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nuevoTIpoPersonaLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(nuevoNombreLabel)
-                                .addComponent(nuevoNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(nuevoTIpoPersonaLabel, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nuevoNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(registroPanelLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(nuevoTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(registroPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(nuevoApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nuevoApellidoLabel)))))
                     .addGroup(registroPanelLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(nuevoTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(registroPanelLayout.createSequentialGroup()
+                        .addComponent(nuevoTipoPersonajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nuevoApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nuevoApellidoLabel)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registroPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nuevoTipoDocJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registroPanelLayout.createSequentialGroup()
@@ -348,20 +362,21 @@ public class UsuarioPrueba extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nuevotelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nuevoEmailLabel)
-                            .addComponent(nuevoEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nuevoTelefonoLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nuevoDIreccionLabel)
-                            .addComponent(nuevoDireccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nuevoTelefonoLabel)
+                            .addComponent(nuevoConfirmarPasslLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nuevoConfirmarjPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(registroPanelLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nuevoNombreUsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nuevoContraseñaLabel)
-                            .addComponent(nuevojPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(nuevojPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nuevoDIreccionLabel)
+                    .addComponent(nuevoDireccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nuevoEmailLabel)
+                    .addComponent(nuevoEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(registroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nuevoCancelarButton)
@@ -371,7 +386,7 @@ public class UsuarioPrueba extends javax.swing.JFrame {
 
         clienteTabbedPane.addTab("Registro de usuario", registroPanel);
 
-        detalleClienteLabel.setText(" Detalle cliente : N° ");
+        detalleUsuarioLabel.setText(" Detalle usuario : N° ");
 
         detalleNombreLabel.setText("Nombre:");
 
@@ -382,26 +397,6 @@ public class UsuarioPrueba extends javax.swing.JFrame {
         });
 
         detalleMarcaLabel.setText("Apellido:");
-
-        clienteVentaTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Correlativo", "Serie", "Importe Total", "Creador", "Creación"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(clienteVentaTable);
-
-        detalleProductoHLabel.setText("Historial de compras:");
 
         detalleEditarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
         detalleEditarButton.setToolTipText("Editar");
@@ -426,8 +421,6 @@ public class UsuarioPrueba extends javax.swing.JFrame {
         detalleValidacionLabel.setForeground(new java.awt.Color(255, 0, 0));
         detalleValidacionLabel.setText("EL campo {} es obligatorio.");
 
-        detalleNumeroDocLabel.setText("<html><body>Numero<br>documento:</body></html>");
-
         detalleTipoPersonajComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NATURAL", "JURIDICA" }));
 
         detalleTIpoPersonaLabel.setText("Tipo:");
@@ -437,11 +430,35 @@ public class UsuarioPrueba extends javax.swing.JFrame {
 
         detalleTipoDocJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "RUC", "CE" }));
 
-        detalleDIreccionLabel.setText("DIrección:");
+        detalleNumeroDocLabel.setText("<html><body>Numero<br>documento:</body></html>");
+
+        detalleNombreUsuarioLabel.setText("<html><body>Nombre<br>de<br>Usuario:</body></html>");
 
         detalleTelefonoLabel.setText("Teléfono:");
 
-        deatlleEmailLabel.setText("Email:");
+        detalletelefonoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detalletelefonoTextFieldActionPerformed(evt);
+            }
+        });
+
+        detalleDIreccionLabel.setText("DIrección:");
+
+        detalleEmailLabel.setText("Email:");
+
+        detalleConfirmarjPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detalleConfirmarjPasswordFieldActionPerformed(evt);
+            }
+        });
+
+        detalleConfirmarPasslLabel.setText("<html><body>Contraseña<br>confirmar:</body></html>");
+
+        detallepassLabel.setText("Contraseña:");
+
+        detalleTIpoUsuarioLabel.setText("<html><body>Tipo<br>Usuario:</body></html>");
+
+        detalleTipoUsuariojComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VENDEDOR", "ALMACEN", "ADMINISTRADOR" }));
 
         javax.swing.GroupLayout detallePanelLayout = new javax.swing.GroupLayout(detallePanel);
         detallePanel.setLayout(detallePanelLayout);
@@ -450,7 +467,7 @@ public class UsuarioPrueba extends javax.swing.JFrame {
             .addGroup(detallePanelLayout.createSequentialGroup()
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                        .addComponent(detalleClienteLabel)
+                        .addComponent(detalleUsuarioLabel)
                         .addGap(18, 18, 18)
                         .addComponent(detalleValidacionLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -458,46 +475,60 @@ public class UsuarioPrueba extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(detallePanelLayout.createSequentialGroup()
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(detalleDireccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(detallePanelLayout.createSequentialGroup()
-                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(detalleNumeroDocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(detalleMarcaLabel)
-                                    .addComponent(detalleNombreLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(detalleNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(detalleApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(detalleNumeroDocTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(detallePanelLayout.createSequentialGroup()
-                                        .addComponent(detalleTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(detalleTipoPersonajComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(detalleTipoDocJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(detallePanelLayout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(detalleTIpoPersonaLabel))))
+                            .addComponent(detalleMarcaLabel)
+                            .addComponent(detalleNombreLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(detalleTipoPersonajComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(detalleTipoDocJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(detallePanelLayout.createSequentialGroup()
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(detallePanelLayout.createSequentialGroup()
                                 .addComponent(detalleTelefonoLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(detalletelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(detalletelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(detallePanelLayout.createSequentialGroup()
-                                .addComponent(deatlleEmailLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(detalleEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(detalleNumeroDocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(detalleDIreccionLabel)
+                                    .addComponent(detalleEmailLabel)
+                                    .addComponent(detalleNombreUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(detallePanelLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(detalleNumeroDocTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                                            .addComponent(detalleApellidoTextField)
+                                            .addComponent(detalleNombreTextField)
+                                            .addComponent(detalleNombreUsuarioTextField)))
+                                    .addGroup(detallePanelLayout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(detalleEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(detalleDireccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(18, 18, 18)
                         .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(detalleDIreccionLabel)
-                            .addComponent(detalleProductoHLabel))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(detallePanelLayout.createSequentialGroup()
+                                        .addComponent(detalleTIpoUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(detallePanelLayout.createSequentialGroup()
+                                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(detallepassLabel)
+                                            .addComponent(detalleConfirmarPasslLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(detalleTipoUsuariojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(detalleConfirmarjPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(detallejPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(detallePanelLayout.createSequentialGroup()
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(detalleTIpoPersonaLabel)
+                                    .addComponent(detalleTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         detallePanelLayout.setVerticalGroup(
@@ -506,52 +537,64 @@ public class UsuarioPrueba extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(detalleClienteLabel)
+                        .addComponent(detalleUsuarioLabel)
                         .addComponent(detalleValidacionLabel))
                     .addComponent(detalleSalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(detalleEditarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(detalleEditarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(detallePanelLayout.createSequentialGroup()
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(detalleNombreLabel)
-                            .addComponent(detalleNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(detalleMarcaLabel)
-                            .addComponent(detalleApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(detallePanelLayout.createSequentialGroup()
-                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(detalleTIpoPersonaLabel)
-                            .addComponent(detalleTipoPersonajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(detallePanelLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(detalleTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(detalleNombreLabel)
+                                    .addComponent(detalleNombreTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(detalleTipoDocJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(detalleTIpoPersonaLabel)
+                                .addGap(16, 16, 16)))
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(detalleMarcaLabel)
+                            .addComponent(detalleApellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(detalleTipoDocULabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(detallePanelLayout.createSequentialGroup()
+                        .addComponent(detalleTipoPersonajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(detalleTipoDocJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(detalleNumeroDocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(detalleNumeroDocTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(detalleTelefonoLabel)
-                        .addComponent(detalletelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(detalleTIpoUsuarioLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleNumeroDocTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleNumeroDocLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(detalleTipoUsuariojComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detallePanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(detalleNombreUsuarioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(detalletelefonoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(detalleTelefonoLabel)
+                            .addComponent(detalleConfirmarPasslLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(detalleConfirmarjPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(detallePanelLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(detalleNombreUsuarioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(detallepassLabel)
+                            .addComponent(detallejPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(detalleDireccionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(detalleDIreccionLabel)
-                    .addComponent(deatlleEmailLabel)
+                    .addComponent(detalleDIreccionLabel))
+                .addGap(22, 22, 22)
+                .addGroup(detallePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(detalleEmailLabel)
                     .addComponent(detalleEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(detalleProductoHLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        clienteTabbedPane.addTab("Detalle de cliente", detallePanel);
+        clienteTabbedPane.addTab("Detalle de usuario", detallePanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -583,25 +626,37 @@ public class UsuarioPrueba extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nuevoCancelarButtonActionPerformed
 
-    private void detalleEditarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleEditarButtonActionPerformed
+    private void detalleVerUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleVerUsuarioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_detalleEditarButtonActionPerformed
+    }//GEN-LAST:event_detalleVerUsuarioButtonActionPerformed
+
+    private void nuevotelefonoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevotelefonoTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevotelefonoTextFieldActionPerformed
+
+    private void nuevoConfirmarjPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoConfirmarjPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevoConfirmarjPasswordFieldActionPerformed
 
     private void detalleSalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleSalirButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_detalleSalirButtonActionPerformed
 
-    private void detalleVerUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleVerUsuarioButtonActionPerformed
+    private void detalleEditarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleEditarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_detalleVerUsuarioButtonActionPerformed
+    }//GEN-LAST:event_detalleEditarButtonActionPerformed
 
     private void detalleApellidoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleApellidoTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_detalleApellidoTextFieldActionPerformed
 
-    private void nuevotelefonoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevotelefonoTextFieldActionPerformed
+    private void detalletelefonoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalletelefonoTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nuevotelefonoTextFieldActionPerformed
+    }//GEN-LAST:event_detalletelefonoTextFieldActionPerformed
+
+    private void detalleConfirmarjPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalleConfirmarjPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_detalleConfirmarjPasswordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -647,38 +702,45 @@ public class UsuarioPrueba extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane clienteTabbedPane;
-    private javax.swing.JTable clienteVentaTable;
     private javax.swing.JLabel consultaBuscarLabel;
     private javax.swing.JTextField consultaBuscarTextField;
     private javax.swing.JPanel consultaPanel;
-    private javax.swing.JLabel deatlleEmailLabel;
     private javax.swing.JTextField detalleApellidoTextField;
-    private javax.swing.JLabel detalleClienteLabel;
+    private javax.swing.JLabel detalleConfirmarPasslLabel;
+    private javax.swing.JPasswordField detalleConfirmarjPasswordField;
     private javax.swing.JLabel detalleDIreccionLabel;
     private javax.swing.JTextField detalleDireccionTextField;
     private javax.swing.JButton detalleEditarButton;
+    private javax.swing.JLabel detalleEmailLabel;
     private javax.swing.JTextField detalleEmailTextField;
     private javax.swing.JLabel detalleMarcaLabel;
     private javax.swing.JLabel detalleNombreLabel;
     private javax.swing.JTextField detalleNombreTextField;
+    private javax.swing.JLabel detalleNombreUsuarioLabel;
+    private javax.swing.JTextField detalleNombreUsuarioTextField;
     private javax.swing.JLabel detalleNumeroDocLabel;
     private javax.swing.JTextField detalleNumeroDocTextField;
     private javax.swing.JPanel detallePanel;
-    private javax.swing.JLabel detalleProductoHLabel;
     private javax.swing.JButton detalleSalirButton;
     private javax.swing.JLabel detalleTIpoPersonaLabel;
+    private javax.swing.JLabel detalleTIpoUsuarioLabel;
     private javax.swing.JLabel detalleTelefonoLabel;
     private javax.swing.JComboBox<String> detalleTipoDocJComboBox;
     private javax.swing.JLabel detalleTipoDocULabel;
     private javax.swing.JComboBox<String> detalleTipoPersonajComboBox;
+    private javax.swing.JComboBox<String> detalleTipoUsuariojComboBox;
+    private javax.swing.JLabel detalleUsuarioLabel;
     private javax.swing.JLabel detalleValidacionLabel;
     private javax.swing.JButton detalleVerUsuarioButton;
+    private javax.swing.JPasswordField detallejPasswordField;
+    private javax.swing.JLabel detallepassLabel;
     private javax.swing.JTextField detalletelefonoTextField;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel nuevoApellidoLabel;
     private javax.swing.JTextField nuevoApellidoTextField;
     private javax.swing.JButton nuevoCancelarButton;
+    private javax.swing.JLabel nuevoConfirmarPasslLabel;
+    private javax.swing.JPasswordField nuevoConfirmarjPasswordField;
     private javax.swing.JLabel nuevoContraseñaLabel;
     private javax.swing.JLabel nuevoDIreccionLabel;
     private javax.swing.JTextField nuevoDireccionTextField;

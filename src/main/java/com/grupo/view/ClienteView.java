@@ -10,7 +10,6 @@ import com.grupo.entity.Cliente;
 import com.grupo.entity.Usuario;
 import com.grupo.entity.Venta;
 import com.grupo.util.Constantes;
-import com.grupo.util.Constantes.ClienteTipoDocumento;
 import com.grupo.util.Constantes.ClienteTipoPersona;
 import com.grupo.util.Constantes.ComponentesTab;
 import com.grupo.util.Constantes.PersonaTipo;
@@ -296,7 +295,7 @@ public class ClienteView extends JTabbedPane {
         nuevoValidacionLabel.setVisible(false);
 
         nuevoTipoDocJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(
-                Constantes.getNnombres(ClienteTipoDocumento.class)
+                Constantes.getNnombres(Constantes.PersonaTipoDocumento.class)
         ));
         nuevoNumeroDocLabel.setText("<html><body>Numero<br>documento:</body></html>");
 
@@ -452,7 +451,7 @@ public class ClienteView extends JTabbedPane {
 
         detalleTipoDocJComboBox.setModel(
                 new javax.swing.DefaultComboBoxModel<>(
-                        Constantes.getNnombres(ClienteTipoDocumento.class)
+                        Constantes.getNnombres(Constantes.PersonaTipoDocumento.class)
                 )
         );
 
@@ -697,7 +696,7 @@ public class ClienteView extends JTabbedPane {
         nuevoNombreTextField.setText("");
         nuevoApellidoTextField.setText("");
         nuevoNumeroDocTextField.setText("");
-        nuevoTipoDocJComboBox.setSelectedItem(ClienteTipoDocumento.DNI.name());
+        nuevoTipoDocJComboBox.setSelectedItem(Constantes.PersonaTipoDocumento.DNI.name());
         nuevoTipoPersonajComboBox.setSelectedItem(ClienteTipoPersona.NATURAL.name());
         nuevotelefonoTextField.setText("");
         nuevoDireccionTextField.setText("");
@@ -890,7 +889,7 @@ public class ClienteView extends JTabbedPane {
 
         detalleApellidoTextField.setText("");
         detalleNumeroDocTextField.setText("");
-        detalleTipoDocJComboBox.setSelectedItem(ClienteTipoDocumento.DNI.name());
+        detalleTipoDocJComboBox.setSelectedItem(Constantes.PersonaTipoDocumento.DNI.name());
         detalleTipoPersonajComboBox.setSelectedItem(ClienteTipoPersona.NATURAL.name());
         detalletelefonoTextField.setText("");
         detalleDireccionTextField.setText("");

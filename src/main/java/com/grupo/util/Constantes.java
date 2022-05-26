@@ -56,7 +56,7 @@ public class Constantes {
         JURIDICO
     }
 
-    public enum ClienteTipoDocumento {
+    public enum PersonaTipoDocumento {
         DNI,
         RUC,
         CE

@@ -73,7 +73,7 @@ CREATE TABLE `tb_persona` (
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_modificacion` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,7 +82,7 @@ CREATE TABLE `tb_persona` (
 
 LOCK TABLES `tb_persona` WRITE;
 /*!40000 ALTER TABLE `tb_persona` DISABLE KEYS */;
-INSERT INTO `tb_persona` VALUES (1,'U','NATURAL','administrador','administrador','DNI','0000000','LOCAL','000000000','administrador@bodega.com','admin',NULL,'2022-05-03 15:42:12','2022-05-05 15:12:18'),(2,'C','NATURAL','cliente','uno','DNI','11111111',NULL,NULL,NULL,'admin',NULL,'2022-05-03 15:50:42','2022-05-05 15:12:18'),(3,'C','NATURAL','a','a1','DNI','22222222',NULL,NULL,NULL,'admin',NULL,'2022-05-03 18:54:51','2022-05-05 15:12:18'),(4,'C','NATURAL','b','b_0','DNI','333333333',NULL,NULL,NULL,'admin','admin','2022-05-03 18:56:07','2022-05-05 15:12:18'),(5,'C','NATURAL','b','b2','DNI','333333333',NULL,NULL,NULL,'admin','admin','2022-05-03 21:35:45','2022-05-05 15:12:18'),(6,'C','NATURAL','c','c1','DNI','444444444',NULL,NULL,NULL,'admin',NULL,'2022-05-04 14:54:26','2022-05-05 15:12:18'),(7,'C','NATURAL','d','d_1','DNI','55555555',NULL,NULL,NULL,'admin','admin','2022-05-04 14:55:04','2022-05-05 15:12:18'),(9,'U','NATURAL','ven','ta','DNI','88888888',NULL,NULL,NULL,'admin','admin','2022-05-04 15:40:16','2022-05-05 15:12:18'),(10,'C','JURIDICO','f','f1','RUC','99999999','','','','admin','admin','2022-05-05 15:27:37','2022-05-11 14:23:16'),(11,'C','NATURAL','ALF','NEP','DNI','99999999','av sol','','','admin','admin','2022-05-10 21:42:36','2022-05-16 16:05:51'),(12,'U','NATURAL','almac','en','DNI','78878787',NULL,NULL,NULL,'admin',NULL,'2022-05-13 21:15:15',NULL),(13,'C','NATURAL','juan','son','DNI','12211221',NULL,NULL,NULL,'admin',NULL,'2022-05-16 16:35:54',NULL);
+INSERT INTO `tb_persona` VALUES (1,'U','NATURAL','administrador','administrador','DNI','0000000','LOCAL','000000000','administrador@bodega.com','admin',NULL,'2022-05-03 15:42:12','2022-05-05 15:12:18'),(2,'C','NATURAL','cliente','uno','DNI','11111111',NULL,NULL,NULL,'admin',NULL,'2022-05-03 15:50:42','2022-05-05 15:12:18'),(3,'C','NATURAL','a','a1','DNI','22222222',NULL,NULL,NULL,'admin',NULL,'2022-05-03 18:54:51','2022-05-05 15:12:18'),(4,'C','NATURAL','b','b_0','DNI','333333333',NULL,NULL,NULL,'admin','admin','2022-05-03 18:56:07','2022-05-05 15:12:18'),(5,'C','NATURAL','b','b2','DNI','333333333',NULL,NULL,NULL,'admin','admin','2022-05-03 21:35:45','2022-05-05 15:12:18'),(6,'C','NATURAL','c','c1','DNI','444444444',NULL,NULL,NULL,'admin',NULL,'2022-05-04 14:54:26','2022-05-05 15:12:18'),(7,'C','NATURAL','d','d_1','DNI','55555555',NULL,NULL,NULL,'admin','admin','2022-05-04 14:55:04','2022-05-05 15:12:18'),(9,'U','NATURAL','ven','ta','DNI','88888888',NULL,NULL,NULL,'admin','admin','2022-05-04 15:40:16','2022-05-05 15:12:18'),(10,'C','JURIDICO','f','f1','RUC','99999999','','','','admin','admin','2022-05-05 15:27:37','2022-05-11 14:23:16'),(11,'C','NATURAL','ALF','NEP','DNI','99999999','av sol','','','admin','admin','2022-05-10 21:42:36','2022-05-16 16:05:51'),(12,'U','NATURAL','almac','en','DNI','78878787',NULL,NULL,NULL,'admin',NULL,'2022-05-13 21:15:15',NULL),(13,'C','NATURAL','juan','son','DNI','12211221',NULL,NULL,NULL,'admin',NULL,'2022-05-16 16:35:54',NULL),(14,'U','NATURAL','2admin','2admin','DNI','12334567',NULL,NULL,NULL,'admin',NULL,'2022-05-24 19:46:04',NULL),(15,'U','NATURAL','vende2','dos2','DNI','78542154','','79889846','','admin','admin','2022-05-24 19:49:55','2022-05-26 18:50:09');
 /*!40000 ALTER TABLE `tb_persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +178,7 @@ CREATE TABLE `tb_usuario` (
 
 LOCK TABLES `tb_usuario` WRITE;
 /*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
-INSERT INTO `tb_usuario` VALUES (1,'admin','$shiro1$SHA-256$500000$zDj3SPjBECQH0dBmksVrig==$ztYJO2EEp8/vD6LRHka/ZGtkr8UOcoiO1CgS7F4OPVE=','ADMINISTRADOR',1),(9,'venta1','$shiro1$SHA-256$500000$Bk3HQal7mgT1RIVy0KQwFw==$Zr/ArZrVc80gNlbhq19383JOV7vTo9oxPukPuuMMl94=','VENDEDOR',1),(12,'almacen1','$shiro1$SHA-256$500000$UmZxWXDOKErS48byJbUNaw==$U2f2LNFFR5T7sLxy3AKcPExHlNGjXVlQCyicgtH4pUM=','ALMACEN',1);
+INSERT INTO `tb_usuario` VALUES (1,'admin','$shiro1$SHA-256$500000$zDj3SPjBECQH0dBmksVrig==$ztYJO2EEp8/vD6LRHka/ZGtkr8UOcoiO1CgS7F4OPVE=','ADMINISTRADOR',1),(9,'venta1','$shiro1$SHA-256$500000$Bk3HQal7mgT1RIVy0KQwFw==$Zr/ArZrVc80gNlbhq19383JOV7vTo9oxPukPuuMMl94=','VENDEDOR',1),(12,'almacen1','$shiro1$SHA-256$500000$UmZxWXDOKErS48byJbUNaw==$U2f2LNFFR5T7sLxy3AKcPExHlNGjXVlQCyicgtH4pUM=','ALMACEN',1),(14,'admin2','$shiro1$SHA-256$500000$8HvP3VkZKRAuACaq2w+Pog==$hoFQv2XUzQc6ZdAPLlhb8Fy6dcub+Bo71GCuZ+plyC0=','ADMINISTRADOR',1),(15,'vendedor2','$shiro1$SHA-256$500000$Vw7ZEodjPjXyrAkj8KvpiQ==$O7k8NVA9jetDNxf+z8gWcONGVp++5RiiI8gmSc73Fpg=','VENDEDOR',1);
 /*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-16 11:48:44
+-- Dump completed on 2022-05-26 13:51:51
